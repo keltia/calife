@@ -98,6 +98,26 @@
 #endif
 #endif
 
+#ifdef WITH_PAM
+/*
+ * the following code is stolen from imap-uw PAM authentication module and
+ * login.c
+ */
+#define COPY_STRING(s) (s ? strdup(s) : NULL)
+
+struct cred_t {
+	const char *uname;		/* user name */
+	const char *pass;		  /* password */
+};
+typedef struct cred_t cred_t;
+
+#ifdef HAVE_PAM_PAM_APPL_H
+#include <pam/pam_appl.h>
+#else
+#include <security/pam_appl.h>
+#endif
+#endif /* WITH_PAM */
+
 /*
  * Try to simplify the code
  */
@@ -147,6 +167,9 @@ extern  int     custom_shell;   /* modification du shell ? */
 extern  char    * shell;        /* nom du shell */
 extern  uid_t   ssid;   		/* POSIX saved uid */
 extern  char    * _group;       /* Si user E group */
+#ifdef WITH_PAM
+extern  pam_handle_t	*pamh;
+#endif /* WITH_PAM */
 #endif /* !MAIN_MODULE */
 
 extern  int errno;

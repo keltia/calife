@@ -72,6 +72,12 @@
 /* Define if you want a global /etc/calife.out script */
 #undef WANT_GLOBAL_RC
 
+/* Define if we want to use PAM authentication */
+#undef WITH_PAM
+
+/* Define if we have pam/pam_appl.h */
+#undef HAVE_PAM_PAM_APPL_H
+
 /* Define if you have the basename function.  */
 #undef HAVE_BASENAME
 

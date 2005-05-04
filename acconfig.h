@@ -70,3 +70,6 @@
 
 /* Define if you want a global /etc/calife.out script */
 #undef WANT_GLOBAL_RC
+
+/* Define if we want to use PAM authentication */
+#undef WITH_PAM

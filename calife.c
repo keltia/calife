@@ -175,6 +175,8 @@
  **                 * il est possible de spécifier un group dans calife.auth
  **                   via @group:...
  **                 * syslog(3) est maintenant requis.
+ ** 3.0 04/05/05    * PAMification de calife, PAM est désormais *obligatoire*
+ **                   les gens ne l'ayant pas sont invités à rester à 2.8.
  **/
 
 #define MAIN_MODULE
@@ -194,6 +196,10 @@ char    * shell;                    /* nom du shell */
 uid_t   ssid;   					/* saved uid -- POSIX */
 int     want_login = 0;             /* like 'su -' or not */
 char    * _group;                   /* if auth. through group */
+
+#ifdef WITH_PAM
+pam_handle_t	*pamh = NULL;
+#endif /* WITH_PAM */
 
 #ifdef HAVE_RLIMIT
 static struct rlimit rlp, orlp;
@@ -221,6 +227,9 @@ main(argc, argv)
     struct passwd * test_user, *pwd;
 #ifdef HAVE_POSIX_SIGNALS
     sigset_t        old_set, sig_set;
+#endif
+#ifdef WITH_PAM
+    int             e;
 #endif
 
     name = NULL;
@@ -585,6 +594,23 @@ main(argc, argv)
                 free (calife);
                 free (wanted_user);
 
+#ifdef WITH_PAM
+                	if (pamh) 
+                	{
+                		if ((e = pam_open_session(pamh, 0)) != PAM_SUCCESS) 
+                		{
+                			syslog (LOG_ERR, "pam_open_session: %s",
+                			    pam_strerror (pamh, e));
+                		}
+                		else if ((e = pam_setcred(pamh, PAM_ESTABLISH_CRED)) !=
+                		    PAM_SUCCESS) 
+                		{
+                			syslog (LOG_ERR, "pam_setcred: %s",
+                			    pam_strerror (pamh, e));
+                		}
+                	}
+#endif /* WITH_PAM */
+
                 if (allowed == 2)
                     syslog (LOG_AUTH | LOG_NOTICE, "%s@%s to %s on %s - BEGIN", 
                             name, _group, user_to_be, tty);
@@ -698,6 +724,17 @@ main(argc, argv)
 #ifdef WANT_GLOBAL_RC
                 free (out_rc);
 #endif /* WANT_GLOBAL_RC */
+
+#ifdef WITH_PAM
+              	if ((e = pam_setcred (pamh, PAM_DELETE_CRED)) != PAM_SUCCESS)
+                		syslog (LOG_ERR, "pam_setcred: %s", pam_strerror(pamh, e));
+              	if ((e = pam_close_session (pamh, 0)) != PAM_SUCCESS)
+                		syslog(LOG_ERR, "pam_close_session: %s", pam_strerror(pamh, e));
+              	if ((e = pam_end (pamh, e)) != PAM_SUCCESS)
+                		syslog(LOG_ERR, "pam_end: %s", pam_strerror(pamh, e));
+              	pamh = NULL;
+#endif
+
 #ifdef DEBUG
                 if (WIFEXITED (status))
                 {

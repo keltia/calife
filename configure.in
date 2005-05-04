@@ -39,6 +39,9 @@ case "$host" in
     ;;
   *-apple-darwin*)
     os_darwin=yes
+    WITH_PAM=yes
+    with_pam=yes
+    AC_DEFINE(WITH_PAM)
     ;;
   *-dec-ultrix*)
     AC_TRY_COMPILE([#include <syslog.h>],
@@ -250,6 +253,34 @@ AC_ARG_WITH(program,
   AC_MSG_RESULT(calife)
 )
 
+AC_ARG_WITH(pam, [  --with-pam              enable PAM support],
+[case $with_pam in
+    yes)        AC_DEFINE(WITH_PAM)
+                AC_MSG_CHECKING(whether to use PAM authentication)
+                AC_MSG_RESULT(yes)
+                with_passwd=no
+                LIBS="$LIBS -lpam"
+                WITH_PAM=yes
+                ;;
+    no)         ;;
+    *)          AC_MSG_ERROR(["--with-pam does not take an argument."])
+                ;;
+esac])
+
+dnl
+dnl Extra PAM foolishness
+dnl
+if test "$with_pam" = "yes"; then
+    dnl
+    dnl Some PAM implementations (MacOS X for example) put the PAM headers
+    dnl in /usr/include/pam instead of /usr/include/security...
+    dnl
+    AC_CHECK_HEADERS([pam/pam_appl.h])
+fi
+
+if test -n "$WITH_PAM"; then
+  enable_dynamic=yes
+else
 if test -n "$GCC"; then
 AC_MSG_CHECKING(if the command should be linked dynamically)
 AC_ARG_ENABLE(dynamic,
@@ -262,9 +293,11 @@ AC_ARG_ENABLE(dynamic,
 linking dynamically.'
       AC_MSG_WARN($ac_msg)
       AC_MSG_RESULT(yes)
+      undef STATIC_LINK
     else
       LDFLAGS="$LDFLAGS -static"
       AC_MSG_RESULT(no)
+      STATIC_LINK=1
     fi
     ;;
   yes)
@@ -274,12 +307,15 @@ linking dynamically.'
     AC_MSG_RESULT(yes)
     ;;
   esac ],
-  if test x$os_solaris != xyes -a x$os_hpux != xyes ; then
+  if test x$os_solaris != xyes -a x$os_hpux != xyes -a \
+          x$os_darwin != xyes -a x$os_linux != xyes; then
     LDFLAGS="$LDFLAGS -static"
+    STATIC_LINK=1
   fi
-  AC_MSG_RESULT(no)
+  AC_MSG_RESULT(yes)
 )
 fi
+fi dnl # WITH_PAM
 
 AC_MSG_CHECKING(where to put calife.auth)
 AC_ARG_WITH(etcdir,

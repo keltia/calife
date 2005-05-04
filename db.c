@@ -157,7 +157,7 @@ verify_auth_info (name, user_to_be)
              }
              for ( p = &gr_group->gr_mem[0]; *p ; p++ )
              {
-                 MESSAGE_3 ("matching %s to %s in %s", name, *p, group_name);  
+                 MESSAGE_3 ("matching %s to %s in %s\n", name, *p, group_name);  
                  if (strcmp(name, *p) == 0)
                  {
                      MESSAGE_2 ("User %s Allowed through group %s\n", name, group_name);
@@ -373,7 +373,7 @@ verify_password (name, user_to_be, this_time, tty)
     char    * name, * user_to_be, * this_time, * tty;
 #endif /* STDC_HEADERS */
 {
-    int             i = 0;
+    int             i = 0, rval;
     size_t          l_size = 0;
     
 #if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
@@ -381,6 +381,9 @@ verify_password (name, user_to_be, this_time, tty)
 #endif
     struct  passwd  * calife;
 
+#ifdef WITH_PAM
+    MESSAGE ("Using PAM\n");
+#endif
      /*
       * become root again
       */
@@ -407,6 +410,8 @@ verify_password (name, user_to_be, this_time, tty)
         strcpy (calife->pw_passwd, scalife->sp_pwdp);
     }
 #endif /* HAVE_SHADOW_H */
+#ifndef WITH_PAM
+    MESSAGE ("Not using PAM.\n");
     if ((*(calife->pw_passwd)) == '\0' || (*(calife->pw_passwd)) == '*')
     {
 
@@ -414,6 +419,8 @@ verify_password (name, user_to_be, this_time, tty)
         closelog ();
         die (10, "Sorry.\n");
     }
+#endif /* WITH_PAM */
+
 #ifndef RELAXED
     if (getuid () != 0)
     {
@@ -423,7 +430,8 @@ verify_password (name, user_to_be, this_time, tty)
 
         user_pass = (char *) xalloc (l_size);
         enc_pass = (char *) xalloc (l_size);
-        
+
+#ifndef WITH_PAM
         /*
          * cope with MD5 based crypt(3)
          */
@@ -453,6 +461,7 @@ verify_password (name, user_to_be, this_time, tty)
             strncpy (salt, calife->pw_passwd, 2);
             salt [2] = '\0';
         }
+#endif /* WITH_PAM */
 
         for ( i = 0; i < 3; i ++ )
         {
@@ -472,6 +481,25 @@ verify_password (name, user_to_be, this_time, tty)
              */
             strncpy (user_pass, pt_pass, l_size);
             user_pass[l_size - 1] = '\0';
+#ifdef WITH_PAM
+            MESSAGE ("Testing auth with PAM.\n");
+            /*
+             * become root again
+             *
+             * XXX is it necessary with PAM?
+             */
+            GET_ROOT;
+    		    rval = auth_pam (&calife, user_pass);
+        		if (rval > 0)
+            {
+              syslog (LOG_AUTH | LOG_ERR, "PAM failed with code %d for %s", rval, name);
+              /*
+               * Check return value:
+               * - 0:   auth succeeded
+               * - >0:  auth failed.
+               */ 
+               /* Fallback to previous methods? */
+#endif /* USE_PAM */
             pt_enc = (char *) crypt (user_pass, calife->pw_passwd);
             /*
              * Wipe out the cleartext password
@@ -491,7 +519,15 @@ verify_password (name, user_to_be, this_time, tty)
                 got_pass = 1;
                 break;
             }
-        }
+#ifdef WITH_PAM
+            }
+            else
+            {
+                got_pass = 1;
+                break;
+            }
+#endif /* WITH_PAM */
+        } /* for */
 
         if (!got_pass)
         {
@@ -504,10 +540,10 @@ verify_password (name, user_to_be, this_time, tty)
         free (enc_pass);
     }    
 #endif /* RELAXED */
-    /*
-     * stay non root for a time
-     */
-    RELEASE_ROOT;
+  /*
+   * stay non root for a time
+   */
+  RELEASE_ROOT;
 }
 
 
