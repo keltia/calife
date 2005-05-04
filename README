@@ -2,38 +2,36 @@
 ____________
 Introduction
 
-Calife est  un programme permettant  à certains utilisateurs, dont les noms
-sont  présents dans une liste, de  passer sous un quelconque ID utilisateur
-(par  exemple, mais pas uniquement, "root")  en rentrant leur propre mot de
-passe.
+Calife est un programme permettant à certains utilisateurs, dont les noms sont
+présents dans une liste, de passer sous un quelconque ID utilisateur (par
+exemple, mais pas uniquement, "root") en rentrant leur propre mot de passe.
 
-Ce système permet de ne pas divulguer le mot de passe  de root (par exemple
-pour le mode "single-user" de  certains Unix) tout  en conférant les droits
-de root à certains utilisateurs bien identifiés.
+Ce système permet de ne pas divulguer le mot de passe de root (par exemple
+pour le mode "single-user" de certains Unix) tout en conférant les droits de
+root à certains utilisateurs bien identifiés.
 
-L'introduction  obligatoire du mot de passe  lors du changement d'ID permet
-de ne  pas compromettre l'accès  root si  l'utilisateur reste  logé sur une
-machine puis s'en éloigne. 
+L'introduction obligatoire du mot de passe lors du changement d'ID permet de
+ne pas compromettre l'accès root si l'utilisateur reste logé sur une machine
+puis s'en éloigne.
 
-La barrière de  sécurité   finale réside dans   le   mot de passe de    ces
+La barrière de sécurité finale réside dans le mot de passe de ces
 utilisateurs, qui, nous l'espérons, connaissent les règles élémentaires.
 
-Des listes  d'utilisateurs vers  lesquels  quelqu'un a  le droit d'utiliser
-calife  permettent d'affiner   la  gestion des personnes  autorisées.
+Des listes d'utilisateurs vers lesquels quelqu'un a le droit d'utiliser calife
+permettent d'affiner la gestion des personnes autorisées.
 
 ____________
 Distribution
 
-Calife est distribué sous la GNU General Public  Licence qui vous permet de
-diffuser, utiliser et  modifier ce programme tant  que vous en diffusez les
-sources  et me communiquez toutes   les modifications effectuées.  Cela  me
-permet de l'améliorer et de le maintenir dans de bonnes conditions.
+Calife est distribué sous la GNU General Public Licence qui vous permet de
+diffuser, utiliser et modifier ce programme tant que vous en diffusez les
+sources et me communiquez toutes les modifications effectuées. Cela me permet
+de l'améliorer et de le maintenir dans de bonnes conditions.
 
-Vous  trouverez  la  licence  GNU  dans  le  fichier  COPYING  fourni  avec
-l'archive.
+Vous trouverez la licence GNU dans le fichier COPYING fourni avec l'archive.
 
-Pour ce qui est du "disclaimer" standard associé à  ce type de programme et
-à ce  type  de diffusion, le paragraphe  suivant,  tiré de la licence  BSD,
+Pour ce qui est du "disclaimer" standard associé à ce type de programme et à
+ce type de diffusion, le paragraphe suivant, tiré de la licence BSD,
 s'applique :
 
   THIS SOFTWARE IS PROVIDED BY ME ``AS IS'' AND ANY EXPRESS OR IMPLIED
@@ -47,12 +45,12 @@ s'applique :
   OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Ceci  dit, si  vous l'utilisez  et  le trouvez  utile, je  ne refuserais pas
-une Guinness :-)
+Ceci dit, si vous l'utilisez et le trouvez utile, je ne refuserais pas une
+Guinness :-)
 
-Le site primaire pour Calife est <ftp://mutt.frmug.org/pub/calife/>. Un
-miroir existe sur <ftp://postfix.EU.org/pub/calife/>. La dernière version
-est toujours disponible sous le nom latest.tar.gz.
+Le site primaire pour Calife est <ftp://mutt.frmug.org/pub/calife/>. Un miroir
+existe sur <ftp://postfix.EU.org/pub/calife/>. La dernière version est
+toujours disponible sous le nom latest.tar.gz.
 
 Calife est disponible sous la forme d'une archive Arch ce qui facilitera
 l'usage et la mise à jour par des contributeurs externes.
@@ -62,17 +60,16 @@ roberto@eu.org--2003b
 
 calife--main--2.8	est la branche principale de développemet.
 
-Arch/TLA: <http://gnuarch.org/>
+Arch/TLA/Bazaar: <http://gnuarch.org/> <http://bazaar.canonical.com/>
 
-Je conseille vivement la vesion de développement (postérieure à la 1.1pre5
-actuellement disponible). Voir <http://regexps.srparish.net/www/> pour plus
-de détails.
+Je conseille vivement d'utiliser baz (Bazaar) qui a l'avantage de simplifier
+certaines des commandes, d'en regrouper certaines et d'être plus rapide sur
+des opérations courantes.
 
 ____________
 Installation
 
-Calife   utilise    dorénavant   le programme   GNU   "autoconf"   pour  la
-configuration.
+Calife utilise dorénavant le programme GNU "autoconf" pour la configuration.
 
 Tapez la commande :
 
@@ -88,8 +85,8 @@ Le script va analyser votre système et créer les fichiers suivants :
 Le binaire et  les pages de  manuels seront par défaut installés, lors du
 "make install", sous "/usr/local".
 
-Utiliser  l'argument de  configure  "--prefix=/le/prefixe" pour indiquer le
-nom du répertoire adéquat.
+Utiliser l'argument de configure "--prefix=/le/prefixe" pour indiquer le nom
+du répertoire adéquat.
 
 Quelques options spéciales sont disponibles  :
 
@@ -119,52 +116,51 @@ Quelques options spéciales sont disponibles  :
 
 --enable-dynamic
         Si vous désirez avoir le binaire lié dynamiquement et non pas
-        statiquement. L'utilisation du binaire statique permet non
-        seulement d'améliorer le partage des pages entre de multiples
-        instances de calife mais aussi de ne pas être dépendant de la
-        version de la bibliothèque standard.
+        statiquement. L'utilisation du binaire statique permet non seulement
+        d'améliorer le partage des pages entre de multiples instances de
+        calife mais aussi de ne pas être dépendant de la version de la
+        bibliothèque standard.
 
         Parmi les systèmes devant utiliser --enable-dynamic, on compte
         Solaris 2.x, HP-UX, Linux et MacOS X/Darwin.
 
 Cas de Linux :
 
-Ce système utilise     plusieurs systèmes de  "shadow passwords".    Il est
-possible que "configure"  ne parvienne pas  à déterminer le type d'outil de
-"shadow passwords" employé.  Je n'ai pas de  Linux, il m'est donc difficile
-de tester...     Toute   suggestion  et   modification  de   "configure.in"
-appréciées.
+Ce système utilise plusieurs systèmes de "shadow passwords". Il est possible
+que "configure" ne parvienne pas à déterminer le type d'outil de "shadow
+passwords" employé. Je n'ai pas de Linux, il m'est donc difficile de tester...
+Toute suggestion et modification de "configure.in" appréciées.
 
-L'option  suivante permet à  calife de ne pas  utiliser getspnam(3) dans le
-cas où la fonction existe mais les shadows passwords ne sont pas utilisés.
+L'option suivante permet à calife de ne pas utiliser getspnam(3) dans le cas
+où la fonction existe mais les shadows passwords ne sont pas utilisés.
 
 --disable-shadow
         Le défaut est d'utiliser getspnam(3) si elle est définie.
 
 Si vous devez créer une nouvelle section dans conf.h ou une nouvelle entrée
-dans  Makefile.in  ou    configure.in ,    merci   de me    communiquer les
-modifications pour incorporation dans les versions suivantes.
+dans Makefile.in ou configure.in , merci de me communiquer les modifications
+pour incorporation dans les versions suivantes.
 
-Le programme  s'installe  sous  forme d'un binaire nommé  "calife" pour des
+Le programme s'installe sous forme d'un binaire nommé "calife" pour des
 raisons de facilité mais le nom historique est "...".
 
-Il    installe   aussi un   fichier   de  configuration   d'exemple, appelé
+Il installe aussi un fichier de configuration d'exemple, appelé
 "calife.auth-dist" et par défaut placé dans /etc
 
-Consulter les pages de manuel  fournies ("calife" et "calife.auth") pour en
+Consulter les pages de manuel fournies ("calife" et "calife.auth") pour en
 apprendre davantage.
 
-Le programme essaie de lancer le fichier  calife.out (par défaut dans /etc)
-à la sortie de "calife". Ceci permet par exemple d'envoyer un mail à chaque
-utilisation de calife. Cette possibilité est optionnelle et dépend de
-l'option « --enable-global-rc ».
+Le programme essaie de lancer le fichier calife.out (par défaut dans /etc) à
+la sortie de "calife". Ceci permet par exemple d'envoyer un mail à chaque
+utilisation de calife. Cette possibilité est optionnelle et dépend de l'option
+« --enable-global-rc ».
 
 _____________
 Compatibilité
 
-Calife a   été  testé et  développé   sur les systèmes UNIX   suivants (les
-versions testées peuvent être anciennes et devraient être retestées mais je
-n'ai plus accès à pas mal de ces machines...) :
+Calife a été testé et développé sur les systèmes UNIX suivants (les versions
+testées peuvent être anciennes et devraient être retestées mais je n'ai plus
+accès à pas mal de ces machines...) :
 
 - FreeBSD 1 - 6.x   (mach. de développement de l'auteur)
 - MacOS X 10.*/Jaguar (nouveau)
@@ -172,7 +168,12 @@ n'ai plus accès à pas mal de ces machines...) :
 - Solaris 2.x (et la plupart des SVR4)
 - HP-UX 8.*, 9.*, 10.* et 11.*
 
-Systèmes pour lesquels la compatibilité n'est pas testée directement par l'auteur.
+**NOTE: la version 3.0 sera une version exclusivement PAM de manière à
+simplifier le code, sa maintenance et la compatibilité avec les UNIX le
+supportant.
+
+Systèmes pour lesquels la compatibilité n'est pas testée directement par
+l'auteur.
 
 - SunOS 4.1.*
 - SunOS 3.2
@@ -185,14 +186,15 @@ Systèmes pour lesquels la compatibilité n'est pas testée directement par l'auteu
 - IRIX 5.x (probablement 6.x aussi)
 - GNU Hurd (nouveau)
 
-MacOS 10.3 (Panther) n'est pour l'instant pas supporté, la gestion des mots de passe
-ayant changé par rapport à Jaguar.
+MacOS 10.3 (Panther) n'est pour l'instant pas supporté, la gestion des mots de
+passe ayant changé par rapport à Jaguar. Tiger (10.4) sera supporté comme
+Panther via le support PAM (nouveauté en 3.0)
 
-Le support de  NIS a disparu dans les  versions 2.6.5 et suivantes mais sera
-réintégré sous peu.
+Le support de NIS a disparu dans les versions 2.6.5 et suivantes mais sera
+réintégré sous peu. Il va redisparaitre en 3.0 mais sera utilisable via PAM.
 
-La fonctionnalité syslog(3) est maintenant obligatoire pour compiler calife. Ca simplifie
-le code manière significative.
+La fonctionnalité syslog(3) est maintenant obligatoire pour compiler calife.
+Ca simplifie le code manière significative.
 
 Des packages FreeBSD et Debian existent dorénavant grâce à Thomas Quinot.
 Alain Thivillon a généré des packages Red-hat (RPM) pour 2.8.4b.
@@ -201,29 +203,28 @@ _______________
 Pages de manuel
 
 Les pages de manuel sont très succinctes et utilisent le système de macros mis
-au point à  Berkeley appelé  "mandoc" donc si vous  n'avez pas ces macros, le
-résultat n'est pas très lisible.  Je conseille vivement d'utiliser ce système
+au point à Berkeley appelé "mandoc" donc si vous n'avez pas ces macros, le
+résultat n'est pas très lisible. Je conseille vivement d'utiliser ce système
 qui est plus complet que le ``man'' habituel.
 
-Si vous disposez  de GNU  groff, alors  la  commande pour les pages de manuel
-est "nroff -mandoc" ou "gnroff -mandoc". 
+Si vous disposez de GNU groff, alors la commande pour les pages de manuel est
+"nroff -mandoc" ou "gnroff -mandoc".
 
 __________
 Historique
 
-Ce programme est  né en 1991  d'une idée commune à  François Berjon et moi,
-qui utilisions un système très simple, appelé ``...'', capable de lancer un
-shell root  après vérification de l'uid  du requérant, sans demander de mot
-de passe.
+Ce programme est né en 1991 d'une idée commune à François Berjon et moi, qui
+utilisions un système très simple, appelé ``...'', capable de lancer un shell
+root après vérification de l'uid du requérant, sans demander de mot de passe.
 
-Il a évolué lors de mon travail à Antenne 2 et surtout lors  de mon stage à
-l'Université de   Marne-la-Vallée, où  il  a  gagné  la  majorité   de  ses
-possibilités actuelles.
+Il a évolué lors de mon travail à Antenne 2 et surtout lors de mon stage à
+l'Université de Marne-la-Vallée, où il a gagné la majorité de ses possibilités
+actuelles.
 
-Il  est utilisé quotidiennement par plusieurs  sites et donne des résultats
+Il est utilisé quotidiennement par plusieurs sites et donne des résultats
 satisfaisants.
 
-Tout commentaire, critique [constructive]  et patches bienvenus à l'une des
+Tout commentaire, critique [constructive] et patches bienvenus à l'une des
 adresses suivantes :
 
 roberto@keltia.freenix.fr       (maison)
@@ -235,7 +236,7 @@ René Cougnenc
 François Berjon         <fcb@gwynedd.frmug.org>
 Laurent Chemla          <laurent@brainstorm.fr>
 Pierre Beyssac          <pb@fasterix.frmug.org>
-Nathanaël Makarévitch	<nat@nataa.frmug.org>
+Nathanaël Makarévitch   <nat@nataa.frmug.org>
 Thomas Quinot           <thomas@cuivre.fr.eu.org>
 Christian Perrier       <bubulle@kheops.frmug.org>
 Philippe Regnault       <regnauld@starbsd.org>
