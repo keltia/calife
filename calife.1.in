@@ -1,0 +1,129 @@
+.\" Copyright (c) 1991, 1994 Ollivier Robert
+.\" All rights reserved.
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted under the GNU General Public Licence.
+.\" Look into the COPYING file.
+.\"
+.\"	@(#) $Id: //depot/security/calife/main/calife.1.in#2 $
+.\""
+.Dd September 25, 1994
+.Dt CALIFE 1
+.Os
+.Sh NAME
+.Nm calife
+.Nd becomes root (or another user) legally.
+.Sh SYNOPSIS
+.Nm calife
+.Op Ar -
+.Op Ar login
+.Pp
+or
+.Pp
+.Nm ...
+.Op Ar -
+.Op Ar login
+for some sites (check with your administrator).
+.Sh DESCRIPTION
+.Nm Calife
+requests
+.Ar user's own
+password for becoming
+.Ar login
+(or 
+.Ar root ,
+if no login is provided), and switches to that user and group ID after
+verifying proper rights to do so.  A shell is then executed.  If
+.Nm calife
+is executed by root, no password is requested and a shell with the
+appropriate user ID is executed.
+.Pp
+The invoked shell is the user's own except when a shell is specified in
+the configuration file
+.Nm calife.auth .
+.Pp
+If
+.Nm ``-''
+is specified on the command line, user's profile files are read as if it
+was a login shell.
+.Pp
+This is
+.Nm not
+the traditional behavior of
+.Nm su .
+.Pp
+Only users specified in
+.Nm calife.auth
+can use
+.Nm calife
+to become another one with this method.
+.Pp
+You can specify in the
+.Nm calife.auth
+file the list of logins allowed for users when using
+.Nm calife .
+See
+.Xr calife.auth 5
+for more details.
+.Pp
+.Nm calife.auth
+is installed as
+.Ar @ETCDIR@/calife.auth .
+.Sh FILES
+.Bl -tag -width /etc/calife.auth -compact
+.It Pa @ETCDIR@/calife.auth
+List of users authorized to use
+.Nm calife
+and the users they can become.
+.It Pa @ETCDIR@/calife.out
+This script is executed just after getting out of
+.Nm calife .
+.El
+.Sh SEE ALSO
+.Xr su 1 ,
+.Xr calife.auth 5 ,
+.Xr group 5 ,
+.Xr environ 7
+.Sh ENVIRONMENT
+The original environment is kept. This is
+.Nm not
+a security problem as you have to be yourself at login (i.e. it does not
+have the same security implications as in
+.Xr su 1 ).
+.Pp
+Environment variables used by
+.Nm calife :
+.Bl -tag -width HOME
+.It Ev HOME
+Default home directory of real user ID.
+.It Ev PATH
+Default search path of real user ID unless modified as specified above.
+.It Ev TERM
+Provides terminal type which may be retained for the substituted
+user ID.
+.It Ev USER
+The user ID is always the effective ID (the target user ID) after an
+.Nm su
+unless the user ID is 0 (root).
+.El
+.Sh BUGS
+Versions older than 2.7.1 do
+.Nm not
+support the MD5-based scheme used in the international version of
+FreeBSD. Use the non-US based
+.Xr crypt 3
+library. You may find it here
+<URL:ftp://braae.ru.ac.za/pub/FreeBSD/securedist>
+.Pp
+The MD5-based
+.Xr crypt 3
+function is slower and probably stronger than the DES-based one but
+it is usable only among FreeBSD 2.0+ systems.
+.Sh HISTORY
+A
+.Nm
+command appeared in DG/UX, written for Antenne 2 in 1991. It has evolved
+considerably since this period with more OS support, user lists handling
+and improved logging.
+.Sh AUTHOR
+Ollivier Robert <roberto@keltia.frmug.fr.net>

@@ -1,0 +1,166 @@
+/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+
+/* Define to `int' if <sys/types.h> doesn't define.  */
+#undef gid_t
+
+/* Define if you have <sys/wait.h> that is POSIX.1 compatible.  */
+#undef HAVE_SYS_WAIT_H
+
+/* Define to `int' if <sys/types.h> doesn't define.  */
+#undef pid_t
+
+/* Define as the return type of signal handlers (int or void).  */
+#undef RETSIGTYPE
+
+/* Define to `unsigned' if <sys/types.h> doesn't define.  */
+#undef size_t
+
+/* Define if you have the ANSI C header files.  */
+#undef STDC_HEADERS
+
+/* Define to `int' if <sys/types.h> doesn't define.  */
+#undef uid_t
+
+/* Define if you have the crypt library (-lcrypt).  */
+#undef HAVE_LIBCRYPT
+
+/* Define if you want POSIX signals */
+#undef HAVE_POSIX_SIGNALS
+
+/* Define if you're under SCO */
+#undef SCO
+
+/* Define it if you have SCO's /etc/shadow file */
+#undef HAVE_SCO_ETC_SHADOW
+
+/* Define it if you have an /etc/shadow file */
+#undef HAVE_ETC_SHADOW
+
+/* Define if you don't want to type a password at all */
+#undef RELAXED
+
+/* Define if your syslog.h is in sys/ */
+#undef NEED_SYS_SYSLOG_H
+
+/* Define if you're using OSF C2 security package */
+#undef HAVE_OSF1_C2_SECURITY
+
+/* Define if you have setrlimit/getrlimit */
+#undef HAVE_RLIMIT
+
+/* Define if no syslog-type functions exist */
+#undef NO_SYSLOG
+
+/* Define if _SC_LINE_MAX is defined for sysconf */
+#undef HAVE_WORKING_SYSCONF
+
+/* Define it to su' path */
+#undef SU_CMD
+
+/* Define it if you want debugging output */
+#undef DEBUG
+
+/* Define it if you have a setuid-aware shell */
+#undef NO_SETUID_SHELL
+
+/* Define it if you have <sys/wait.h> but a non-POSIX one like NeXTStep */
+#undef HAVE_NON_POSIX_WAIT_H
+
+/* Define it if don't want to use getspnam(3) and friends-- Linux */
+#undef UNUSED_SHADOW
+
+/* Define if you want a global /etc/calife.out script */
+#undef WANT_GLOBAL_RC
+
+/* Define if you have the basename function.  */
+#undef HAVE_BASENAME
+
+/* Define if you have the getrlimit function.  */
+#undef HAVE_GETRLIMIT
+
+/* Define if you have the getspnam function.  */
+#undef HAVE_GETSPNAM
+
+/* Define if you have the initgroups function.  */
+#undef HAVE_INITGROUPS
+
+/* Define if you have the openlog function.  */
+#undef HAVE_OPENLOG
+
+/* Define if you have the pw_encrypt function.  */
+#undef HAVE_PW_ENCRYPT
+
+/* Define if you have the seteuid function.  */
+#undef HAVE_SETEUID
+
+/* Define if you have the setresuid function.  */
+#undef HAVE_SETRESUID
+
+/* Define if you have the setrlimit function.  */
+#undef HAVE_SETRLIMIT
+
+/* Define if you have the sigaction function.  */
+#undef HAVE_SIGACTION
+
+/* Define if you have the sigprocmask function.  */
+#undef HAVE_SIGPROCMASK
+
+/* Define if you have the sysconf function.  */
+#undef HAVE_SYSCONF
+
+/* Define if you have the syslog function.  */
+#undef HAVE_SYSLOG
+
+/* Define if you have the <fcntl.h> header file.  */
+#undef HAVE_FCNTL_H
+
+/* Define if you have the <libgen.h> header file.  */
+#undef HAVE_LIBGEN_H
+
+/* Define if you have the <shadow.h> header file.  */
+#undef HAVE_SHADOW_H
+
+/* Define if you have the <stdarg.h> header file.  */
+#undef HAVE_STDARG_H
+
+/* Define if you have the <stdlib.h> header file.  */
+#undef HAVE_STDLIB_H
+
+/* Define if you have the <string.h> header file.  */
+#undef HAVE_STRING_H
+
+/* Define if you have the <sys/param.h> header file.  */
+#undef HAVE_SYS_PARAM_H
+
+/* Define if you have the <sys/resource.h> header file.  */
+#undef HAVE_SYS_RESOURCE_H
+
+/* Define if you have the <sys/time.h> header file.  */
+#undef HAVE_SYS_TIME_H
+
+/* Define if you have the <syslog.h> header file.  */
+#undef HAVE_SYSLOG_H
+
+/* Define if you have the <unistd.h> header file.  */
+#undef HAVE_UNISTD_H
+
+/* Define if your <unistd.h> requires _XOPEN_SOURCE to prototype crypt(3). */
+#undef _XOPEN_SOURCE
+
+/* Define if you have the crypt library (-lcrypt).  */
+#undef HAVE_LIBCRYPT
+
+/* Define if you have the gen library (-lgen).  */
+#undef HAVE_LIBGEN
+
+/* Define if you have the prot library (-lprot).  */
+#undef HAVE_LIBPROT
+
+/* Define if you have the s library (-ls).  */
+#undef HAVE_LIBS
+
+/* Define if you have the shadow library (-lshadow).  */
+#undef HAVE_LIBSHADOW
+
+/* Define if you have the x library (-lx).  */
+#undef HAVE_LIBX

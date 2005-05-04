@@ -1,0 +1,10 @@
+# calife.auth-dist
+#
+# Format
+#
+# name[:shell_to_be_run][:user1,user2,...,usern]
+#
+# $Id: //depot/security/calife/main/calife.auth-dist#3 $
+fcb
+roberto:/bin/tcsh
+pb::guest,blaireau

@@ -1,0 +1,90 @@
+# Makefile pour calife(8)
+#
+# $Id: //depot/security/calife/main/Makefile.in#7 $
+#
+
+srcdir          = @srcdir@
+ 
+VPATH           = $(srcdir)
+ 
+install_prefix  =
+prefix          = @prefix@
+exec_prefix     = @exec_prefix@
+bindir          = $(exec_prefix)/bin
+sbindir         = $(exec_prefix)/sbin
+mandir          = $(prefix)/man
+man1dir         = $(mandir)/man1
+man5dir         = $(mandir)/man5
+etcdir          = @ETCDIR@
+ 
+CC              = @CC@
+CFLAGS          = @CFLAGS@
+LDFLAGS         = @LDFLAGS@
+DEFS            = @DEFS@
+LIBS            = @LIBS@
+INSTALL         = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA    = @INSTALL_DATA@
+GROFF           = @GROFF@
+MV              = @MV@
+RM              = @RM@
+BINGRP		    = @BINGRP@
+
+SHELL = /bin/sh
+
+MAN1PAGES       = calife.1
+MAN1SOURCES     = calife.1.in
+MAN5PAGES       = calife.auth.5
+MAN5SOURCES     = calife.auth.5.in
+
+# XXX change it if you want calife.auth and calife.out somewhere else
+AUTH_CONFIG_FILE = $(etcdir)/calife.auth
+CALIFE_OUT_FILE	= $(etcdir)/calife.out
+
+SRCS = calife.c db.c util.c
+OBJS = calife.o db.o util.o
+
+# XXX change it if you'd rather have the more "standard" name calife.
+PROGRAM = calife
+IPROGRAM = @IPROGRAM@
+
+all: $(PROGRAM)
+
+.c.o:
+	$(CC) -c -I. $(DEFS) -DAUTH_CONFIG_FILE=\"$(AUTH_CONFIG_FILE)\" -DCALIFE_OUT_FILE=\"$(CALIFE_OUT_FILE)\" $(CFLAGS) $<
+
+calife.o: calife.c conf.h config.h
+db.o: db.c conf.h config.h
+util.o: util.c conf.h config.h
+
+config.h: config.h.in config.status
+
+Makefile: Makefile.in
+
+$(PROGRAM):	$(OBJS) conf.h
+	@echo Compiling calife.
+	$(CC) $(LDFLAGS) $(OBJS) -o $(PROGRAM) $(LIBS) 
+
+clean:
+	$(RM) -f $(PROGRAM) $(OBJS)
+
+distclean:  clean
+	$(RM) -f Makefile config.h $(MAN1PAGES) $(MAN5PAGES)
+	$(RM) -f config.cache config.log config.status
+
+install:	$(PROGRAM)
+	@echo Saving old $(IPROGRAM)
+	@-(cd $(bindir) ; $(MV) $(IPROGRAM) $(IPROGRAM).old)
+	@echo Copying new $(PROGRAM) as $(IPROGRAM)
+	$(INSTALL) -o root -g $(BINGRP) -m 4755 $(PROGRAM) $(bindir)/$(IPROGRAM)
+	@/bin/ls -lF $(bindir)/$(IPROGRAM)
+	@echo Warning, man pages requires the BSD mandoc macro package
+	@$(INSTALL) -m 644 -o root -g $(BINGRP) calife.1 $(man1dir)
+	@$(INSTALL) -m 644 -o root -g $(BINGRP) calife.auth.5 $(man5dir)
+	if [ ! -f $(etcdir)/calife.auth ]; then \
+		echo Installing sample version of calife.auth in $(etcdir); \
+		$(INSTALL) -m 600 -o root -g $(BINGRP) calife.auth-dist $(etcdir); \
+	fi
+    
+depend:
+	$(MAKEDEP) -I$(srcdir) -I. $(DEFS) $(SRCS)
