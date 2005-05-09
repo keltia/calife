@@ -36,9 +36,6 @@
 /* Define it if you have an /etc/shadow file */
 #undef HAVE_ETC_SHADOW
 
-/* Define if you don't want to type a password at all */
-#undef RELAXED
-
 /* Define if your syslog.h is in sys/ */
 #undef NEED_SYS_SYSLOG_H
 

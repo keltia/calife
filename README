@@ -58,13 +58,17 @@ l'usage et la mise à jour par des contributeurs externes.
 roberto@eu.org--2003b
 	http://archives.keltia.net/{archives}/roberto@eu.org--2003b
 
-calife--main--2.8	est la branche principale de développemet.
+calife--main--2.8 est la branche principale de développement de la version
+stable.
 
 Arch/TLA/Bazaar: <http://gnuarch.org/> <http://bazaar.canonical.com/>
 
 Je conseille vivement d'utiliser baz (Bazaar) qui a l'avantage de simplifier
 certaines des commandes, d'en regrouper certaines et d'être plus rapide sur
 des opérations courantes.
+
+La PAMification de Calife est dans une banche séparée appelée
+« calife--pam--3.0 ».
 
 ____________
 Installation
@@ -91,20 +95,16 @@ du répertoire adéquat.
 Quelques options spéciales sont disponibles  :
 
   --with-etcdir=PATH        Directory containing calife.auth (default /etc)
-  --with-password=yes|no    Ask for password (default is yes)
   --disable-shadow=yes|no   Disable getspnam(3) usage for some Linuxes
   --enable-debug=yes|no     Set the debugging mode (default is no)
   --enable-shellhack=yes|no (default is no)
   --enable-dynamic          Build the program dynamically (default static)
-  --enable-global-rc		Add /etc/calife.out support.
+  --enable-global-rc        Add /etc/calife.out support.
 
 
 --with-etcdir=CHEMIN
         Permet de  placer les fichiers  calife.auth et  calife.out ailleurs
         que dans /etc. 
-
---with-password
-        Permet d'inhiber la demande de mot de passe (NON RECOMMANDE !) 
 
 --enable-debug
         Exige l'affichage des messages de "debugging".
