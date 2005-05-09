@@ -177,6 +177,7 @@
  **                 * syslog(3) est maintenant requis.
  ** 3.0 04/05/05    * PAMification de calife, PAM est désormais *obligatoire*
  **                   les gens ne l'ayant pas sont invités à rester à 2.8.
+ **                 * Le mode RELAXED sans mot de passe disparait.
  **/
 
 #define MAIN_MODULE
@@ -263,10 +264,13 @@ main(argc, argv)
 #endif /* NO_SETUID_SHELL */
 #ifdef RELAXED
     fprintf (stderr, "relaxed_mode, ");
+#endif /* RELAXED */
 #ifdef WANT_GLOBAL_RC
     fprintf(stderr, "global_rc, ");
 #endif /* WANT_GLOBAL_RC */
-#endif /* RELAXED */
+#ifdef WITH_PAM
+    fprintf (stderr, "with_pam,\n");
+#endif /* WITH_PAM */
     fprintf (stderr, "su_like, ");
     fprintf (stderr, "debug\n");
     fflush (stderr);
@@ -469,7 +473,11 @@ main(argc, argv)
      * open syslod log file
      */
 #ifndef RELAXED
+#ifdef WITH_PAM
+    openlog ("calife/pam", LOG_PID | LOG_CONS, LOG_AUTH);
+#else
     openlog ("calife+", LOG_PID | LOG_CONS, LOG_AUTH);
+#endif /* WITH_PAM */
 #else /* RELAXED */
     openlog ("calife", LOG_PID | LOG_CONS, LOG_AUTH);
 #endif /* RELAXED */
