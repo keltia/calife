@@ -421,7 +421,6 @@ verify_password (name, user_to_be, this_time, tty)
     }
 #endif /* WITH_PAM */
 
-#ifndef RELAXED
     if (getuid () != 0)
     {
         char    got_pass = 0;
@@ -539,11 +538,10 @@ verify_password (name, user_to_be, this_time, tty)
         free (user_pass);
         free (enc_pass);
     }    
-#endif /* RELAXED */
-  /*
-   * stay non root for a time
-   */
-  RELEASE_ROOT;
+    /*
+     * stay non root for a time
+     */
+    RELEASE_ROOT;
 }
 
 

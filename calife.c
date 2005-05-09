@@ -262,9 +262,6 @@ main(argc, argv)
 #ifdef NO_SETUID_SHELL 
     fprintf (stderr, "no_setuid_shell, ");
 #endif /* NO_SETUID_SHELL */
-#ifdef RELAXED
-    fprintf (stderr, "relaxed_mode, ");
-#endif /* RELAXED */
 #ifdef WANT_GLOBAL_RC
     fprintf(stderr, "global_rc, ");
 #endif /* WANT_GLOBAL_RC */
@@ -472,15 +469,11 @@ main(argc, argv)
     /*
      * open syslod log file
      */
-#ifndef RELAXED
 #ifdef WITH_PAM
     openlog ("calife/pam", LOG_PID | LOG_CONS, LOG_AUTH);
 #else
     openlog ("calife+", LOG_PID | LOG_CONS, LOG_AUTH);
 #endif /* WITH_PAM */
-#else /* RELAXED */
-    openlog ("calife", LOG_PID | LOG_CONS, LOG_AUTH);
-#endif /* RELAXED */
     /*
      * does the user we want to become exist or not ? 
      */
