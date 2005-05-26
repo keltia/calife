@@ -98,6 +98,11 @@
 #endif
 #endif
 
+/*
+ * Number of attempts the code will try to verify the password
+ */
+#define MAX_ATTEMPTS    3
+
 #ifdef WITH_PAM
 /*
  * the following code is stolen from imap-uw PAM authentication module and

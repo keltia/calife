@@ -362,6 +362,15 @@ end:
  **                 tty         char *  sur quel tty
  **
  ** Retourne :      neant
+ **
+ ** Algo:
+ **   si WITH_PAM est définit
+ **     on essaie auth_pam()
+ **     si ça plante, on continue avec un warning
+ **     sinon retour ok
+ **   fin
+ **   vérification mdp
+ ** 
  **/
 
 #ifdef STDC_HEADERS
@@ -381,13 +390,9 @@ verify_password (name, user_to_be, this_time, tty)
 #endif
     struct  passwd  * calife;
 
-#ifdef WITH_PAM
-    MESSAGE ("Using PAM\n");
-#endif
-     /*
-      * become root again
-      */
-    GET_ROOT;
+    char    got_pass = 0;
+    char    * pt_pass, * pt_enc, 
+            * user_pass, * enc_pass, salt [10];
 
     /*
      * returns long usually
@@ -398,71 +403,24 @@ verify_password (name, user_to_be, this_time, tty)
     l_size = MAX_STRING;
 #endif /* HAVE_WORKING_SYSCONF */    
 
+    user_pass = (char *) xalloc (l_size);
+    enc_pass = (char *) xalloc (l_size);
+
+     /*
+      * become root again
+      */
+    GET_ROOT;
+
     calife = getpwnam (name);       /* null or locked password */
     if (calife == NULL)
         die (1, "Bad pw data at line %d", __LINE__);
-    
-#if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
-    scalife = getspnam (name);       /* null or locked password */
-    if (scalife)
-    {
-        calife->pw_passwd = (char *) xalloc (strlen (scalife->sp_pwdp) + 1);
-        strcpy (calife->pw_passwd, scalife->sp_pwdp);
-    }
-#endif /* HAVE_SHADOW_H */
-#ifndef WITH_PAM
-    MESSAGE ("Not using PAM.\n");
-    if ((*(calife->pw_passwd)) == '\0' || (*(calife->pw_passwd)) == '*')
-    {
+    RELEASE_ROOT;
 
-        syslog (LOG_AUTH | LOG_ERR, "NULL CALIFE %s to %s on %s", name, user_to_be, tty);
-        closelog ();
-        die (10, "Sorry.\n");
-    }
-#endif /* WITH_PAM */
-
+#ifdef WITH_PAM
     if (getuid () != 0)
     {
-        char    got_pass = 0;
-        char    * pt_pass, * pt_enc, 
-                * user_pass, * enc_pass, salt [10];
-
-        user_pass = (char *) xalloc (l_size);
-        enc_pass = (char *) xalloc (l_size);
-
-#ifndef WITH_PAM
-        /*
-         * cope with MD5 based crypt(3)
-         */
-        if (!strncmp (calife->pw_passwd, "$1$", 3)) /* MD5 */
-        {
-            char * pp = (char *) xalloc (strlen (calife->pw_passwd) + 1);
-            char * md5_salt;
-            char * md5_pass;
-            
-            strcpy (pp, calife->pw_passwd + 3);
-            md5_salt = strtok (pp, "$");
-            md5_pass = strtok (NULL, "$");
-            
-            if (md5_pass == NULL || 
-                md5_salt == NULL ||
-                (strlen (md5_salt) > 8))   /* garbled password */
-            {
-                syslog (LOG_AUTH | LOG_ERR, "GARBLED PASSWORD %s to unknown %s on %s", name, user_to_be, tty);
-                die (8, "Bad password string.\n");
-            }
-            MESSAGE_1 ("MD5 password found, salt=%s\n", md5_salt);
-            strcpy (salt, md5_salt);            
-            free (pp);
-        }
-        else
-        {       
-            strncpy (salt, calife->pw_passwd, 2);
-            salt [2] = '\0';
-        }
-#endif /* WITH_PAM */
-
-        for ( i = 0; i < 3; i ++ )
+        MESSAGE ("Trying PAM\n");
+        for ( i = 0; i < MAX_ATTEMPTS; i++ )
         {
             pt_pass = (char *) getpass ("Password:");
             /* 
@@ -480,7 +438,7 @@ verify_password (name, user_to_be, this_time, tty)
              */
             strncpy (user_pass, pt_pass, l_size);
             user_pass[l_size - 1] = '\0';
-#ifdef WITH_PAM
+            
             MESSAGE ("Testing auth with PAM.\n");
             /*
              * become root again
@@ -488,60 +446,152 @@ verify_password (name, user_to_be, this_time, tty)
              * XXX is it necessary with PAM?
              */
             GET_ROOT;
-    		    rval = auth_pam (&calife, user_pass);
-        		if (rval > 0)
+    	      rval = auth_pam (&calife, user_pass);
+    	      RELEASE_ROOT;
+    	      
+    	      MESSAGE_1 ("PAM auth_pam returned %d\n", rval);
+    		    if (rval)
             {
-              syslog (LOG_AUTH | LOG_ERR, "PAM failed with code %d for %s", rval, name);
-              /*
-               * Check return value:
-               * - 0:   auth succeeded
-               * - >0:  auth failed.
-               */ 
-               /* Fallback to previous methods? */
-#endif /* USE_PAM */
-            pt_enc = (char *) crypt (user_pass, calife->pw_passwd);
-            /*
-             * Wipe out the cleartext password
-             */
-            memset (user_pass, '\0', l_size);
-
-            /*
-             * Move from the static buffer intoa safe location of our own
-             */
-            memset (enc_pass, '\0', l_size);
-            strcpy (enc_pass, pt_enc);
-            /*
-             * assumes standard crypt(3)
-             */
-            if (!strcmp (enc_pass, calife->pw_passwd))
-            {
-                got_pass = 1;
-                break;
-            }
-#ifdef WITH_PAM
+                syslog (LOG_AUTH | LOG_ERR, "PAM failed with code %d for %s", rval, name);
+                /*
+                 * Check return value:
+                 * - 0:   auth succeeded
+                 * - >0:  auth failed.
+                 */ 
+                /* Fallback to previous methods? */
             }
             else
             {
+                syslog (LOG_AUTH | LOG_INFO, "PAM auth succeeded for %s", name);
                 got_pass = 1;
                 break;
             }
-#endif /* WITH_PAM */
-        } /* for */
+        } /* end for */
+    }
+    else
+        got_pass = 1;
+#endif
 
-        if (!got_pass)
+    MESSAGE_1 ("Testing w/o PAM with got_pass = %d\n", got_pass);
+    if (!got_pass)
+    {
+         /*
+          * become root again
+          */
+        GET_ROOT;
+    
+    #if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
+        scalife = getspnam (name);       /* null or locked password */
+        if (scalife)
         {
-            syslog (LOG_AUTH | LOG_ERR, "BAD CALIFE %s to %s on %s", name, user_to_be, tty);
-            closelog ();
-            fprintf (stderr, "Sorry.\n");
-            exit (9);
+            calife->pw_passwd = (char *) xalloc (strlen (scalife->sp_pwdp) + 1);
+            strcpy (calife->pw_passwd, scalife->sp_pwdp);
         }
-        free (user_pass);
-        free (enc_pass);
-    }    
-    /*
-     * stay non root for a time
-     */
-    RELEASE_ROOT;
+    #endif /* HAVE_SHADOW_H */
+        /*
+         * stay non root for a time
+         */
+        RELEASE_ROOT;
+    
+        MESSAGE ("Not using PAM.\n");
+        if ((*(calife->pw_passwd)) == '\0' || (*(calife->pw_passwd)) == '*')
+        {
+
+            syslog (LOG_AUTH | LOG_ERR, "NULL CALIFE %s to %s on %s", name, user_to_be, tty);
+            closelog ();
+            die (10, "Sorry.\n");
+        }
+
+        if (getuid () != 0)
+        {
+            char    got_pass = 0;
+            char    * pt_pass, * pt_enc, 
+                    * user_pass, * enc_pass, salt [10];
+
+            user_pass = (char *) xalloc (l_size);
+            enc_pass = (char *) xalloc (l_size);
+
+            /*
+             * cope with MD5 based crypt(3)
+             */
+            if (!strncmp (calife->pw_passwd, "$1$", 3)) /* MD5 */
+            {
+                char * pp = (char *) xalloc (strlen (calife->pw_passwd) + 1);
+                char * md5_salt;
+                char * md5_pass;
+            
+                strcpy (pp, calife->pw_passwd + 3);
+                md5_salt = strtok (pp, "$");
+                md5_pass = strtok (NULL, "$");
+            
+                if (md5_pass == NULL || 
+                    md5_salt == NULL ||
+                    (strlen (md5_salt) > 8))   /* garbled password */
+                {
+                    syslog (LOG_AUTH | LOG_ERR, "GARBLED PASSWORD %s to unknown %s on %s", name, user_to_be, tty);
+                    die (8, "Bad password string.\n");
+                }
+                MESSAGE_1 ("MD5 password found, salt=%s\n", md5_salt);
+                strcpy (salt, md5_salt);            
+                free (pp);
+            }
+            else
+            {       
+                strncpy (salt, calife->pw_passwd, 2);
+                salt [2] = '\0';
+            }
+
+            for ( i = 0; i < MAX_ATTEMPTS; i ++ )
+            {
+                pt_pass = (char *) getpass ("Password:");
+                /* 
+                 * XXX don't assume getpass(3) will check the buffer
+                 * length. Linux glibc apparently lacks such checking and
+                 * will happily segfault if the previous entered password
+                 * was too big.
+                 * cf. <URL:http://www.securityfocus.com/archive/1/355510>
+                 */
+                if (pt_pass == NULL)
+                    die(1, "Corrupted or too long password");
+                memset (user_pass, '\0', l_size);
+                /*
+                 * Be a bit more careful there
+                 */
+                strncpy (user_pass, pt_pass, l_size);
+                user_pass[l_size - 1] = '\0';
+                pt_enc = (char *) crypt (user_pass, calife->pw_passwd);
+                /*
+                 * Wipe out the cleartext password
+                 */
+                memset (user_pass, '\0', l_size);
+
+                /*
+                 * Move from the static buffer intoa safe location of our own
+                 */
+                memset (enc_pass, '\0', l_size);
+                strcpy (enc_pass, pt_enc);
+                /*
+                 * assumes standard crypt(3)
+                 */
+                if (!strcmp (enc_pass, calife->pw_passwd))
+                {
+                    got_pass = 1;
+                    break;
+                }
+            } /* for */
+        } /* end if for getuid() */
+    } /* end got_pass == 1 ? */
+end:
+    MESSAGE_1 ("Auth process returned %d\n", got_pass);
+    if (got_pass != 1)
+    {
+        syslog (LOG_AUTH | LOG_ERR, "BAD CALIFE %s to %s on %s", name, user_to_be, tty);
+        closelog ();
+        fprintf (stderr, "Sorry.\n");
+        exit (9);
+    }
+    free (user_pass);
+    free (enc_pass);
 }
 
 

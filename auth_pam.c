@@ -74,6 +74,7 @@ auth_pam(struct passwd **ppw, const char *pass)
 		syslog(LOG_AUTH | LOG_ERR, "pam_start: %s", pam_strerror(pamh, e));
 		return -1;
 	}
+	MESSAGE_1("pam_start succeeded for %s\n", (*ppw)->pw_name);
 
 	e = pam_authenticate(pamh, 0);
 	switch (e) {
