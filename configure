@@ -849,7 +849,6 @@ Optional Features:
 function.
   --enable-dynamic        Build the program dynamically (default static)
   --enable-global-rc      Add /etc/calife.out support
-  --disable-password      Disable password entry
   --disable-shadow        Disable getspnam(3) usage for some Linuxes
   --enable-debug          Set the debugging mode (default is no)
   --enable-shellhack      Try to fool the shell about our setuidness
@@ -5933,39 +5932,6 @@ echo "${ECHO_T}yes" >&6
 else
   echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6
-
-fi;
-
-echo "$as_me:$LINENO: checking whether we care about security or not" >&5
-echo $ECHO_N "checking whether we care about security or not... $ECHO_C" >&6
-# Check whether --enable-password or --disable-password was given.
-if test "${enable_password+set}" = set; then
-  enableval="$enable_password"
-   case "$withval" in
-  yes)
-    cat >>confdefs.h <<\_ACEOF
-#define RELAXED 1
-_ACEOF
-
-    echo "$as_me:$LINENO: result: yes" >&5
-echo "${ECHO_T}yes" >&6
-    ;;
-  no)
-    echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
-    ;;
-  *)
-    echo "$as_me:$LINENO: result: yes" >&5
-echo "${ECHO_T}yes" >&6
-    cat >>confdefs.h <<\_ACEOF
-#define RELAXED 1
-_ACEOF
-
-    ;;
-  esac
-else
-  echo "$as_me:$LINENO: result: yes" >&5
-echo "${ECHO_T}yes" >&6
 
 fi;
 
