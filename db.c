@@ -440,14 +440,8 @@ verify_password (name, user_to_be, this_time, tty)
             user_pass[l_size - 1] = '\0';
             
             MESSAGE ("Testing auth with PAM.\n");
-            /*
-             * become root again
-             *
-             * XXX is it necessary with PAM?
-             */
-            GET_ROOT;
+
     	      rval = auth_pam (&calife, user_pass);
-    	      RELEASE_ROOT;
     	      
     	      MESSAGE_1 ("PAM auth_pam returned %d\n", rval);
     		    if (rval)
