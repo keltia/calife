@@ -469,23 +469,25 @@ verify_password (name, user_to_be, this_time, tty)
     MESSAGE_1 ("Testing w/o PAM with got_pass = %d\n", got_pass);
     if (!got_pass)
     {
-         /*
-          * become root again
-          */
-        GET_ROOT;
     
-    #if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
+#if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
+        /*
+         * become root again
+         */
+        GET_ROOT;
+
         scalife = getspnam (name);       /* null or locked password */
+
+        /*
+         * stay non root for a time
+         */
+        RELEASE_ROOT;
         if (scalife)
         {
             calife->pw_passwd = (char *) xalloc (strlen (scalife->sp_pwdp) + 1);
             strcpy (calife->pw_passwd, scalife->sp_pwdp);
         }
-    #endif /* HAVE_SHADOW_H */
-        /*
-         * stay non root for a time
-         */
-        RELEASE_ROOT;
+#endif /* HAVE_SHADOW_H */
     
         MESSAGE ("Not using PAM.\n");
         if ((*(calife->pw_passwd)) == '\0' || (*(calife->pw_passwd)) == '*')
