@@ -139,6 +139,7 @@ auth_pam(struct passwd **ppw, const char *pass)
 		}
 		pamh = NULL;
 	}
+	MESSAGE_1 ("auth_pam returns %d\n", rval);
 	return rval;
 }
 

@@ -263,6 +263,7 @@ verify_auth_info (name, user_to_be)
          */
         if (ptr)
         {
+            MESSAGE_1 ("ptr = %s\n", ptr);
             /*
              * we've got a user list
              */
