@@ -187,10 +187,6 @@
                         /* fichier de configuration */
 #include "conf.h"
 
-#ifndef lint
-static char * rcsid = "$Id: //depot/security/calife/main/calife.c#45 $";
-#endif /* lint */
-
 FILE    * fp = NULL, * logfile = NULL;  /* fichier d'auth. et log */
 int     custom_shell= 0;            /* modification du shell ? */
 char    * shell;                    /* nom du shell */
@@ -206,15 +202,8 @@ pam_handle_t	*pamh = NULL;
 static struct rlimit rlp, orlp;
 #endif
 
-#ifdef STDC_HEADERS
 int 
 main (int argc, char * argv [])
-#else /* !STDC_HEADERS */
-int 
-main(argc, argv)
-    int    argc;
-    char * argv [];
-#endif
 {
     int             allowed = 0;        /* l'utilisateur est-il valide ? */
     char            * name, * user_to_be, * tty, this_time [30];
@@ -246,17 +235,9 @@ main(argc, argv)
 
                         /* displays compilation options */
 #ifdef DEBUG
-#ifdef STDC_HEADERS
     fprintf (stderr, "Calife : How to become someone else legally\n"
                      "Distribute in respect of the GNU General Public Licence\n"
-                     "Copyright (c) 1991, 2002 by Ollivier ROBERT\n"
-                     "%s\n", rcsid);
-#else /* !STDC_HEADERS */
-    fprintf (stderr, "Calife : How to become someone else legally\n"
-    fprintf (stderr, "Distribute in respect of the GNU General Public Licence\n");
-    fprintf (stderr, "Copyright (c) 1991, 2002 by Ollivier ROBERT\n");
-    fprintf (stderr, "%s\n", rcsid);
-#endif /* STDC_HEADERS */
+                     "Copyright (c) 1991-2005 by Ollivier ROBERT\n");
     fprintf (stderr, "Options : ");
     fprintf (stderr, "custom_shell, ");
 #ifdef NO_SETUID_SHELL 
@@ -266,7 +247,7 @@ main(argc, argv)
     fprintf(stderr, "global_rc, ");
 #endif /* WANT_GLOBAL_RC */
 #ifdef WITH_PAM
-    fprintf (stderr, "with_pam,\n");
+    fprintf (stderr, "with_pam,");
 #endif /* WITH_PAM */
     fprintf (stderr, "su_like, ");
     fprintf (stderr, "debug\n");
@@ -787,14 +768,8 @@ main(argc, argv)
  ** Privileges :    aucun
  **/
 
-#ifdef STDC_HEADERS
 void 
 exec_shell (char * shell_name)
-#else /* !STDC_HEADERS */
-void 
-exec_shell (shell_name)
-char * shell_name;
-#endif /* STDC_HEADERS */
 {
     int         fd, err;
     char        * shell_arg0;

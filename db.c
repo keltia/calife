@@ -14,10 +14,6 @@
                         /* fichier de configuration */
 #include "conf.h"
 
-#ifndef lint
-static char * rcsid = "$Id: //depot/security/calife/main/db.c#26 $";
-#endif /* lint */
-
 /** On cherche et ouvre la database locale.
  **
  ** Dans tous les cas, le fichier log est ouvert (il est local). Si syslogd(8)
@@ -30,13 +26,8 @@ static char * rcsid = "$Id: //depot/security/calife/main/db.c#26 $";
  ** Retourne :      int     s'il y a un probleme renvoie 1 sinon 0.
  **/
 
-#ifdef STDC_HEADERS
 int    
 open_databases (void)
-#else /* !STDC_HEADERS */
-int    
-open_databases ()
-#endif
 {
 #ifdef DEBUG
     fprintf (stderr, "Opening databases...\n");
@@ -89,15 +80,8 @@ open_databases ()
  ** Retourne :      int     1 si l'utilisateur est autorise 0 sinon.
  **/
 
-#ifdef STDC_HEADERS
 int 
 verify_auth_info (char * name, char * user_to_be)
-#else /* !STDC_HEADERS */
-int 
-verify_auth_info (name, user_to_be)
-    char    * name;
-    char    * user_to_be;
-#endif
 {
     int     allowed = 0, do_tok = 1;
     char    * * user_list = NULL;
@@ -374,14 +358,8 @@ end:
  ** 
  **/
 
-#ifdef STDC_HEADERS
 void    
 verify_password (char * name, char * user_to_be, char * this_time, char * tty)
-#else /* !STDC_HEADERS */
-void    
-verify_password (name, user_to_be, this_time, tty)
-    char    * name, * user_to_be, * this_time, * tty;
-#endif /* STDC_HEADERS */
 {
     int             i = 0, rval;
     size_t          l_size = 0;

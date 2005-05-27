@@ -5,6 +5,7 @@
 /* $FreeBSD: src/libexec/lukemftpd/pamize.h,v 1.1 2003/02/02 21:06:10 obrien Exp $ */
 
 #include <config.h>
+
 #include "conf.h"
 
 #ifdef WITH_PAM

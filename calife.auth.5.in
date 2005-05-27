@@ -5,7 +5,6 @@
 .\" modification, are permitted under the GNU General Public Licence.
 .\" Look into the COPYING file.
 .\"
-.\"	@(#) $Id: //depot/security/calife/main/calife.auth.5.in#4 $
 .\""
 .Dd September 25, 1994
 .Dt CALIFE.AUTH 5

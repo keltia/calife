@@ -10,10 +10,6 @@
 #include "config.h" /* configure */
 #include "conf.h"
 
-#ifndef lint
-static char * rcsid = "$Id: //depot/security/calife/main/util.c#10 $";
-#endif /* lint */
-
 /** Renvoie la derniere composante (le nom du fichier) d'un nom complet
  **
  ** Parametre :     filename    char *  nom a analyser
@@ -22,14 +18,8 @@ static char * rcsid = "$Id: //depot/security/calife/main/util.c#10 $";
  **/
 
 #ifndef HAVE_BASENAME       /* linux as already one it seems */
-#ifdef STDC_HEADERS
 char * 
 basename (char * filename)
-#else
-char * 
-basename (filename)
-char * filename;
-#endif /* STDC_HEADERS */
 {
     char * p;
     p = filename + (strlen (filename) * sizeof (char));
@@ -52,14 +42,8 @@ char * filename;
  ** Retourne :      ptr         void *  un pointeur sur la zone
  **/
 
-#ifdef STDC_HEADERS
 void *
 xalloc (size_t size)
-#else
-void *
-xalloc (size)
-    size_t  size;
-#endif /* STDC_HEADERS */
 {
     void *  ptr;
     

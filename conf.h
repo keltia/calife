@@ -144,7 +144,6 @@ typedef struct cred_t cred_t;
 #define MAXLOGNAME  16
 #endif
 
-#ifdef STDC_HEADERS
   int open_databases (void);
   void verify_password (char *, char *, char *, char *);
   int verify_auth_info (char *, char *);
@@ -154,17 +153,6 @@ typedef struct cred_t cred_t;
 # endif /* HAVE_BASENAME */
   void * xalloc (size_t size);
   void die (int err, const char * fmt,...);
-#else /* !STDC_HEADERS */
-  int open_databases ();
-  void verify_password ();
-  int verify_auth_info ();
-  void exec_shell ();
-# ifndef HAVE_BASENAME
-  char * basename ();
-# endif /* HAVE_BASENAME */
-  void * xalloc ();
-  void die (int err, const char * fmt,...);
-#endif /* STDC_HEADERS */
 
 #ifndef MAIN_MODULE
 extern  FILE    * fp, * logfile;/* fichier d'auth. et log */

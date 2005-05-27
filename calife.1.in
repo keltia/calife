@@ -5,7 +5,6 @@
 .\" modification, are permitted under the GNU General Public Licence.
 .\" Look into the COPYING file.
 .\"
-.\"	@(#) $Id: //depot/security/calife/main/calife.1.in#2 $
 .\""
 .Dd September 25, 1994
 .Dt CALIFE 1
@@ -107,13 +106,6 @@ The user ID is always the effective ID (the target user ID) after an
 unless the user ID is 0 (root).
 .El
 .Sh BUGS
-Versions older than 2.7.1 do
-.Nm not
-support the MD5-based scheme used in the international version of
-FreeBSD. Use the non-US based
-.Xr crypt 3
-library. You may find it here
-<URL:ftp://braae.ru.ac.za/pub/FreeBSD/securedist>
 .Pp
 The MD5-based
 .Xr crypt 3
@@ -125,5 +117,8 @@ A
 command appeared in DG/UX, written for Antenne 2 in 1991. It has evolved
 considerably since this period with more OS support, user lists handling
 and improved logging.
+.Pp
+PAM support was introduced in 2005 to port it to MacOS X variants (Panther
+and up).
 .Sh AUTHOR
-Ollivier Robert <roberto@keltia.frmug.fr.net>
+Ollivier Robert <roberto@keltia.freenix.fr>
