@@ -31,7 +31,6 @@ open_databases (void)
 {
 #ifdef DEBUG
     fprintf (stderr, "Opening databases...\n");
-    fprintf (stderr, "%s\n", rcsid);
     fflush (stderr);    
 #endif
     /*
