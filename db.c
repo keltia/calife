@@ -83,12 +83,12 @@ int
 verify_auth_info (char * name, char * user_to_be)
 {
     int     allowed = 0, do_tok = 1;
-    char    * * user_list = NULL;
+    char    ** user_list = NULL;
     size_t  l_line = 0;
     int     nb_users = 0;
     char    * line, * ptr;
     char    * line_name, * line_shell;
-    char    * group_name = NULL, *group, **p;
+    char    * group_name = NULL, * group = NULL, **p;
     struct group *gr_group;
     
     /*
