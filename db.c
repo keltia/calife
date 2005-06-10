@@ -370,7 +370,7 @@ verify_password (char * name, char * user_to_be, char * this_time, char * tty)
 
     char    got_pass = 0;
     char    * pt_pass, * pt_enc, 
-            * user_pass, * enc_pass, salt [10];
+            * user_pass = NULL, * enc_pass = NULL, salt [10];
 
     /*
      * returns long usually
