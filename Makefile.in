@@ -56,7 +56,7 @@ all: $(PROGRAM)
 calife.o: calife.c conf.h config.h
 db.o: db.c conf.h config.h
 util.o: util.c conf.h config.h
-auth_pam.o: auth_pam.c
+auth_pam.o: auth_pam.c conf.h config.h
 
 config.h: config.h.in config.status
 
