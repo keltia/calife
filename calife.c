@@ -331,12 +331,14 @@ main (int argc, char * argv [])
                 die (1, "Name too long `%s'", uargv);
             /*
              * avoid misuse and special characters
-             *
-             * XXX FIXME: should check what is authorised not the opposite
              */
-            if (strpbrk (uargv, " ,\t:+&#%$^()!@~*?<>=|\\/\"\n[]{}"))
-                die (1, "Illegal characters in username `%s'", uargv);
-            
+            {
+                int m;
+                
+                m = strspn (uargv, ACCEPT_CHARS);
+                if (n_len != m)
+                    die (1, "Illegal characters in username `%s'", uargv);                    
+            }
             strncpy (user_to_be, uargv, n_len);
             user_to_be [n_len] = '\0';
         }
