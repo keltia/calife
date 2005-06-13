@@ -192,7 +192,8 @@ Panther via le support PAM (nouveauté en 3.0).
 
 Pour calife 3.0/PAM, le fichier « calife.pam » contient ce qui est nécessaire
 pour faire fonctionner PAM avec calife. Placer ce fichier dans /etc/pam.d (ou
-l'endroit demandé par votre implémentation de PAM).
+l'endroit demandé par votre implémentation de PAM). Cet exemple fonctionne
+avec MacOS X Panther.
 
 Le support de NIS a disparu dans les versions 2.6.5 et suivantes mais sera
 réintégré sous peu. Il va redisparaitre en 3.0 mais sera utilisable via PAM.

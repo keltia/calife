@@ -110,17 +110,17 @@
  **                   util.c.
  **                 * Reecriture du Makefile
  **                 * Modification de conf.h pour les variables globales
- ** 				* Changement dans les logs : utilise syslog(3) _ou_ un
- ** 			      fichier de log annexe, pas les deux.
+ **                 * Changement dans les logs : utilise syslog(3) _ou_ un
+ **                   fichier de log annexe, pas les deux.
  ** 2.4 07/01/94    * FreeBSD a la fonction initgroups(2)
  **                 * FreeBSD 1.1 n'a pas besoin du hack violent pour tcsh
  **                 * correction bug dans lequel wanted_user est ecrasee
- ** 				  par l'appel a getpwname(calife).
- ** 				* FreeBSD 1.1 dispose des YP !!
- ** 				* Changement de _POSIX_SOURCE en POSIX_SIGNALS
+ **                   par l'appel a getpwname(calife).
+ ** 	              * FreeBSD 1.1 dispose des YP !!
+ ** 	              * Changement de _POSIX_SOURCE en POSIX_SIGNALS
  ** 2.5 22/04/94    * Incorporation de modifs pour SVR4 et sa p... de gestion
- ** 				  des shadow passwords.
- ** 				* Securisation du programme en empechant les cores avec
+ **                   des shadow passwords.
+ **                 * Securisation du programme en empechant les cores avec
  **                   rlimit et la gestion des uid/euid/ssuid. Nouvelle option
  **                   HAVE_RLIMIT.
  **                 * Modification de la gestion de wait(2) : ajout du #define
