@@ -9,6 +9,9 @@
         * db.c: initialise certaines variables pointant sur de la mémoire
         allouée via malloc(3) pour éviter des segfaults sur Gentoo & Solaris
         (Denis Ducamp <Denis.Ducamp@hsc.fr>).
+        
+        * calife.c: correction de la manière dont sont vérifiés les caractères
+        valides dans un nom d'utilisateur.
   
 2005-05-30  Ollivier Robert  <roberto@keltia.freenix.fr>
 
