@@ -12,8 +12,12 @@
         
         * calife.c: correction de la manière dont sont vérifiés les caractères
         valides dans un nom d'utilisateur.
+        
+        * db.c: got_pass a été définie deux fois par la copie de code, 
+        corrigé (problème signalé par Bertrand Petit).
   
 2005-05-30  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * Activation de la branche calife--pam--3.0, l'historique des 2.x est 
         dans ChangeLog-2.x.
+        
