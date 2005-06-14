@@ -82,10 +82,8 @@ install:	$(PROGRAM)
 	@echo Warning, man pages requires the BSD mandoc macro package
 	@$(INSTALL) -m 644 -o root -g $(BINGRP) calife.1 $(man1dir)
 	@$(INSTALL) -m 644 -o root -g $(BINGRP) calife.auth.5 $(man5dir)
-	if [ ! -f $(etcdir)/calife.auth ]; then \
-		echo Installing sample version of calife.auth in $(etcdir); \
-		$(INSTALL) -m 600 -o root -g $(BINGRP) calife.auth-dist $(etcdir); \
-	fi
+	echo Installing sample version of calife.auth in $(etcdir)
+	$(INSTALL) -m 600 -o root -g $(BINGRP) calife.auth-dist $(etcdir)
     
 depend:
 	$(MAKEDEP) -I$(srcdir) -I. $(DEFS) $(SRCS)
