@@ -15,6 +15,9 @@
         
         * db.c: got_pass a été définie deux fois par la copie de code, 
         corrigé (problème signalé par Bertrand Petit).
+        
+        * Makefile: calife.auth-dist est maintenant installé même si le vrai
+        fichier existe.
   
 2005-05-30  Ollivier Robert  <roberto@keltia.freenix.fr>
 
