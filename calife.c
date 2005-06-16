@@ -258,10 +258,12 @@ main (int argc, char * argv [])
     /*
      * save the old limit values
      */
+#ifndef DEBUG
     getrlimit (RLIMIT_CORE, &orlp);
     rlp.rlim_max = 0;   		/* no core file */
     rlp.rlim_cur = 0;
     setrlimit (RLIMIT_CORE, &rlp);
+#endif /* !DEBUG */
 #endif /* HAVE_RLIMIT */    
 #ifndef HAVE_POSIX_SIGNALS
                                 /* no signals !! */
