@@ -585,13 +585,13 @@ main (int argc, char * argv [])
                 	{
                 		if ((e = pam_open_session(pamh, 0)) != PAM_SUCCESS) 
                 		{
-                			syslog (LOG_ERR, "pam_open_session: %s",
+                			syslog (LOG_AUTH | LOG_ERR, "pam_open_session: %s",
                 			    pam_strerror (pamh, e));
                 		}
                 		else if ((e = pam_setcred(pamh, PAM_ESTABLISH_CRED)) !=
                 		    PAM_SUCCESS) 
                 		{
-                			syslog (LOG_ERR, "pam_setcred: %s",
+                			syslog (LOG_AUTH | LOG_ERR, "pam_setcred: %s",
                 			    pam_strerror (pamh, e));
                 		}
                 	}
