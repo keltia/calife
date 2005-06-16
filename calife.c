@@ -697,6 +697,7 @@ main (int argc, char * argv [])
                         fprintf (stderr, "\a%s not executable/readable.\n", out_rc);
                 }
                 done:                    
+                free (out_rc);
 #endif /* WANT_GLOBAL_RC */
                 if (allowed == 2)
                     syslog (LOG_AUTH | LOG_NOTICE, "%s@%s to %s on %s - END.", 
@@ -706,10 +707,6 @@ main (int argc, char * argv [])
                 /*
                  * cleanup
                  */
-#ifdef WANT_GLOBAL_RC
-                free (out_rc);
-#endif /* WANT_GLOBAL_RC */
-
 #ifdef WITH_PAM
               	if ((e = pam_setcred (pamh, PAM_DELETE_CRED)) != PAM_SUCCESS)
                 		syslog (LOG_AUTH | LOG_ERR, "pam_setcred: %s", pam_strerror(pamh, e));
