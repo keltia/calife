@@ -135,12 +135,6 @@ auth_pam(struct passwd **ppw, const char *pass)
 		}
 	}
 
-	if (rval != 0) {
-		if ((e = pam_end(pamh, e)) != PAM_SUCCESS) {
-			syslog(LOG_AUTH | LOG_ERR, "pam_end: %s", pam_strerror(pamh, e));
-		}
-		pamh = NULL;
-	}
 	MESSAGE_1 ("auth_pam returns %d\n", rval);
 	return rval;
 }
