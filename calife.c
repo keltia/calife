@@ -703,7 +703,6 @@ main (int argc, char * argv [])
                             name, _group, user_to_be, tty);
                 else
                     syslog (LOG_AUTH | LOG_NOTICE, "%s to %s on %s - END.", name, user_to_be, tty);
-                closelog ();
                 /*
                  * cleanup
                  */
@@ -720,6 +719,7 @@ main (int argc, char * argv [])
                 		syslog(LOG_ERR, "pam_end: %s", pam_strerror(pamh, e));
               	pamh = NULL;
 #endif
+                closelog ();
 
 #ifdef DEBUG
                 if (WIFEXITED (status))
