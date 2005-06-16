@@ -111,6 +111,7 @@ auth_pam(struct passwd **ppw, const char *pass)
 	case PAM_AUTH_ERR:
 	case PAM_USER_UNKNOWN:
 	case PAM_MAXTRIES:
+	    syslog(LOG_AUTH | LOG_ERR, "auth_pam: %s", pam_strerror(pamh, e));
 		rval = 1;
 		break;
 
