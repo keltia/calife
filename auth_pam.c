@@ -97,14 +97,14 @@ auth_pam(struct passwd **ppw, const char *pass)
 		 * point of view, the template user is always passed
 		 * back as a changed value of the PAM_USER item.
 		 */
-		if ((e = pam_get_item(pamh, PAM_USER, &item)) ==
-		    PAM_SUCCESS) {
+		if ((e = pam_get_item(pamh, PAM_USER, &item)) == PAM_SUCCESS)
+		{
 			tmpl_user = (const char *) item;
 			if (strcmp((*ppw)->pw_name, tmpl_user) != 0)
 				*ppw = getpwnam(tmpl_user);
 		} else
 			syslog(LOG_AUTH | LOG_ERR, "Couldn't get PAM_USER: %s",
-			    pam_strerror(pamh, e));
+			                           pam_strerror(pamh, e));
 		rval = 0;
 		break;
 
