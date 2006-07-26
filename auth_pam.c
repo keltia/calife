@@ -77,7 +77,11 @@ auth_pam(struct passwd **ppw, const char *pass)
 	}
 	MESSAGE_1("pam_start succeeded for %s\n", (*ppw)->pw_name);
 
-	e = pam_authenticate(pamh, 0);
+    /* pam_authenticate may require root privs to obtain shadow             
+       password data */                                                     
+    GET_ROOT;                                                               
+    e = pam_authenticate(pamh, 0);                                          
+    RELEASE_ROOT;                                                           
 	switch (e) {
 	case PAM_SUCCESS:
 		/*
