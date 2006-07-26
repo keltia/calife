@@ -48,27 +48,19 @@ s'applique :
 Ceci dit, si vous l'utilisez et le trouvez utile, je ne refuserais pas une
 Guinness :-)
 
-Le site primaire pour Calife est <ftp://mutt.frmug.org/pub/calife/>. Un miroir
-existe sur <ftp://postfix.EU.org/pub/calife/>. La dernière version est
-toujours disponible sous le nom latest.tar.gz.
+Le site primaire pour Calife est <http://www.keltia.net/programs/calife/> et
+en FTP :
 
-Calife est disponible sous la forme d'une archive Arch ce qui facilitera
-l'usage et la mise à jour par des contributeurs externes.
+<ftp://mutt.frmug.org/pub/calife/>. Un miroir existe sur
+<ftp://postfix.EU.org/pub/calife/>.
 
-roberto@eu.org--2003b
-	http://archives.keltia.net/{archives}/roberto@eu.org--2003b
+Calife est disponible sous la forme d'un dépôt Mercurial
+(http://selenic.com/mercurial/) ce qui facilitera l'usage et la mise à jour
+par des contributeurs externes.
 
-calife--main--2.8 est la branche principale de développement de la version
-stable.
+Répertoire de base des dépôts Mercurial :
 
-Arch/TLA/Bazaar: <http://gnuarch.org/> <http://bazaar.canonical.com/>
-
-Je conseille vivement d'utiliser baz (Bazaar) qui a l'avantage de simplifier
-certaines des commandes, d'en regrouper certaines et d'être plus rapide sur
-des opérations courantes.
-
-La PAMification de Calife est dans une banche séparée appelée
-« calife--pam--3.0 ».
+ http://archives.keltia.net/hg/
 
 ____________
 Installation
