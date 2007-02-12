@@ -3,7 +3,7 @@ dnl
 dnl $Id: //depot/security/calife/main/configure.in#18 $
 dnl
 
-AC_INIT(calife.c)
+AC_INIT(calife.c, [3.0], [roberto@keltia.freenix.fr])
 AC_CONFIG_HEADER(config.h)
 AC_PREFIX_DEFAULT(/usr/local)
 
@@ -34,8 +34,11 @@ case "$host" in
     CFLAGS="$CFLAGS -DAIX"
     AC_CHECK_LIB(s, getuserattr)
     ;;
-  *-sun-solaris*)
+  *-sun-solaris2*)
     os_solaris=yes
+    WITH_PAM=yes
+    with_pam=yes
+    AC_DEFINE(WITH_PAM)
     ;;
   *-apple-darwin*)
     os_darwin=yes
@@ -156,6 +159,22 @@ AC_HEADER_SYS_WAIT
 AC_CHECK_HEADERS(fcntl.h libgen.h shadow.h stdarg.h stdlib.h)
 AC_CHECK_HEADERS(string.h syslog.h unistd.h)
 AC_CHECK_HEADERS(sys/param.h sys/resource.h sys/time.h)
+
+AC_CHECK_HEADERS([utime.h], [], [],
+[[#ifdef HAVE_UTIME_H
+# include <utime.h>
+#endif
+]])
+
+AC_CHECK_HEADERS([sys/resource.h], [], [],
+[[#ifdef HAVE_SYS_TIME_H
+# include <sys/time.h>
+#endif
+#ifdef HAVE_SYS_RESOURCE_H
+# include <sys/resource.h>
+#endif
+]])
+
 AC_MSG_CHECKING(whether unistd.h needs _XOPEN_SOURCE for crypt(3))
 AC_CACHE_VAL(su_cv_unistd_needs_xopen_source,
 [AC_EGREP_CPP(yes, [#define crypt yes

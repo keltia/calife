@@ -125,6 +125,8 @@ auth_pam(struct passwd **ppw, const char *pass)
 		break;
 	}
 
+/* XXX this does not work on solaris10 */
+#ifndef solaris
 	if (rval == 0) {
 		e = pam_acct_mgmt(pamh, 0);
 		if (e == PAM_NEW_AUTHTOK_REQD) {
@@ -138,6 +140,7 @@ auth_pam(struct passwd **ppw, const char *pass)
 			rval = 1;
 		}
 	}
+#endif /* solaris */
 
 	MESSAGE_1 ("auth_pam returns %d\n", rval);
 	return rval;

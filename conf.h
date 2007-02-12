@@ -52,6 +52,10 @@
 #include <syslog.h>
 #endif /* HAVE_SYSLOG_H */
 
+#ifdef HAVE_SYS_TIME_H
+#include <sys/time.h>
+#endif /* HAVE_SYS_TIME_H */
+
 #include <signal.h>
 #include <stdio.h>
 #include <time.h>

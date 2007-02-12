@@ -1,0 +1,4 @@
+# Insert these lines in your /etc/pam.conf
+calife  auth requisite          pam_authtok_get.so.1
+calife  auth required           pam_unix_cred.so.1
+calife  auth required           pam_unix_auth.so.1
