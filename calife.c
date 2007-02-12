@@ -710,13 +710,16 @@ main (int argc, char * argv [])
                  * cleanup
                  */
 #ifdef WITH_PAM
-              	if ((e = pam_setcred (pamh, PAM_DELETE_CRED)) != PAM_SUCCESS)
-                		syslog (LOG_AUTH | LOG_ERR, "pam_setcred: %s", pam_strerror(pamh, e));
-              	if ((e = pam_close_session (pamh, 0)) != PAM_SUCCESS)
-                		syslog(LOG_AUTH | LOG_ERR, "pam_close_session: %s", pam_strerror(pamh, e));
-              	if ((e = pam_end (pamh, e)) != PAM_SUCCESS)
-                		syslog(LOG_AUTH | LOG_ERR, "pam_end: %s", pam_strerror(pamh, e));
-              	pamh = NULL;
+                if (pamh)
+                {
+									if ((e = pam_setcred (pamh, PAM_DELETE_CRED)) != PAM_SUCCESS)
+										syslog (LOG_AUTH | LOG_ERR, "pam_setcred: %s", pam_strerror(pamh, e));
+									if ((e = pam_close_session (pamh, 0)) != PAM_SUCCESS)
+										syslog(LOG_AUTH | LOG_ERR, "pam_close_session: %s", pam_strerror(pamh, e));
+									if ((e = pam_end (pamh, e)) != PAM_SUCCESS)
+										syslog(LOG_AUTH | LOG_ERR, "pam_end: %s", pam_strerror(pamh, e));
+              	  pamh = NULL;
+                }
 #endif
                 closelog ();
 
