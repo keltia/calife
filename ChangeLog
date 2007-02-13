@@ -1,3 +1,12 @@
+2007-02-13  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+        * 3.0pre6
+
+        * configure.in,calife.c,acconfig.h,auth_pam.c,conf.h: support de 
+          Solaris 10. Discussions avec J. Monnet (CS-SI).
+
+        * pam/solaris: nouveau fichier.
+
 2005-06-10  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * 3.0preN

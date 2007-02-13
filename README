@@ -185,9 +185,7 @@ l'endroit demandé par votre implémentation de PAM) sous le nom « calife ».
 Il existe à l'heure actuelle deux fichiers :
 - macosx    pour les systèmes MacOS 10.3/Panther et 10.4/Tiger ;
 - freebsd5  pour les systèmes FreeBSD 5.x et 6.x.
-
-Il manque pour l'instant un fichier PAM pour Solaris, contributions bienvenues 
-:-)
+- solaris   pour Solaris 8, 9 et 10 (à insérer dans pam.conf)
 
 Pour utiliser LDAP/NIS et autres systèmes d'authentification, il faudra 
 modifier le fichier PAM correspondant.
@@ -246,5 +244,3 @@ Bertrand Petit          <elrond@phoe.frmug.org>
 Denis Ducamp            <Denis.Ducamp@hsc.fr>
 
 et à tous ceux qui ont participé pour la mise au point et les tests.
-
-# arch-tag: bc3bc25d-41bf-11d8-a7f4-000a95a0cf8a
