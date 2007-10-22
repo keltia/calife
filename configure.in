@@ -37,9 +37,6 @@ case "$host" in
   *-sun-solaris2.10)
     CFLAGS="$CFLAGS -DSUNOS510"
     os_solaris=yes
-    WITH_PAM=yes
-    with_pam=yes
-    AC_DEFINE(WITH_PAM)
     ;;
   *-sun-solaris2*)
     os_solaris=yes

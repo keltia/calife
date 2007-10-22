@@ -2931,12 +2931,6 @@ fi
   *-sun-solaris2.10)
     CFLAGS="$CFLAGS -DSUNOS510"
     os_solaris=yes
-    WITH_PAM=yes
-    with_pam=yes
-    cat >>confdefs.h <<\_ACEOF
-#define WITH_PAM 1
-_ACEOF
-
     ;;
   *-sun-solaris2*)
     os_solaris=yes
