@@ -360,7 +360,7 @@ end:
 void    
 verify_password (char * name, char * user_to_be, char * this_time, char * tty)
 {
-    int             i = 0, rval;
+    int             i = 0, rval, md5_pass = 0;
     size_t          l_size = 0;
     
 #if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
@@ -493,6 +493,7 @@ verify_password (char * name, char * user_to_be, char * this_time, char * tty)
                 char * md5_salt;
                 char * md5_pass;
             
+                md5_pass = 1;
                 strcpy (pp, calife->pw_passwd + 3);
                 md5_salt = strtok (pp, "$");
                 md5_pass = strtok (NULL, "$");
@@ -516,7 +517,16 @@ verify_password (char * name, char * user_to_be, char * this_time, char * tty)
 
             for ( i = 0; i < MAX_ATTEMPTS; i ++ )
             {
-                pt_pass = (char *) getpass ("Password:");
+                /* XXX Solaris 10
+                 * Solaris 5.10 (and maybe before) truncate getpass() entry
+                 * to 8 bytes, use getpassphrase(3) instead
+                 */
+#ifdef SUNOS510
+                if (md5_pass)
+                    pt_pass = (char *) getpassphrase ("Password:");
+                else
+#endif /* SUNOS510 */
+                    pt_pass = (char *) getpass ("Password:");
                 /* 
                  * XXX don't assume getpass(3) will check the buffer
                  * length. Linux glibc apparently lacks such checking and

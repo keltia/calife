@@ -1,3 +1,12 @@
+2007-10-22  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+        * 3.0pre8
+
+        * db.c,configure.in: solaris 10 tronque les mots de pazsse via 
+        getpass(3), mise en place de l'utilisation de getpassphrase(3) à la 
+        place pour contourner le problème.
+        Discussions avec Miguel Paiva (CS-SI)
+
 2007-06-26  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * 3.0pre7
