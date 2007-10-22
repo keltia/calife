@@ -1,5 +1,10 @@
 2007-10-22  Ollivier Robert  <roberto@keltia.freenix.fr>
 
+        * acconfig.h,configure.in: PAM n'est pas obligatoire pour 
+        Solaris 2.10. Recherche de getpassphrase(3).
+
+2007-10-22  Ollivier Robert  <roberto@keltia.freenix.fr>
+
         * 3.0pre8
 
         * db.c,configure.in: solaris 10 tronque les mots de pazsse via 
