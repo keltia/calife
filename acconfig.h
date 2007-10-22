@@ -2,7 +2,7 @@
  *
  * Contains calife's specific defines
  *
- * $Id: //depot/security/calife/main/acconfig.h#4 $
+ * $Id: acconfig.h,v 98598e4a4606 2007/10/22 15:02:02 roberto $
  */
 
 /* Define if you have the <string.h> header file.  */
@@ -49,6 +49,9 @@
 
 /* Define if you have setrlimit/getrlimit */
 #undef HAVE_RLIMIT
+
+/* Define if getpassphrase(3) exists */
+#undef HAVE_GETPASSPHRASE
 
 /* Define if no syslog-type functions exist */
 #undef NO_SYSLOG

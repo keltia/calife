@@ -210,6 +210,7 @@ AC_CHECK_FUNCS(sigaction)
 AC_CHECK_FUNCS(sigprocmask)
 AC_CHECK_FUNCS(initgroups)
 AC_CHECK_FUNCS(getspnam)
+AC_CHECK_FUNCS(getpassphrase)
 AC_CHECK_FUNCS(sysconf)
 
 dnl Define HAVE_RLIMIT if getrlimit/setrlimit exists and the symbol
