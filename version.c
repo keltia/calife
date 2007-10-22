@@ -1,2 +1,2 @@
 
-const char * __version="$Id: @(#)calife revision: 7e4d3a57409aa8f7611ff7327f08bec0a3c1105d $";
+const char * __version="$Id: version.c,v a0c0e0b4e1c8 2007/10/22 14:42:33 roberto $";
