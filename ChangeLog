@@ -4,7 +4,7 @@
 
 2007-04-27  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-		* pam/linux: nouveau fichier (Christian Perrier).
+        * pam/linux: nouveau fichier (Christian Perrier).
 
 2007-02-13  Ollivier Robert  <roberto@keltia.freenix.fr>
 
@@ -18,26 +18,26 @@
 2005-06-10  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * 3.0preN
-  
+
         * Support PAM utilisable avec passage à la méthode d'authentification
         traditionnelle si PAM ne passe pas. Inspiré par lukemftpd dans
         FreeBSD.
-  
+
         * db.c: initialise certaines variables pointant sur de la mémoire
         allouée via malloc(3) pour éviter des segfaults sur Gentoo & Solaris
         (Denis Ducamp <Denis.Ducamp@hsc.fr>).
-        
+
         * calife.c: correction de la manière dont sont vérifiés les caractères
         valides dans un nom d'utilisateur.
-        
+
         * db.c: got_pass a été définie deux fois par la copie de code, 
         corrigé (problème signalé par Bertrand Petit).
-        
+
         * Makefile: calife.auth-dist est maintenant installé même si le vrai
         fichier existe.
-  
+
 2005-05-30  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * Activation de la branche calife--pam--3.0, l'historique des 2.x est 
         dans ChangeLog-2.x.
-        
+
