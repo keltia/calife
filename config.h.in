@@ -81,6 +81,9 @@
 /* Define if you have the getrlimit function.  */
 #undef HAVE_GETRLIMIT
 
+/* Define if getpassphrase(3) exists */
+#undef HAVE_GETPASSPHRASE
+
 /* Define if you have the getspnam function.  */
 #undef HAVE_GETSPNAM
 
