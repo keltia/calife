@@ -1,3 +1,22 @@
+2008-04-07  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+        * auth.c: new file. Use several static methods for authentication. 
+        Defines authenticate_user as the main entry point.
+
+        * Makefile.in: reference the new auth.{c,o} files.
+
+        * db.c: remove verify_password.
+
+        * calife.c: use authenticate_user
+
+        * conf.h: new prototype & error codes for authenticate_user & friends.
+
+        * ChangeLog: updated.
+
+2007-10-25  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+        * 3.0pre9: internal release for CS/BT only.
+
 2007-10-22  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * acconfig.h,configure.in: PAM n'est pas obligatoire pour 
