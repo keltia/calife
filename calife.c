@@ -507,7 +507,7 @@ main (int argc, char * argv [])
         calife = (struct passwd *) xalloc (sizeof (struct passwd));
         wanted_user = (struct passwd *) xalloc (sizeof (struct passwd));
 
-        verify_password (name, user_to_be, this_time, tty);
+        authenticate_user (name, user_to_be, this_time, tty);
         switch (fork ())
         {
             case -1:               

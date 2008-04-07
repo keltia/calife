@@ -6,7 +6,7 @@
  **
  ** Copyright (c) 1991-2004 par O. ROBERT
  **
- ** $Id: conf.h,v 08ec1d975469 2008/04/07 13:02:10 roberto $
+ ** $Id: conf.h,v 6e36098ae99b 2008/04/07 14:59:28 roberto $
  **/
 
 #ifndef CONF_H                  /* evite les includes multiples */
@@ -158,8 +158,13 @@ typedef struct cred_t cred_t;
                         ACCEPT_NUM \
                         ACCEPT_PUNCT
 
+#define AUTH_OK    0
+#define AUTH_NULL  1
+#define AUTH_ERR   2
+#define AUTH_BADP  3
+
   int open_databases (void);
-  void verify_password (char *, char *, char *, char *);
+  void authenticate_user (char *, char *, char *, char *);
   int verify_auth_info (char *, char *);
   void exec_shell (char *);
 # ifndef HAVE_BASENAME
