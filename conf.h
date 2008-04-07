@@ -6,7 +6,7 @@
  **
  ** Copyright (c) 1991-2004 par O. ROBERT
  **
- ** $Id: //depot/security/calife/main/conf.h#29 $
+ ** $Id: conf.h,v 08ec1d975469 2008/04/07 13:02:10 roberto $
  **/
 
 #ifndef CONF_H                  /* evite les includes multiples */
@@ -190,11 +190,14 @@ extern  int errno;
                          fflush (stderr)
 #define MESSAGE_3(x,y,z,t) fprintf (stderr, (x), (y), (z), (t)); \
                            fflush (stderr)
+#define MESSAGE_4(x,y,z,t,u) fprintf (stderr, (x), (y), (z), (t), (u)); \
+                             fflush (stderr)
 #else
 #define MESSAGE(x)
 #define MESSAGE_1(x,y)
 #define MESSAGE_2(x,y,z)
 #define MESSAGE_3(x,y,z,t)
+#define MESSAGE_4(x,y,z,t,u)
 #endif /* DEBUG */
 
 #ifdef NO_SYSLOG
