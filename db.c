@@ -29,10 +29,7 @@
 int    
 open_databases (void)
 {
-#ifdef DEBUG
-    fprintf (stderr, "Opening databases...\n");
-    fflush (stderr);    
-#endif
+    MESSAGE ("Opening databases...\n");
     /*
      * become root again
      */
@@ -42,8 +39,7 @@ open_databases (void)
     if (access (AUTH_CONFIG_FILE, 0))
     {
         syslog (LOG_AUTH | LOG_ERR, "No database in `%s', launching su...\n", AUTH_CONFIG_FILE);
-		fprintf (stderr, "No database in `%s'...\n",
-          	     AUTH_CONFIG_FILE);                              
+        MESSAGE_1 ("No database in `%s'...\n", AUTH_CONFIG_FILE);                              
         return 1;        
     }
     else
