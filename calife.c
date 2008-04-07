@@ -523,7 +523,9 @@ main (int argc, char * argv [])
                 test_user = getpwnam (user_to_be);
                 memcpy (wanted_user, test_user, sizeof (struct passwd));
 #ifdef DEBUG
-                fprintf (stderr, "uid,gid: %lu,%lu --> %u,%u\n", getuid(), getgid(), wanted_user->pw_uid, wanted_user->pw_gid);
+                MESSAGE_4 ("uid,gid: %lu,%lu --> %u,%u\n", getuid(), \
+                           getgid(), wanted_user->pw_uid, \ 
+                           wanted_user->pw_gid);
 #endif             
 #ifdef HAVE_POSIX_SIGNALS
                 sigprocmask (SIG_SETMASK, &old_set, NULL);
