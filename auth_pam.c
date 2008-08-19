@@ -4,6 +4,10 @@
  */
 /* $FreeBSD: src/libexec/lukemftpd/pamize.h,v 1.1 2003/02/02 21:06:10 obrien Exp $ */
 
+#ifndef lint
+static const char * rcsid = "@(#) $Id: auth_pam.c,v 88c4f70961ac 2008/08/19 15:34:11 roberto $";
+#endif
+
 #include <config.h>
 
 #include "conf.h"

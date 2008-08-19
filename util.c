@@ -7,6 +7,10 @@
  ** Voir le fichier COPYING fourni.
  **/
 
+#ifndef lint
+static const char * rcsid = "@(#) $Id: util.c,v 88c4f70961ac 2008/08/19 15:34:11 roberto $";
+#endif
+
 #include "config.h" /* configure */
 #include "conf.h"
 

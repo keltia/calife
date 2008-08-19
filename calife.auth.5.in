@@ -1,10 +1,11 @@
-.\" Copyright (c) 1991, 1994 Ollivier Robert
+.\" Copyright (c) 1991, 2008 Ollivier Robert
 .\" All rights reserved.
 .\"
 .\" Redistribution and use in source and binary forms, with or without
 .\" modification, are permitted under the GNU General Public Licence.
 .\" Look into the COPYING file.
 .\"
+.\" @(#) $Id: calife.auth.5.in,v 88c4f70961ac 2008/08/19 15:34:11 roberto $
 .\""
 .Dd September 25, 1994
 .Dt CALIFE.AUTH 5

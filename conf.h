@@ -6,7 +6,7 @@
  **
  ** Copyright (c) 1991-2004 par O. ROBERT
  **
- ** $Id: conf.h,v 6e36098ae99b 2008/04/07 14:59:28 roberto $
+ ** @(#) $Id: conf.h,v 88c4f70961ac 2008/08/19 15:34:11 roberto $
  **/
 
 #ifndef CONF_H                  /* evite les includes multiples */

@@ -1,3 +1,14 @@
+2008-08-19  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+        * calife.c,conf.h,db.c,util.c,auth.c,auth_pam.c: resurrect rcsid 
+        variable as we are now using the keyword extension to Hg.
+
+        * ChangeLog: updated
+
+        * README.en: new file
+
+        * version.c: removed
+
 2008-04-07  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * auth.c: new file. Use several static methods for authentication. 

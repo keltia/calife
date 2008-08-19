@@ -1,6 +1,6 @@
 # Makefile pour calife(8)
 #
-# $Id: //depot/security/calife/main/Makefile.in#7 $
+# @(#) $Id: Makefile.in,v 88c4f70961ac 2008/08/19 15:34:11 roberto $
 #
 
 srcdir          = @srcdir@
@@ -41,8 +41,8 @@ MAN5SOURCES     = calife.auth.5.in
 AUTH_CONFIG_FILE = $(etcdir)/calife.auth
 CALIFE_OUT_FILE	= $(etcdir)/calife.out
 
-SRCS = calife.c db.c util.c auth.c auth_pam.c version.c
-OBJS = calife.o db.o util.o auth.o auth_pam.o version.o
+SRCS = calife.c db.c util.c auth.c auth_pam.c
+OBJS = calife.o db.o util.o auth.o auth_pam.o
 
 # XXX change it if you'd rather have the more "standard" name calife.
 PROGRAM = calife
@@ -58,7 +58,6 @@ auth.o: auth.c conf.h config.h
 db.o: db.c conf.h config.h
 util.o: util.c conf.h config.h
 auth_pam.o: auth_pam.c conf.h config.h
-version.o: version.c
 
 config.h: config.h.in config.status
 

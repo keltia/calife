@@ -9,6 +9,10 @@
  **
  **/
 
+#ifndef lint
+static const char * rcsid = "@(#) $Id: db.c,v 88c4f70961ac 2008/08/19 15:34:11 roberto $";
+#endif
+
 #include "config.h"     /* GNU configure */
 
                         /* fichier de configuration */
