@@ -1,3 +1,9 @@
+2008-11-22  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+        * 3.0
+
+        * ChangeLog, README.en: updated.
+
 2008-08-19  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * calife.c,conf.h,db.c,util.c,auth.c,auth_pam.c: resurrect rcsid 
