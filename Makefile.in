@@ -1,6 +1,6 @@
 # Makefile pour calife(8)
 #
-# @(#) $Id: Makefile.in,v 88c4f70961ac 2008/08/19 15:34:11 roberto $
+# @(#) $Id: Makefile.in,v 4add4ffb8697 2009/04/06 14:56:14 roberto $
 #
 
 srcdir          = @srcdir@
@@ -88,3 +88,7 @@ install:	$(PROGRAM)
     
 depend:
 	$(MAKEDEP) -I$(srcdir) -I. $(DEFS) $(SRCS)
+
+check:
+	$(MAKE) CC="clang --analyze"
+ 
