@@ -9,7 +9,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: auth.c,v 88c4f70961ac 2008/08/19 15:34:11 roberto $";
+static const char * rcsid = "@(#) $Id: auth.c,v 377cdf445d8f 2009/04/06 14:57:07 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -179,7 +179,6 @@ int local_pwcheck (struct passwd * calife, char * user_to_be, \
             char * md5_salt;
             char * md5_pass;
 
-            md5_here = 1;
             strcpy (pp, calife->pw_passwd + 3);
             md5_salt = strtok (pp, "$");
             md5_pass = strtok (NULL, "$");

@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 88c4f70961ac 2008/08/19 15:34:11 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 377cdf445d8f 2009/04/06 14:57:07 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -483,7 +483,6 @@ main (int argc, char * argv [])
     {
         if (!strcmp (user_to_be, ROOT_LOGIN))
             die (0, "Already root.");
-        allowed = 1;
     }
     /*
      * open database and log file

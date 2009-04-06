@@ -10,7 +10,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: db.c,v 88c4f70961ac 2008/08/19 15:34:11 roberto $";
+static const char * rcsid = "@(#) $Id: db.c,v 377cdf445d8f 2009/04/06 14:57:07 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -82,7 +82,7 @@ open_databases (void)
 int 
 verify_auth_info (char * name, char * user_to_be)
 {
-    int     allowed = 0, do_tok = 1;
+    int     allowed = 0;
     char    ** user_list = NULL;
     size_t  l_line = 0;
     int     nb_users = 0;
@@ -237,7 +237,6 @@ verify_auth_info (char * name, char * user_to_be)
         else
         {
             custom_shell = 0;
-            do_tok = 0;
         }
         MESSAGE_1 (" custom_shell = |%d|\n", custom_shell);
 
