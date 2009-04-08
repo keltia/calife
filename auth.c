@@ -9,7 +9,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: auth.c,v 377cdf445d8f 2009/04/06 14:57:07 roberto $";
+static const char * rcsid = "@(#) $Id: auth.c,v 1ea0ffc931de 2009/04/08 08:31:50 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -137,10 +137,10 @@ int local_pwcheck (struct passwd * calife, char * user_to_be, \
     struct  spwd  * scalife;
 #endif
 
-    who = calife->pw_name;
     MESSAGE_1 ("Testing w/o PAM with got_pass = %d\n", got_pass);
 #if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
 
+    who = calife->pw_name;
     GET_ROOT;
     scalife = getspnam (who);       /* null or locked password */
     RELEASE_ROOT;
