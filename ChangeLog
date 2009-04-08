@@ -1,3 +1,8 @@
+2009-04-08  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+        * calife.c,db.c,auth.c,conf.h: several changes related to the output
+        of the static analyzer from clang/llvm.
+
 2008-11-22  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * 3.0
