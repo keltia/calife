@@ -6,7 +6,7 @@
  **
  ** Copyright (c) 1991-2004 par O. ROBERT
  **
- ** @(#) $Id: conf.h,v 88c4f70961ac 2008/08/19 15:34:11 roberto $
+ ** @(#) $Id: conf.h,v 924a74c46657 2009/04/08 08:46:12 roberto $
  **/
 
 #ifndef CONF_H                  /* evite les includes multiples */
@@ -197,12 +197,16 @@ extern  int errno;
                            fflush (stderr)
 #define MESSAGE_4(x,y,z,t,u) fprintf (stderr, (x), (y), (z), (t), (u)); \
                              fflush (stderr)
+#define MESSAGE_5(x,y,z,t,u,v) fprintf (stderr, (x), (y), (z), (t), \
+                                                (u), (v)); \
+                               fflush (stderr)
 #else
 #define MESSAGE(x)
 #define MESSAGE_1(x,y)
 #define MESSAGE_2(x,y,z)
 #define MESSAGE_3(x,y,z,t)
 #define MESSAGE_4(x,y,z,t,u)
+#define MESSAGE_5(x,y,z,t,u,v)
 #endif /* DEBUG */
 
 #ifdef NO_SYSLOG
