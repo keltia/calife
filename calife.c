@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 377cdf445d8f 2009/04/06 14:57:07 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 3fe54840cf4a 2009/04/08 08:45:38 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -528,7 +528,7 @@ main (int argc, char * argv [])
                 memcpy (wanted_user, test_user, sizeof (struct passwd));
 #ifdef DEBUG
                 MESSAGE_4 ("uid,gid: %lu,%lu --> %u,%u\n", getuid(), \
-                           getgid(), wanted_user->pw_uid, \ 
+                           getgid(), wanted_user->pw_uid, \
                            wanted_user->pw_gid);
 #endif             
 #ifdef HAVE_POSIX_SIGNALS
