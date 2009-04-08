@@ -10,7 +10,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: db.c,v be2e0ba53599 2009/04/08 08:47:04 roberto $";
+static const char * rcsid = "@(#) $Id: db.c,v d3d648549829 2009/04/08 08:47:23 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -308,7 +308,6 @@ escape:
                 if (!strcmp (user_list [i], user_to_be))
                 {
                     allowed = 1;
-                    nb_users = 0;
                     goto end;   /* beuh but too many loops */
                 }
             }            
@@ -316,7 +315,6 @@ escape:
         else
         {
             allowed = 1;
-            nb_users = 0;
             break;            
         }
     }
