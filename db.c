@@ -10,7 +10,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: db.c,v 377cdf445d8f 2009/04/06 14:57:07 roberto $";
+static const char * rcsid = "@(#) $Id: db.c,v be2e0ba53599 2009/04/08 08:47:04 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -269,10 +269,7 @@ verify_auth_info (char * name, char * user_to_be)
                 /*
                  * two passes to avoid fixed size allocations
                  */ 
-                user_list = (char **) calloc (nb_users + 1, sizeof (char *));
-                if (user_list == NULL)
-                    die (255, "Out of memory at line %d in file %s\n",
-                         __LINE__, __FILE__);
+                user_list = (char **) xalloc((nb_users + 1) * sizeof(char *));
                 /*
                  * put pointers in user_list
                  */
