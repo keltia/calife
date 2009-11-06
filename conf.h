@@ -6,7 +6,7 @@
  **
  ** Copyright (c) 1991-2004 par O. ROBERT
  **
- ** @(#) $Id: conf.h,v 924a74c46657 2009/04/08 08:46:12 roberto $
+ ** @(#) $Id: conf.h,v a592b8bf8381 2009/11/06 13:58:34 roberto $
  **/
 
 #ifndef CONF_H                  /* evite les includes multiples */
@@ -130,16 +130,29 @@ typedef struct cred_t cred_t;
 /*
  * Try to simplify the code
  */
+#include <assert.h>
 #ifdef HPUX
-#  define GET_ROOT setresuid (-1,ssid,-1)
+#  define GET_ROOT { \
+                        int e = setresuid(-1,ssid,-1); \
+                        assert(e == 0); \
+                   }
 #else
-#  define GET_ROOT seteuid (ssid)
+#  define GET_ROOT { \
+                        int e = seteuid(ssid); \
+                        assert(e == 0); \
+                   }
 #endif /* HPUX */
 
 #ifdef HPUX
-#  define RELEASE_ROOT setresuid (-1,getuid (),-1)
+#  define RELEASE_ROOT { \
+                            int e = setresuid(-1,getuid (),-1);
+                            assert(e == 0); \
+                       }
 #else
-#  define RELEASE_ROOT seteuid (getuid ())
+#  define RELEASE_ROOT { \
+                            int e = seteuid(getuid ()); \
+                            assert(e == 0); \
+                       }
 #endif /* HPUX */
 
 #define MAX_STRING  1024        /* "safe" value */
