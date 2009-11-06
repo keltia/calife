@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 924a74c46657 2009/04/08 08:46:12 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 6d40fad1bec6 2009/11/06 13:57:27 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -318,7 +318,10 @@ main (int argc, char * argv [])
         uargv = argv[2];         /* skip first arg */
     }
     if (argc >= 3)
+    {
         die (1, "Usage : %s [-] [user_name]\n", argv [0]);
+        /*NOTREACHED*/
+    }
     
     if (argc == 2)          /* un argument = user_to_be */
     {
@@ -335,7 +338,10 @@ main (int argc, char * argv [])
              * verify length 
              */
             if ((n_len = strlen (uargv)) > MAXLOGNAME)
+            {
                 die (1, "Name too long `%s'", uargv);
+                /*NOTREACHED*/
+            }
             /*
              * avoid misuse and special characters
              */
@@ -344,7 +350,10 @@ main (int argc, char * argv [])
                 
                 m = strspn (uargv, ACCEPT_CHARS);
                 if (n_len != m)
+                {
                     die (1, "Illegal characters in username `%s'", uargv);                    
+                    /*NOTREACHED*/
+                }
             }
             strncpy (user_to_be, uargv, n_len);
             user_to_be [n_len] = '\0';
@@ -356,7 +365,10 @@ main (int argc, char * argv [])
     {
         char * p = ttyname (0);
         if (p == NULL)
+        {
             die (1, "No tty associated with stdin, bailing out");
+            /*NOTREACHED*/
+        }
         tty = (char *) xalloc (strlen (p) - 4);
         strcpy (tty, p + 5);        /* strip /dev/ */
     }
@@ -381,7 +393,10 @@ main (int argc, char * argv [])
         MESSAGE_1 ("getlogin = %s\n", login);
     }
     if (pwd == NULL)
+    {
         die (1, "who are you?");
+        /*NOTREACHED*/
+    }
     login = strdup (pwd->pw_name);
 
     MESSAGE_2 ("uid = %ld name = %s\n", uid, login);
