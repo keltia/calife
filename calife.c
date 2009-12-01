@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v cfe779015a7e 2009/12/01 16:56:31 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v dceb74c03dbc 2009/12/01 17:02:43 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -191,7 +191,6 @@ static const char * rcsid = "@(#) $Id: calife.c,v cfe779015a7e 2009/12/01 16:56:
                         /* fichier de configuration */
 #include "conf.h"
 
-FILE    * fp = NULL;  /* fichier d'auth. et log */
 int     custom_shell= 0;            /* modification du shell ? */
 char    * shell;                    /* nom du shell */
 uid_t   ssid;   					/* saved uid -- POSIX */
