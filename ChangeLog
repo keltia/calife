@@ -6,8 +6,12 @@
 
         * ChangeLog, README, README.en: updated.
 
-        * gcc 4.2.1 seems to prefer NULL instead of 0 for execl*(2).
-        Clang does not care either way apparently.
+        * calife.c,conf.h: gcc 4.2.1 seems to prefer NULL instead of 0 for
+        execl*(2).  Clang does not care either way apparently.  Remove unused
+        logfile global variable.
+
+        * db.c,conf.h: Promote fp from global variable to global static in
+        db.c.  Rewrite open_databases to be cleaner and remove access(2).
 
         * MacOS X 10.6 has all the PAM .h stuff in security/ instead of pam/.
         Remember to re-run configure.
