@@ -6,7 +6,7 @@
  **
  ** Copyright (c) 1991-2010 par O. ROBERT
  **
- ** @(#) $Id: conf.h,v 73677a6dc731 2009/12/01 16:58:48 roberto $
+ ** @(#) $Id: conf.h,v 2db16132e2bd 2009/12/01 16:59:05 roberto $
  **/
 
 #ifndef CONF_H                  /* evite les includes multiples */
@@ -189,7 +189,7 @@ typedef struct cred_t cred_t;
 #ifndef MAIN_MODULE
 extern  int     custom_shell;   /* modification du shell ? */
 extern  char    * shell;        /* nom du shell */
-extern  uid_t   ssid;   		/* POSIX saved uid */
+extern  uid_t   ssid;           /* POSIX saved uid */
 extern  char    * _group;       /* Si user E group */
 #ifdef WITH_PAM
 extern  pam_handle_t	*pamh;
