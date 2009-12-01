@@ -20,7 +20,7 @@
  **
  ** Compilation:    via le makefile
  **
- ** Copyright (c) 1991-2002 by Ollivier ROBERT
+ ** Copyright (c) 1991-2010 by Ollivier ROBERT
  ** A distribuer selon les regles de la GNU GPL General Public Licence
  ** Voir le fichier COPYING fourni.
  **
@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 9c712aa88821 2009/12/01 16:29:26 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 0dcc27d2f900 2009/12/01 16:37:46 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */

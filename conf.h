@@ -4,9 +4,9 @@
  **
  ** cree pour simplifier calife.c
  **
- ** Copyright (c) 1991-2004 par O. ROBERT
+ ** Copyright (c) 1991-2010 par O. ROBERT
  **
- ** @(#) $Id: conf.h,v a592b8bf8381 2009/11/06 13:58:34 roberto $
+ ** @(#) $Id: conf.h,v 0dcc27d2f900 2009/12/01 16:37:46 roberto $
  **/
 
 #ifndef CONF_H                  /* evite les includes multiples */

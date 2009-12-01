@@ -3,14 +3,14 @@
  ** Routines de gestion des mots de passe et des fichiers
  ** de configuration pour calife.
  **
- ** Copyright (c) 1991-1995 by Ollivier ROBERT
+ ** Copyright (c) 1991-2010 by Ollivier ROBERT
  ** A distribuer selon les regles de la GNU GPL General Public Licence
  ** Voir le fichier COPYING fourni.
  **
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: db.c,v d3d648549829 2009/04/08 08:47:23 roberto $";
+static const char * rcsid = "@(#) $Id: db.c,v 0dcc27d2f900 2009/12/01 16:37:46 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
