@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v b6725dd2e87f 2009/12/01 18:01:17 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v a9a640c3c893 2009/12/01 18:07:49 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -541,11 +541,9 @@ main (int argc, char * argv [])
                  */
                 test_user = getpwnam (user_to_be);
                 memcpy (wanted_user, test_user, sizeof (struct passwd));
-#ifdef DEBUG
                 MESSAGE_4 ("uid,gid: %lu,%lu --> %u,%u\n", getuid(), \
                            getgid(), wanted_user->pw_uid, \
                            wanted_user->pw_gid);
-#endif             
 #ifdef HAVE_POSIX_SIGNALS
                 sigprocmask (SIG_SETMASK, &old_set, NULL);
 #endif
