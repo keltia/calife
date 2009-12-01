@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 0dcc27d2f900 2009/12/01 16:37:46 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v cfe779015a7e 2009/12/01 16:56:31 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -191,7 +191,7 @@ static const char * rcsid = "@(#) $Id: calife.c,v 0dcc27d2f900 2009/12/01 16:37:
                         /* fichier de configuration */
 #include "conf.h"
 
-FILE    * fp = NULL, * logfile = NULL;  /* fichier d'auth. et log */
+FILE    * fp = NULL;  /* fichier d'auth. et log */
 int     custom_shell= 0;            /* modification du shell ? */
 char    * shell;                    /* nom du shell */
 uid_t   ssid;   					/* saved uid -- POSIX */
@@ -556,8 +556,6 @@ main (int argc, char * argv [])
                     die (1, "Bad pw data errno = %d", errno);
 
                 memcpy (calife, p_calife, sizeof (struct passwd));
-                if (logfile)
-                    fclose (logfile);
                 {
                     unsigned int e1, e2;
 

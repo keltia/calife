@@ -10,13 +10,15 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: db.c,v 0dcc27d2f900 2009/12/01 16:37:46 roberto $";
+static const char * rcsid = "@(#) $Id: db.c,v cfe779015a7e 2009/12/01 16:56:31 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
 
                         /* fichier de configuration */
 #include "conf.h"
+
+static FILE * fp = NULL;    /* Moved from calife.c */
 
 /** On cherche et ouvre la database locale.
  **
