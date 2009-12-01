@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 6d40fad1bec6 2009/11/06 13:57:27 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 4c4c675fe759 2009/12/01 15:37:29 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -587,7 +587,7 @@ main (int argc, char * argv [])
                 }
                 /* NOT REACHED well should not :-) */
                 fprintf (stderr, "shell = >>%s<<\n", "/bin/sh");
-                execl ("/bin/sh", "sh", 0);
+                execl ("/bin/sh", "sh", NULL);
                 die (2, "\nAARRRGGGHHH, exec (shell) failed... errno = %d",
                      errno);
             default:                    
@@ -785,7 +785,7 @@ main (int argc, char * argv [])
         /*
          * give the baby to su
          */
-        execl (SU_CMD, "su", user_to_be, 0);
+        execl (SU_CMD, "su", user_to_be, NULL);
         die (3, "\nBy Zandru's Nineth Hell !!! Even su failed...");
         /* NOT REACHED */
     }
@@ -859,7 +859,7 @@ exec_shell (char * shell_name)
 #ifdef DEBUG
         MESSAGE_2 (" shell_name=%s shell_arg0=%s\n", shell_name, shell_arg0);
 #endif /* DEBUG */            
-        execl (shell_name, shell_arg0, 0);
+        execl (shell_name, shell_arg0, NULL);
         fprintf (stderr, "\nexecl (%s) failed... errno = %d\n", shell_name, errno);
         fflush (stderr);
 #endif /* NO_SETUID_SHELL */
