@@ -10,7 +10,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: db.c,v cfe779015a7e 2009/12/01 16:56:31 roberto $";
+static const char * rcsid = "@(#) $Id: db.c,v 5a1f3f02b317 2009/12/01 17:00:37 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -35,35 +35,41 @@ static FILE * fp = NULL;    /* Moved from calife.c */
 int    
 open_databases (void)
 {
+    int err;
+
     MESSAGE ("Opening databases...\n");
     /*
      * become root again
      */
     GET_ROOT;
 
-	/* FIXME: don't use access(2) */
-    if (access (AUTH_CONFIG_FILE, 0))
+    /*
+     * open protected database
+     */
+    fp = fopen (AUTH_CONFIG_FILE, "r");
+    if (fp == NULL)
     {
         syslog (LOG_AUTH | LOG_ERR, "No database in `%s', launching su...\n", AUTH_CONFIG_FILE);
         MESSAGE_1 ("No database in `%s'...\n", AUTH_CONFIG_FILE);                              
-        return 1;        
+        return 1;
     }
-    else
+    else 
     {
         /*
-         * open log file
-         */
-                                /* open protected database */
-        fp = fopen (AUTH_CONFIG_FILE, "r");
-        if (fp == NULL)
-            die (6, "calife: internal error, fp == NULL at %d\n", __LINE__);
-        fchmod (fileno (fp), 0400);
+         * XXX Is this still necessary?
+         */    
+        err = fchmod (fileno (fp), 0400);
+        if (err)
+            die(6, "Unable to change '%s' permissions.", AUTH_CONFIG_FILE);
+            /*NOTREACHED*/
     }
     /*
      * stay non root for a time
      */
     RELEASE_ROOT;
-
+    /*
+     * Success
+     */
     return 0;
 }
 
