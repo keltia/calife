@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 112c396b5525 2009/12/01 18:08:31 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 0b340bd3c882 2009/12/01 18:13:29 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -564,7 +564,7 @@ main (int argc, char * argv [])
 #endif /* HAVE_INITGROUPS */
                     e2 = setgid (wanted_user->pw_gid);
                     e1 = setuid (wanted_user->pw_uid);
-                    MESSAGE_5(" user=%s uid=%d gid=%d e1=%u e2=%u\n", \ 
+                    MESSAGE_5(" user=%s uid=%d gid=%d e1=%u e2=%u\n", \
                     user_to_be, wanted_user->pw_uid, wanted_user->pw_gid, \
                     e1, e2);
                 }
