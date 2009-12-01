@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 51b770f23683 2009/12/01 17:05:51 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v b6725dd2e87f 2009/12/01 18:01:17 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -602,20 +602,20 @@ main (int argc, char * argv [])
                 free (wanted_user);
 
 #ifdef WITH_PAM
-                	if (pamh) 
-                	{
-                		if ((e = pam_open_session(pamh, 0)) != PAM_SUCCESS) 
-                		{
-                			syslog (LOG_AUTH | LOG_ERR, "pam_open_session: %s",
-                			    pam_strerror (pamh, e));
-                		}
-                		else if ((e = pam_setcred(pamh, PAM_ESTABLISH_CRED)) !=
-                		    PAM_SUCCESS) 
-                		{
-                			syslog (LOG_AUTH | LOG_ERR, "pam_setcred: %s",
-                			    pam_strerror (pamh, e));
-                		}
-                	}
+                if (pamh) 
+                {
+                    if ((e = pam_open_session(pamh, 0)) != PAM_SUCCESS) 
+                    {
+                        syslog (LOG_AUTH | LOG_ERR, "pam_open_session: %s",
+                            pam_strerror (pamh, e));
+                    }
+                    else if ((e = pam_setcred(pamh, PAM_ESTABLISH_CRED)) !=
+                        PAM_SUCCESS) 
+                    {
+                        syslog (LOG_AUTH | LOG_ERR, "pam_setcred: %s",
+                            pam_strerror (pamh, e));
+                    }
+                }
 #endif /* WITH_PAM */
 
                 if (allowed == 2)
