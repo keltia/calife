@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v a9a640c3c893 2009/12/01 18:07:49 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 5c7f2d9fb968 2009/12/01 18:08:06 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -552,8 +552,8 @@ main (int argc, char * argv [])
                 p_calife = getpwnam (name); /* return ptr is static */
                 if (p_calife == NULL)
                     die (1, "Bad pw data errno = %d", errno);
-
                 memcpy (calife, p_calife, sizeof (struct passwd));
+
                 {
                     unsigned int e1, e2;
 
