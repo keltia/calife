@@ -18,7 +18,7 @@ they have been trained for the various administrative tasks they are allowed
 to achieve and the security risks associated with this mechanism.
 
 Going through the "root" superuser priviledges can be avoided by using the
-list feature as selected users will be able to become another one directly.
+"list" feature as selected users will be able to become another one directly.
 
 Finally, the "group" feature allows users to be put in a specific group in
 order to avoid listing all of them in the configuration file.
@@ -59,7 +59,13 @@ http://archives.keltia.net/hg/
 ____________
 Installation
 
-Calife uses the well-known GNU "autoconf" system for configuration.
+Calife uses the well-known GNU "autoconf" system for configuration. GNU cc is
+not mandatory for compiling but Calife has only been tested with the following
+compilers:
+
+- GNU cc 3.x and 4.3
+- Clang 1.0, 1.1 and trunk from svn
+- SUN cc on Sparc systems 
 
 Use the following command to analyse your system and tailor the build process.
 
@@ -71,11 +77,9 @@ Several files will be created
 - calife.1
 - calife.auth.5
 
-Le binaire et  les pages de  manuels seront par défaut installés, lors du
-"make install", sous "/usr/local".
-
-Utiliser l'argument de configure "--prefix=/le/prefixe" pour indiquer le nom
-du répertoire adéquat.
+The main calife binary and the manpages will be installed by default by using
+"make install". The default prefix is the usual "/usr/local". Use "--prefix"
+to change the base location.
 
 You can also specify some special options to configure in order to get
 specific behaviours.
@@ -135,13 +139,20 @@ Please consult the supplied manpages for more information.
 _____________
 Compatibility
 
-Calife has been developped and tested on the following UNIX systems (actual versions may differ but I can not guarantee full support all time as I may not have access to all of them).
+Calife has been developped and tested on the following UNIX systems (actual
+versions may differ but I can not guarantee full support all time as I may not
+have access to all of them).
 
-- FreeBSD 1 - 8.x   (main development platform)
-- MacOS X 10.2-10.5.
+- FreeBSD 1 - 9.x   (main development platform)
+- MacOS X 10.2-10.6. (main development platform)
 - Linux 0.99+  1.* (1.2.* et 1.3.*), 2.*
 - Solaris 2.x (incl. most SVR4 systems)
 - HP-UX 8.*, 9.*, 10.* et 11.*
+
+Although I never tested calife on NetBSD and OpenBSD, I do not expect them to
+be different enough to matter except maybe for PAM matters. Patches are more
+than welcome. I have not checked whether calife has been put in their
+respective ports system. Again I would welcome any patches or news about it.
 
 NOTE that version 3 is very much PAM oriented although it should work without
 it.
@@ -160,28 +171,30 @@ used to)
 - IRIX 5.x (probably 6.x too)
 - GNU Hurd
 
-In pam subdirectory, you can find sample file for PAM configuration. Choose
-the one suited to your system and pace it either inside pam.conf (Solaris up
-to 9) or within the pam.d directory under the "calife" name.
+In the pam/ subdirectory, you can find sample file for PAM configuration.
+Choose the one suited to your system and pace it either inside pam.conf
+(Solaris up to 9) or within the pam.d directory under the "calife" name.
 
 - macosx    For MacOS 10.3/Panther and up.
 - freebsd5  For FreeBSD 5.x and up.
-- solaris   For Solaris 8, 9 et 10 (à insérer dans pam.conf)
+- solaris   For Solaris 8, 9 et 10 (to be cut/pasted in pam.conf)
 - linux
 
-Pour utiliser LDAP/NIS et autres systèmes d'authentification, il faudra 
-modifier le fichier PAM correspondant.
+If you want to use LDAP/NIS or any other authentication system based on PAM,
+you will need to add to or modify the host PAM configuration. Any input on
+these matter would be appreciated.
 
 The syslog(3) functions family is mandatory.
 
 FreeBSD and Debian packages are available thanks to Christian Perrier and
 Thomas Quinot. Alain Thivillon also did some RPMs for previous versions.
+Fedora/Red-Hat/SUSE help is welcome.
 
 ________
 Manpages
 
 Manpages use the mandoc BSD macro package which is now more or less the
-default on many system.
+default on many systems.
 
 _______
 History
@@ -219,4 +232,4 @@ Denis Ducamp            <Denis.Ducamp@hsc.fr>
 
 and all the unnamed ones that have participated to testing.
 
-# $Id: README.en,v 78d44579398c 2008/11/22 18:26:11 roberto $
+# $Id: README.en,v 2398eb5baa35 2009/12/01 16:33:51 roberto $

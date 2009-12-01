@@ -2,36 +2,36 @@
 ____________
 Introduction
 
-Calife est un programme permettant à certains utilisateurs, dont les noms sont
-présents dans une liste, de passer sous un quelconque ID utilisateur (par
+Calife est un programme permettant Ã  certains utilisateurs, dont les noms sont
+prÃ©sents dans une liste, de passer sous un quelconque ID utilisateur (par
 exemple, mais pas uniquement, "root") en rentrant leur propre mot de passe.
 
-Ce système permet de ne pas divulguer le mot de passe de root (par exemple
-pour le mode "single-user" de certains Unix) tout en conférant les droits de
-root à certains utilisateurs bien identifiés.
+Ce systÃ¨me permet de ne pas divulguer le mot de passe de root (par exemple
+pour le mode "single-user" de certains Unix) tout en confÃ©rant les droits de
+root Ã  certains utilisateurs bien identifiÃ©s.
 
 L'introduction obligatoire du mot de passe lors du changement d'ID permet de
-ne pas compromettre l'accès root si l'utilisateur reste logé sur une machine
-puis s'en éloigne.
+ne pas compromettre l'accÃ¨s root si l'utilisateur reste logÃ© sur une machine
+puis s'en Ã©loigne.
 
-La barrière de sécurité finale réside dans le mot de passe de ces
-utilisateurs, qui, nous l'espérons, connaissent les règles élémentaires.
+La barriÃ¨re de sÃ©curitÃ© finale rÃ©side dans le mot de passe de ces
+utilisateurs, qui, nous l'espÃ©rons, connaissent les rÃ¨gles Ã©lÃ©mentaires.
 
 Des listes d'utilisateurs vers lesquels quelqu'un a le droit d'utiliser calife
-permettent d'affiner la gestion des personnes autorisées.
+permettent d'affiner la gestion des personnes autorisÃ©es.
 
 ____________
 Distribution
 
-Calife est distribué sous la GNU General Public Licence qui vous permet de
+Calife est distribuÃ© sous la GNU General Public Licence qui vous permet de
 diffuser, utiliser et modifier ce programme tant que vous en diffusez les
-sources et me communiquez toutes les modifications effectuées. Cela me permet
-de l'améliorer et de le maintenir dans de bonnes conditions.
+sources et me communiquez toutes les modifications effectuÃ©es. Cela me permet
+de l'amÃ©liorer et de le maintenir dans de bonnes conditions.
 
 Vous trouverez la licence GNU dans le fichier COPYING fourni avec l'archive.
 
-Pour ce qui est du "disclaimer" standard associé à ce type de programme et à
-ce type de diffusion, le paragraphe suivant, tiré de la licence BSD,
+Pour ce qui est du "disclaimer" standard associÃ© Ã  ce type de programme et Ã 
+ce type de diffusion, le paragraphe suivant, tirÃ© de la licence BSD,
 s'applique :
 
   THIS SOFTWARE IS PROVIDED BY ME ``AS IS'' AND ANY EXPRESS OR IMPLIED
@@ -54,37 +54,47 @@ en FTP :
 <ftp://mutt.frmug.org/pub/calife/>. Un miroir existe sur
 <ftp://postfix.EU.org/pub/calife/>.
 
-Calife est disponible sous la forme d'un dépôt Mercurial
-(http://selenic.com/mercurial/) ce qui facilitera l'usage et la mise à jour
+Calife utilise maintenant Redmine (<http://redmine.org/>) comme frontal de
+gestion des tickets, flux RSS, release, forums, etc. Le site est accessible Ã 
+<http://dev.keltia.net/projects/calife>.
+
+Calife est Ã©galement disponible sous la forme d'un dÃ©pÃ´t Mercurial
+<http://selenic.com/mercurial/> ce qui facilitera l'usage et la mise Ã  jour
 par des contributeurs externes.
 
-Répertoire de base des dépôts Mercurial :
+RÃ©pertoire de base des dÃ©pÃ´ts Mercurial :
 
- http://archives.keltia.net/hg/
+ <http://archives.keltia.net/hg/>
 
 ____________
 Installation
 
-Calife utilise dorénavant le programme GNU "autoconf" pour la configuration.
+Calife utilise dorÃ©navant le programme GNU "autoconf" pour la configuration.
+GNU cc n'est pas obligatoire pour compiler Calife mais ne sont testÃ©s
+rÃ©guliÃ¨rement que les compilateurs suivants :
+
+- GNU cc 3.x et 4.3
+- Clang 1.0, 1.1 et la version de dÃ©veloppement (trunk)
+- SUN cc sur plateforme Sparc
 
 Tapez la commande :
 
 ./configure
 
-Le script va analyser votre système et créer les fichiers suivants :
+Le script va analyser votre systÃ¨me et crÃ©er les fichiers suivants :
 
 - Makefile
 - config.h
 - calife.1
 - calife.auth.5
 
-Le binaire et  les pages de  manuels seront par défaut installés, lors du
+Le binaire et  les pages de  manuels seront par dÃ©faut installÃ©s, lors du
 "make install", sous "/usr/local".
 
 Utiliser l'argument de configure "--prefix=/le/prefixe" pour indiquer le nom
-du répertoire adéquat.
+du rÃ©pertoire adÃ©quat.
 
-Quelques options spéciales sont disponibles  :
+Quelques options spÃ©ciales sont disponibles  :
 
   --with-etcdir=PATH        Directory containing calife.auth (default /etc)
   --disable-shadow=yes|no   Disable getspnam(3) usage for some Linuxes
@@ -103,69 +113,74 @@ Quelques options spéciales sont disponibles  :
         Inutile en usage normal. 
 
 --enable-shellhack
-        Si vous avez le message "Permission denied" après avoir tapé votre
+        Si vous avez le message "Permission denied" aprÃ¨s avoir tapÃ© votre
         mot de passe, essayez de relancer "configure" avec cette option. 
 
 --enable-dynamic
-        Si vous désirez avoir le binaire lié dynamiquement et non pas
+        Si vous dÃ©sirez avoir le binaire liÃ© dynamiquement et non pas
         statiquement. L'utilisation du binaire statique permet non seulement
-        d'améliorer le partage des pages entre de multiples instances de
-        calife mais aussi de ne pas être dépendant de la version de la
-        bibliothèque standard.
+        d'amÃ©liorer le partage des pages entre de multiples instances de
+        calife mais aussi de ne pas Ãªtre dÃ©pendant de la version de la
+        bibliothÃ¨que standard.
 
-        Parmi les systèmes devant utiliser --enable-dynamic, on compte
+        Parmi les systÃ¨mes devant utiliser --enable-dynamic, on compte
         Solaris 2.x, HP-UX, Linux et MacOS X/Darwin.
 
 Cas de Linux :
 
-Ce système utilise plusieurs systèmes de "shadow passwords". Il est possible
-que "configure" ne parvienne pas à déterminer le type d'outil de "shadow
-passwords" employé. Je n'ai pas de Linux, il m'est donc difficile de tester...
-Toute suggestion et modification de "configure.in" appréciées.
+Ce systÃ¨me utilise plusieurs systÃ¨mes de "shadow passwords". Il est possible
+que "configure" ne parvienne pas Ã  dÃ©terminer le type d'outil de "shadow
+passwords" employÃ©. Je n'ai pas de Linux, il m'est donc difficile de tester...
+Toute suggestion et modification de "configure.in" apprÃ©ciÃ©es.
 
-L'option suivante permet à calife de ne pas utiliser getspnam(3) dans le cas
-où la fonction existe mais les shadows passwords ne sont pas utilisés.
+L'option suivante permet Ã  calife de ne pas utiliser getspnam(3) dans le cas
+oÃ¹ la fonction existe mais les shadows passwords ne sont pas utilisÃ©s.
 
 --disable-shadow
-        Le défaut est d'utiliser getspnam(3) si elle est définie.
+        Le dÃ©faut est d'utiliser getspnam(3) si elle est dÃ©finie.
 
-Si vous devez créer une nouvelle section dans conf.h ou une nouvelle entrée
+Si vous devez crÃ©er une nouvelle section dans conf.h ou une nouvelle entrÃ©e
 dans Makefile.in ou configure.in , merci de me communiquer les modifications
 pour incorporation dans les versions suivantes.
 
-Le programme s'installe sous forme d'un binaire nommé "calife" pour des
-raisons de facilité mais le nom historique est "...".
+Le programme s'installe sous forme d'un binaire nommÃ© "calife" pour des
+raisons de facilitÃ© mais le nom historique est "...".
 
-Il installe aussi un fichier de configuration d'exemple, appelé
-"calife.auth-dist" et par défaut placé dans /etc
+Il installe aussi un fichier de configuration d'exemple, appelÃ©
+"calife.auth-dist" et par dÃ©faut placÃ© dans /etc
 
 Consulter les pages de manuel fournies ("calife" et "calife.auth") pour en
 apprendre davantage.
 
-Le programme essaie de lancer le fichier calife.out (par défaut dans /etc) à
-la sortie de "calife". Ceci permet par exemple d'envoyer un mail à chaque
-utilisation de calife. Cette possibilité est optionnelle et dépend de l'option
-« --enable-global-rc ».
+Le programme essaie de lancer le fichier calife.out (par dÃ©faut dans
+/usr/local/etc sur FreeBSD et /etc ailleurs) Ã  la sortie de "calife". Ceci
+permet par exemple d'envoyer un mail Ã  chaque utilisation de calife. Cette
+possibilitÃ© est optionnelle et dÃ©pend de l'option Â« --enable-global-rc Â».
 
 _____________
-Compatibilité
+CompatibilitÃ©
 
-Calife a été testé et développé sur les systèmes UNIX suivants (les versions
-testées peuvent être anciennes et devraient être retestées mais je n'ai plus
-accès à pas mal de ces machines...) :
+Calife a Ã©tÃ© testÃ© et dÃ©veloppÃ© sur les systÃ¨mes UNIX suivants (les versions
+testÃ©es peuvent Ãªtre anciennes et devraient Ãªtre retestÃ©es mais je n'ai plus
+accÃ¨s Ã  pas mal de ces machines...) :
 
-- FreeBSD 1 - 6.x   (mach. de développement de l'auteur)
-- MacOS X 10.2, 10.3 et 10.4.
+- FreeBSD 1 - 6.x   (mach. de dÃ©veloppement de l'auteur)
+- MacOS X 10.2 - 10.6.
 - Linux 0.99+ et 1.* (1.2.* et 1.3.*), 2.*
 - Solaris 2.x (et la plupart des SVR4)
 - HP-UX 8.*, 9.*, 10.* et 11.*
 
-**NOTE: la version 3.0 sera une version exclusivement PAM de manière à
-simplifier le code, sa maintenance et la compatibilité avec les UNIX le
-supportant.
+Bien que Calife n'ait pas Ã©tÃ© testÃ© par l'auteur sur NetBSD et OpenBSD, il est
+fort probable du fait de la base commune de code, il n'y ait que peu de souci
+Ã  utiliser Calife sur ces systÃ¨mes, Ã  part sans doute quelques diffÃ©rences
+dans le sous-systÃ¨me PAM.
 
-Systèmes pour lesquels la compatibilité n'est pas/plus testée directement par
-l'auteur.
+NOTE: la version 3.0 sera une version orientÃ© PAM de maniÃ¨re Ã  simplifier le
+code, sa maintenance et la compatibilitÃ© avec les UNIX le supportant, le code
+non PAM restant a priori utilisable.
+
+SystÃ¨mes pour lesquels la compatibilitÃ© n'est pas/plus testÃ©e directement par
+l'auteur, ceux-ci Ã©tant donc non supportÃ©s.
 
 - SunOS 4.1.*
 - SunOS 3.2
@@ -179,29 +194,29 @@ l'auteur.
 - GNU Hurd (nouveau)
 
 Pour calife 3.0/PAM, voir les exemple de fichier de configuration de PAM
-dans le répertoire pam/ de l'archive. Placer ce fichier dans /etc/pam.d (ou
-l'endroit demandé par votre implémentation de PAM) sous le nom « calife ».
+dans le rÃ©pertoire pam/ de l'archive. Placer ce fichier dans /etc/pam.d (ou
+l'endroit demandÃ© par votre implÃ©mentation de PAM) sous le nom Â« calife Â».
 
-Il existe à l'heure actuelle deux fichiers :
-- macosx    pour les systèmes MacOS 10.3/Panther et 10.4/Tiger ;
-- freebsd5  pour les systèmes FreeBSD 5.x et 6.x.
-- solaris   pour Solaris 8, 9 et 10 (à insérer dans pam.conf)
+Il existe Ã  l'heure actuelle deux fichiers :
+- macosx    pour les systÃ¨mes MacOS 10.3/Panther et 10.4/Tiger ;
+- freebsd5  pour les systÃ¨mes FreeBSD 5.x et 6.x.
+- solaris   pour Solaris 8, 9 et 10 (Ã  insÃ©rer dans pam.conf)
 
-Pour utiliser LDAP/NIS et autres systèmes d'authentification, il faudra 
+Pour utiliser LDAP/NIS et autres systÃ¨mes d'authentification, il faudra 
 modifier le fichier PAM correspondant.
 
-La fonctionnalité syslog(3) est maintenant obligatoire pour compiler calife.
-Ca simplifie le code manière significative.
+La fonctionnalitÃ© syslog(3) est maintenant obligatoire pour compiler calife.
+Ca simplifie le code maniÃ¨re significative.
 
-Des packages FreeBSD et Debian existent dorénavant grâce à Thomas Quinot.
-Alain Thivillon a généré des packages Red-hat (RPM) pour 2.8.4b.
+Des packages FreeBSD et Debian existent dorÃ©navant grÃ¢ce Ã  Thomas Quinot.
+Alain Thivillon a gÃ©nÃ©rÃ© des packages Red-hat (RPM) pour 2.8.4b.
 
 _______________
 Pages de manuel
 
-Les pages de manuel sont très succinctes et utilisent le système de macros mis
-au point à Berkeley appelé "mandoc" donc si vous n'avez pas ces macros, le
-résultat n'est pas très lisible. Je conseille vivement d'utiliser ce système
+Les pages de manuel sont trÃ¨s succinctes et utilisent le systÃ¨me de macros mis
+au point Ã  Berkeley appelÃ© "mandoc" donc si vous n'avez pas ces macros, le
+rÃ©sultat n'est pas trÃ¨s lisible. Je conseille vivement d'utiliser ce systÃ¨me
 qui est plus complet que le ``man'' habituel.
 
 Si vous disposez de GNU groff, alors la commande pour les pages de manuel est
@@ -210,30 +225,31 @@ Si vous disposez de GNU groff, alors la commande pour les pages de manuel est
 __________
 Historique
 
-Ce programme est né en 1991 d'une idée commune à François Berjon et moi, qui
-utilisions un système très simple, appelé ``...'', capable de lancer un shell
-root après vérification de l'uid du requérant, sans demander de mot de passe.
+Ce programme est nÃ© en 1991 d'une idÃ©e commune Ã  FranÃ§ois Berjon et moi, qui
+utilisions un systÃ¨me trÃ¨s simple, appelÃ© ``...'', capable de lancer un shell
+root aprÃ¨s vÃ©rification de l'uid du requÃ©rant, sans demander de mot de passe.
 
-Il a évolué lors de mon travail à Antenne 2 et surtout lors de mon stage à
-l'Université de Marne-la-Vallée, où il a gagné la majorité de ses possibilités
+Il a Ã©voluÃ© lors de mon travail Ã  Antenne 2 et surtout lors de mon stage Ã 
+l'UniversitÃ© de Marne-la-VallÃ©e, oÃ¹ il a gagnÃ© la majoritÃ© de ses possibilitÃ©s
 actuelles.
 
-Il est utilisé quotidiennement par plusieurs sites et donne des résultats
+Il est utilisÃ© quotidiennement par plusieurs sites et donne des rÃ©sultats
 satisfaisants.
 
-Tout commentaire, critique [constructive] et patches bienvenus à l'une des
+Tout commentaire, critique [constructive] et patches bienvenus Ã  l'une des
 adresses suivantes :
 
-roberto@keltia.freenix.fr       (maison)
+roberto@keltia.freenix.fr       (adresse privÃ©e maison)
+<http://dev.keltia.net/projects/calife>
 
 _____________
 Remerciements
 
-René Cougnenc           
-François Berjon         <fcb@gwynedd.frmug.org>
+RenÃ© Cougnenc           
+FranÃ§ois Berjon         <fcb@gwynedd.frmug.org>
 Laurent Chemla          <laurent@brainstorm.fr>
 Pierre Beyssac          <pb@fasterix.frmug.org>
-Nathanaël Makarévitch   <nat@nataa.frmug.org>
+NathanaÃ«l MakarÃ©vitch   <nat@nataa.frmug.org>
 Thomas Quinot           <thomas@cuivre.fr.eu.org>
 Christian Perrier       <bubulle@kheops.frmug.org>
 Philippe Regnault       <regnauld@starbsd.org>
@@ -243,6 +259,6 @@ Erwan David             <erwan@rail.eu.org>
 Bertrand Petit          <elrond@phoe.frmug.org>
 Denis Ducamp            <Denis.Ducamp@hsc.fr>
 
-et à tous ceux qui ont participé pour la mise au point et les tests.
+et Ã  tous ceux qui ont participÃ© pour la mise au point et les tests.
 
-# $Id: README,v e14096bc6458 2008/11/22 18:26:45 roberto $
+# $Id: README,v 2398eb5baa35 2009/12/01 16:33:51 roberto $
