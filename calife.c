@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v dceb74c03dbc 2009/12/01 17:02:43 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 51b770f23683 2009/12/01 17:05:51 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -396,7 +396,8 @@ main (int argc, char * argv [])
         die (1, "who are you?");
         /*NOTREACHED*/
     }
-    login = strdup (pwd->pw_name);
+    else
+        login = strdup (pwd->pw_name);
 
     MESSAGE_2 ("uid = %ld name = %s\n", uid, login);
 
