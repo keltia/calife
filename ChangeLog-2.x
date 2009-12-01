@@ -3,7 +3,7 @@
 	* 2.8.6-p3
   
 	* db.c: Force l'initialisation de plusieurs variables pointant sur de la
-	mémoire allouée par malloc(3). Ca évite un segfault lors du free(3) sur
+	mÃ©moire allouÃ©e par malloc(3). Ca Ã©vite un segfault lors du free(3) sur
 	Solaris et Gentoo (Denis Ducamp <Denis.Ducamp@groar.org>).
   
 2004-10-31  Ollivier Robert  <roberto@keltia.freenix.fr>
@@ -13,21 +13,21 @@
 	* calife.c,db.c,conf.h: Ajout de la syntaxe @group: dans
 	calife.auth pour authentifier via l'appartenance au dit groupe.
 
-	* calife.auth.5.in,README: mise à jour.
+	* calife.auth.5.in,README: mise Ã  jour.
 
 2004-03-01  Ollivier Robert  <roberto@keltia.freenix.fr>
 
 	* 2.8.6-p1.
 
 	* acconfig.h,config.h.in,configure.in: /etc/calife.out est
-	optionnel et dépend de --enable-global-rc.
+	optionnel et dÃ©pend de --enable-global-rc.
 	
-	* calife.c(main): changement de la manière avec laquelle calife
-	détermine qui l'a lancé quand getlogin(3) plante. /etc/calife.out
+	* calife.c(main): changement de la maniÃ¨re avec laquelle calife
+	dÃ©termine qui l'a lancÃ© quand getlogin(3) plante. /etc/calife.out
 	est maintenant optionnel.
 
-	* configure.in: l'édition de liens est maintenant dynamique par
-	défaut sous Linux pour éviter un segfault (interaction avec nss je
+	* configure.in: l'Ã©dition de liens est maintenant dynamique par
+	dÃ©faut sous Linux pour Ã©viter un segfault (interaction avec nss je
 	suppose).
 
 2004-02-27  Ollivier Robert  <roberto@keltia.freenix.fr>
@@ -36,10 +36,10 @@
 
 	** SECURITY RELEASE **
 
-	* db.c(verify_password): vérification de la valeur de retour de
+	* db.c(verify_password): vÃ©rification de la valeur de retour de
 	getpass(3) et utilisation de strncpy(3) pour recopier le mot de
-	passe saisi, sur Linux le buffer géré par la glibc est corruptible
-	et génère un segfault si le mot de passe précédemment entré est
+	passe saisi, sur Linux le buffer gÃ©rÃ© par la glibc est corruptible
+	et gÃ©nÃ¨re un segfault si le mot de passe prÃ©cÃ©demment entrÃ© est
 	trop long.
 
 	cf. <URL:http://www.securityfocus.com/archive/1/355510>
@@ -49,24 +49,24 @@
 	* 2.8.5-p3.
 
 	* calife.c: utilisation du code de su.c pour identifier le login
-	de l'utilisateur pour corriger les problèmes de getlogin sous
+	de l'utilisateur pour corriger les problÃ¨mes de getlogin sous
 	Linux.
 
 2004-01-08  Ollivier Robert  <roberto@keltia.freenix.fr>
 
 	* 2.8.5-p2.
 
-	* README: mise à jour des adresses de courrier électronique et des
+	* README: mise Ã  jour des adresses de courrier Ã©lectronique et des
 	versions de Mac OS X (remarque d'Olivier Tharan).
 
 2003-11-04  Ollivier Robert  <roberto@keltia.freenix.fr>
  
 	* 2.8.5-p1
 
-	* calife.c: synchro de la liste des signaux à masquer dans les
- 	deux cas POSIX et !POSIX. Ajout de SIGTTOU à cette liste pour
- 	éviter une « race condition » lors de l'exécution de
- 	calife.out. Inspiré par la révision 1.70 de su.c/FreeBSD.
+	* calife.c: synchro de la liste des signaux Ã  masquer dans les
+ 	deux cas POSIX et !POSIX. Ajout de SIGTTOU Ã  cette liste pour
+ 	Ã©viter une Â« race condition Â» lors de l'exÃ©cution de
+ 	calife.out. InspirÃ© par la rÃ©vision 1.70 de su.c/FreeBSD.
  
 2003-10-04  Ollivier Robert  <roberto@keltia.freenix.fr>
 
@@ -74,14 +74,14 @@
 
 	* configure.in: reconnaissance de MacOS X/Darwin.
 
-	* README: mise à jour.
+	* README: mise Ã  jour.
 
 2003-07-28  Ollivier Robert  <roberto@caerdonn.eurocontrol.fr>
 
 	* 2.8.4-p8.
 
 	* calife.c,db.c,util.c: renommage de la variable "log" en
-	"logfile" pour 	éviter des warnings de gcc 3.3 pour lequel "log"
+	"logfile" pour 	Ã©viter des warnings de gcc 3.3 pour lequel "log"
 	est maintenant une fonction "nuiltin". (Thomas Quinot via un patch
 	incomplet venant de Debian #194874).
 
@@ -89,39 +89,39 @@
 
 	* 2.8.4-p7.
 
-	* config.guess,config.sub: versions mises à jour.
+	* config.guess,config.sub: versions mises Ã  jour.
 
 2003-01-12  Ollivier Robert  <roberto@keltia.freenix.fr>
 
 	* 2.8.4-p6.
 
-	* config.sub: intégration support FreeBSD/IA-64 dans configure.
+	* config.sub: intÃ©gration support FreeBSD/IA-64 dans configure.
 
 2002-10-14  Ollivier Robert  <roberto@caerdonn.eurocontrol.fr>
 
 	* 2.8.4-p5.
 
-	* util.c(die): passage du mauvais paramètre à va_end().
+	* util.c(die): passage du mauvais paramÃ¨tre Ã  va_end().
 	(Laurent Wacrenier).
 
 2002-08-08  Ollivier Robert  <roberto@keltia.freenix.fr>
 
 	* 2.8.4-p4.
 	
-	* calife.c(main): modification de la liste de caractères autorisés
+	* calife.c(main): modification de la liste de caractÃ¨res autorisÃ©s
 	dans un nom de login (Erwan David).
 
-	* conf.h: passage de MAXLOGNAME à 16 (Erwan David).
+	* conf.h: passage de MAXLOGNAME Ã  16 (Erwan David).
 
 2002-08-02  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-	* db.c: Fix pour les éditeurs ne mettant pas un \n à la dernière
+	* db.c: Fix pour les Ã©diteurs ne mettant pas un \n Ã  la derniÃ¨re
 	ligne (Erwan David)
 
 2002-01-21  Ollivier Robert  <roberto@caerdonn.eurocontrol.fr>
 
 	* config.h.in,configure.in: sous Debian/IA64, crypt(3) n'est
-	défini que si _XOPEN_SOURCE l'est (Thomas Quinot).
+	dÃ©fini que si _XOPEN_SOURCE l'est (Thomas Quinot).
 
 2001-12-10  Ollivier Robert  <roberto@caerdonn.eurocontrol.fr>
 
@@ -137,9 +137,9 @@
 	sur SunOS et Linux.
 
 	* configure.in,configure,acconfig.h,conf.h: ajout de la recherche
-	de libgen.h et HAVE_ETC_SHADOW. Regénération de configure.
+	de libgen.h et HAVE_ETC_SHADOW. RegÃ©nÃ©ration de configure.
 
-	* Fix pour Linux/SunOS dans conf.h Trouvé par T. Quinot.
+	* Fix pour Linux/SunOS dans conf.h TrouvÃ© par T. Quinot.
 	
 2000-11-14  Ollivier Robert  <roberto@keltia.freenix.fr>
 
@@ -147,7 +147,7 @@
 
 	* calife.c: sort si stdin n'est pas un tty (Laurent Wacrenier - lwa).
 
-	* README: mise à jour des adresses mail et ajout de lwa.
+	* README: mise Ã  jour des adresses mail et ajout de lwa.
 
 1999-08-20  Ollivier Robert  <roberto@keltia.freenix.fr>
 
@@ -155,8 +155,8 @@
 
 1999-08-19  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-	* configure.in: corrige la manière de reconnaitre l'édition de
-	liens dynamique de l'exécutable. Solaris & HP-UX ne supporte pas
+	* configure.in: corrige la maniÃ¨re de reconnaitre l'Ã©dition de
+	liens dynamique de l'exÃ©cutable. Solaris & HP-UX ne supporte pas
 	la compilation statique (Denis Ducamp).
 	
 
@@ -165,11 +165,11 @@
 	* 2.8.4-RELEASE
 
 	* configure.in: Pas de compilation statique sur Solaris. Les
- 	drapeaux ne sont plus forcés sur HP-UX, l'administrateur décide de
+ 	drapeaux ne sont plus forcÃ©s sur HP-UX, l'administrateur dÃ©cide de
  	quels drapeaux a besoin le compilateur (Francois Berjon).
 
-	* db.c: donne à crypt(3) le mot de passe complet plutôt que juste
-	la "salt". Ca ne gène pas les crypt(3) basés sur le DES et aide
+	* db.c: donne Ã  crypt(3) le mot de passe complet plutÃ´t que juste
+	la "salt". Ca ne gÃ¨ne pas les crypt(3) basÃ©s sur le DES et aide
 	beaucoup pour les autres formes comme celles d'OpenBSD et de Linux 
 	(Denis Ducamp).
 
@@ -180,7 +180,7 @@
 
 	* 2.8.3-RELEASE
 	
-	* README: mise à jour.
+	* README: mise Ã  jour.
 
 	* configure.in, configure: reconnaissance enfin correcte des
 	shadow passwords des diverses versions de Linux.
@@ -190,25 +190,25 @@
 	* 2.8.2-RELEASE
 	
 	* calife.c: changement du copyright pour 1999. Correction bug
-	d'allocation mémoire trouvé par Thomas Quinot
+	d'allocation mÃ©moire trouvÃ© par Thomas Quinot
 	<thomas@cuivre.fr.eu.org>.
 
-	* config.guess,config.sub: mise à jour avec une version
- 	récente. Propagation du patch pour reconnaitre les Sparcbook S2
+	* config.guess,config.sub: mise Ã  jour avec une version
+ 	rÃ©cente. Propagation du patch pour reconnaitre les Sparcbook S2
  	(config.guess).
 
 1999-05-04  Ollivier Robert  <roberto@keltia.freenix.fr>
 
 	* configure.in, Makefile.in: tente de trouver le bon groupe qui
-	sera utilisé lors de l'installation en fonction de l'OS. Calife
+	sera utilisÃ© lors de l'installation en fonction de l'OS. Calife
 	est uniquement setuid et non pas set{uid,gid}.
 
 1999-05-03  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-	* calife.c: Corrige la vérification des droits du script exécuté à 
+	* calife.c: Corrige la vÃ©rification des droits du script exÃ©cutÃ© Ã  
 	la fin d'une session.
 
-	* db.c, conf.h: Support amélioré de Linux et de ses shadow
+	* db.c, conf.h: Support amÃ©liorÃ© de Linux et de ses shadow
 	passwords. Par Thomas Quinot <thomas@cuivre.fr.eu.org>.
 
 Fri Feb 14 19:06:08 1997  Ollivier Robert  <roberto@keltia.freenix.fr>
@@ -216,19 +216,19 @@ Fri Feb 14 19:06:08 1997  Ollivier Robert  <roberto@keltia.freenix.fr>
 	* 2.8.1-RELEASE
 	
 	* configure.in: Ajout d'une nouvelle option (--disable-shadow)
- 	pour permettre de ne pas utiliser getspnam(3) même s'il existe
- 	sur des systèmes Linux.
+ 	pour permettre de ne pas utiliser getspnam(3) mÃªme s'il existe
+ 	sur des systÃ¨mes Linux.
 
-	* acconfig.h: ajout d'une entrée pour UNUSED_SHADOW.
+	* acconfig.h: ajout d'une entrÃ©e pour UNUSED_SHADOW.
 	* db.c: prise en compte de UNUSED_SHADOW.
 
 Sat Oct 26 15:16:12 1996  Ollivier Robert  <roberto@keltia.freenix.fr>
 
 	* 2.8-RELEASE
 	
-	* calife.c: Support de "-" comme premier paramètre pour faire
+	* calife.c: Support de "-" comme premier paramÃ¨tre pour faire
 	relire les fichiers d'init (.login,.profile)
-	* Meilleur contrôle sur le fichier out_rc.
+	* Meilleur contrÃ´le sur le fichier out_rc.
 	* Correction bug si argv[1] == '-'.
 
 Sun Oct 29 23:01:28 1995  Ollivier Robert  <roberto@keltia.freenix.fr>
@@ -236,13 +236,13 @@ Sun Oct 29 23:01:28 1995  Ollivier Robert  <roberto@keltia.freenix.fr>
 	* 2.8.beta4
 	
         * configure.in: Ajout d'une nouvelle option (--with-program=NAME)
-        pour changer le nom du binaire à l'installation (le défaut revient
-        à "calife").
+        pour changer le nom du binaire Ã  l'installation (le dÃ©faut revient
+        Ã  "calife").
         
-        * Makefile.in: changement de $(PROGRAM) en $(IPROGRAM) la où il
-        faut pour la modif sus-nommée.
+        * Makefile.in: changement de $(PROGRAM) en $(IPROGRAM) la oÃ¹ il
+        faut pour la modif sus-nommÃ©e.
         
-        * calife.c(main), db.c(open_databases): déplacement de l'appel à
+        * calife.c(main), db.c(open_databases): dÃ©placement de l'appel Ã 
         openlog(3) avant le test de l'existence de l'utilisateur afin
         d'avoir le nom correct dans le log.
 
@@ -252,7 +252,7 @@ Sat Oct 28 15:00:18 1995  Ollivier Robert  <roberto@keltia.freenix.fr>
         
         * configure.in : Ajout de deux nouvelles options pour GCC
         (--enable-warnings et --enable-pedantic) et changement de syntaxe
-        pour une autre (--disable-password). Recherche de quelques entêtes
+        pour une autre (--disable-password). Recherche de quelques entÃªtes
         en plus.
 
         * calife.c(exec_shell): Correction d'un bug dans l'insertion de
@@ -265,12 +265,12 @@ Sun Oct 22 21:48:19 1995  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * 2.8.beta
         
-        * calife.c: correction d'un bug stupide de "==" à la place de
-        "=". Trouvé par Nat.
+        * calife.c: correction d'un bug stupide de "==" Ã  la place de
+        "=". TrouvÃ© par Nat.
 
-        * db.c: réécriture de la lecture de calife.auth pour la
-        reconnaissance d'un shell possible.  On évite dorénavant de
-        modifier un pointeur retourné par malloc(3) -- trouvé grâce à
+        * db.c: rÃ©Ã©criture de la lecture de calife.auth pour la
+        reconnaissance d'un shell possible.  On Ã©vite dorÃ©navant de
+        modifier un pointeur retournÃ© par malloc(3) -- trouvÃ© grÃ¢ce Ã 
         Philippe et au malloc de Poul-Henning Kamp dans FreeBSD 2.2. 
 
         * README: corrections mineures par Nat. Ajout de Philippe comme
@@ -280,21 +280,21 @@ Sat Oct 21 11:30:53 1995 Ollivier Robert <roberto@keltia.freenix.fr>
 
         * alpha5-2.8
         
-        * conf.h: définition de ADMIN_LOG si syslog(3) n'existe pas. 
+        * conf.h: dÃ©finition de ADMIN_LOG si syslog(3) n'existe pas. 
 
         * db.c: utilisation de getspnam  uniquement si HAVE_SHADOW_H et si
         HAVE_GETSPNAM. Je pensais  que HAVE_SHADOW_H =>  HAVE_GETSPNAM, ce
-        qui n'est pas vrai  de certains Linux  (ils se  reconnaîtront) qui
+        qui n'est pas vrai  de certains Linux  (ils se  reconnaÃ®tront) qui
         ont un shadow.h pour faire joli.
 
-        * Makefile.in: correction de l'utilisation de calife à la place de
+        * Makefile.in: correction de l'utilisation de calife Ã  la place de
         $PROGRAM.
 
 Fri Oct 20 23:31:33 1995 Ollivier Robert <roberto@keltia.freenix.fr>
 
         * alpha4-2.8
         
-        * configure.in,conf.h,acconfig.h:  test de NeXTStep qui à l'entête
+        * configure.in,conf.h,acconfig.h:  test de NeXTStep qui Ã  l'entÃªte
         <sys/wait.h> mais qui  utilise "union wait". Potentiellement aussi
         sur d'autres vieilles architectures. 
 
@@ -306,37 +306,37 @@ Wed Oct 18 01:13:06 1995 Ollivier Robert <roberto@keltia.freenix.fr>
         
         * README: modifications mineures de Nat. 
 
-        * Makefile.in: corrections  des petites bêtises, changement de nom
-        pour calife dont le binaire continuera à s'appeller "...". 
+        * Makefile.in: corrections  des petites bÃªtises, changement de nom
+        pour calife dont le binaire continuera Ã  s'appeller "...". 
 
         * accconfig.h: nouveau  fichier   qui regroupe les   variables  et
-        commentaires qui ne sont pas gérés par des macros internes GNU. Ca
-        permet de générer config.h.in par autoheader. 
+        commentaires qui ne sont pas gÃ©rÃ©s par des macros internes GNU. Ca
+        permet de gÃ©nÃ©rer config.h.in par autoheader. 
 
-        * conf.h: WANT_SYS_WAIT ne sert à rien pour SunOS.
+        * conf.h: WANT_SYS_WAIT ne sert Ã  rien pour SunOS.
 
-        * configure.in: test de la validité  de set/getrlimit en cherchant
-        le symbole qui nous intéresse (HP-UX...). 
+        * configure.in: test de la validitÃ©  de set/getrlimit en cherchant
+        le symbole qui nous intÃ©resse (HP-UX...). 
 
-        * Compilation sans problème sur un AIX 3.2.5 ! 
-        * Compilation sans problème sur un Linux avec -lshadow.
+        * Compilation sans problÃ¨me sur un AIX 3.2.5 ! 
+        * Compilation sans problÃ¨me sur un Linux avec -lshadow.
 
 Sun Oct 15 19:46:04 1995 Ollivier Robert <roberto@keltia.freenix.fr>
 
         * alpha-2.8
         
-        * calife.c,db.c,util.c: changement de quelques symboles à cause de
+        * calife.c,db.c,util.c: changement de quelques symboles Ã  cause de
         l'utilisation de GNU autoconf.  On peut faire relire les  fichiers
-        .login/.profile en précisant "-" avant le nom d'utilisateur. 
+        .login/.profile en prÃ©cisant "-" avant le nom d'utilisateur. 
 
-        * conf.h: presque toutes les définitions disparaissent au profit
+        * conf.h: presque toutes les dÃ©finitions disparaissent au profit
         du nouveau fichier config.h.in.
         
         * configure,configure.in,config.sub,config.guess,Makefile.in:
-        nouveaux fichiers venant de GNU autoconf. Insertion des règles
-        correspondantes dans Makefile.in (à compléter).
+        nouveaux fichiers venant de GNU autoconf. Insertion des rÃ¨gles
+        correspondantes dans Makefile.in (Ã  complÃ©ter).
         
-        * calife.1, calife.auth.5: sont remplacés par calife.1.in et
+        * calife.1, calife.auth.5: sont remplacÃ©s par calife.1.in et
         calife.auth.5.in.
         
         * ADMIN_DB devient AUTH_CONFIG_FILE et CALIFE_OUT devient
@@ -346,26 +346,26 @@ Sun Oct 15 19:46:04 1995 Ollivier Robert <roberto@keltia.freenix.fr>
         Makefile.linux-spwd, Makefile.HPUX: disparaissent. Makefile.bsd
         reste pour FreeBSD si l'utilisateur le veut.
         
-        * README: mise à jour.
+        * README: mise Ã  jour.
         
 Sat Oct 14 01:24:03 1995 Ollivier Robert <roberto@keltia.freenix.fr>
 
         * release 2.7.2
         
-        * calife.c,db.c,util.c: rajout de contrôles supplémentaires,
-        déplacement de code.
+        * calife.c,db.c,util.c: rajout de contrÃ´les supplÃ©mentaires,
+        dÃ©placement de code.
 
-        * util.c: rajout de die() par Nat Makarévitch, éditée pour
-        s'adapter à mon style et à stdarg à la place de varargs.
+        * util.c: rajout de die() par Nat MakarÃ©vitch, Ã©ditÃ©e pour
+        s'adapter Ã  mon style et Ã  stdarg Ã  la place de varargs.
 
         * conf.h: globalisation de ADMIN_DB, ajout du prototype de die(). 
 
-        * global: préparation à la 2.8 qui utilisera GNU configure.
+        * global: prÃ©paration Ã  la 2.8 qui utilisera GNU configure.
 
 Sat Sep 30 19:40:19 1995  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * calife.c: correction d'un bug introduit par les contrôles
-        supplémentaires sur le nom d'utilisateur; ajout d'un '\0'. Remise
+        * calife.c: correction d'un bug introduit par les contrÃ´les
+        supplÃ©mentaires sur le nom d'utilisateur; ajout d'un '\0'. Remise
         en place des anciennes valeurs de rlimit avant l'exec final.
 
 Sun Jul 23 23:55:24 1995  Ollivier Robert  <roberto@keltia.frmug.fr.net>
@@ -379,32 +379,32 @@ Mon Apr 24 03:17:00 1995  Ollivier Robert  <roberto@keltia.frmug.fr.net>
 
         * release 2.7
         
-        * calife.c,db.c: réintroduction des listes de logins vers lesquels
+        * calife.c,db.c: rÃ©introduction des listes de logins vers lesquels
         un utilisateur de calife a le droit d'utiliser calife.
 
-        * README: mise à jour.
+        * README: mise Ã  jour.
 
-        * calife.1,calife.auth.5: mise à jour pour les listes.
+        * calife.1,calife.auth.5: mise Ã  jour pour les listes.
 
 Sun Mar 12 22:09:36 1995  Ollivier Robert  <roberto@keltia.frmug.fr.net>
 
         * release 2.6.6
 
-        * conf.h,util.c: linux a déjà une fonction basename.
+        * conf.h,util.c: linux a dÃ©jÃ  une fonction basename.
 
-        * README: mise à jour par Nathanaël Makarevitch.
+        * README: mise Ã  jour par NathanaÃ«l Makarevitch.
 
         * calife.1.txt,calife.auth.5.txt: versions texte des pages de
         manuel.
 
 Sat Jan 28 00:36:51 1995  Ollivier Robert  <roberto@keltia.frmug.fr.net>
 
-        * Makefile.Solaris: nouveau fichier pour Solaris 2.x (testé avec
+        * Makefile.Solaris: nouveau fichier pour Solaris 2.x (testÃ© avec
         la 2.4).
 
-        * conf.h: standardisation de ADMIN_DB à /etc/calife.auth.
+        * conf.h: standardisation de ADMIN_DB Ã  /etc/calife.auth.
 
-        * README: mise à jour.
+        * README: mise Ã  jour.
 
 Wed Jan 11 01:32:48 1995  Ollivier Robert  <roberto@keltia.frmug.fr.net>
 
@@ -417,7 +417,7 @@ Wed Jan 11 01:32:48 1995  Ollivier Robert  <roberto@keltia.frmug.fr.net>
 
         * calife.1: mention de /etc/calife.out.
 
-        * README: mise à jour.
+        * README: mise Ã  jour.
 
         * Makefile.*: nettoyage et ajout du symbole CALIFE_OUT.
 
@@ -425,13 +425,13 @@ Fri Jan  6 01:52:45 1995  Ollivier Robert  <roberto@keltia.frmug.fr.net>
 
         * release 2.6.4
 
-        * conf.h: modifications pour HPUX et ajout d'une entrée pour
+        * conf.h: modifications pour HPUX et ajout d'une entrÃ©e pour
         FreeBSD (2.x).
 
-        * calife.c,db.c: utilisation de setresuid(2) sur HPUX à la place
+        * calife.c,db.c: utilisation de setresuid(2) sur HPUX Ã  la place
         de seteuid(2) qui n'existe pas.
 
-        * README: mise à jour.
+        * README: mise Ã  jour.
 
         * Makefile.HPUX: nouveau fichier.
 
@@ -440,7 +440,7 @@ Wed Sep 28 20:27:57 1994  Ollivier Robert  <roberto@keltia.frmug.fr.net>
         * release 2.6.3
 
         * db.c: incorporation des changements de Laurent Chemla
-        (laurent@brasil.frmug.fr.net) pour les systèmes Linux utilisant
+        (laurent@brasil.frmug.fr.net) pour les systÃ¨mes Linux utilisant
         des "shadow passwords" comme SVR4 (struct spwd and al.).
 
         * Makefile.linux,Makefile.linux-spwd: nouveaux Makefile pour Linux
@@ -448,25 +448,25 @@ Wed Sep 28 20:27:57 1994  Ollivier Robert  <roberto@keltia.frmug.fr.net>
 
         * README: nouveau fichier.
 
-        * Makefile.SunOS: ajout d'un message à propos des pages de manuel.
+        * Makefile.SunOS: ajout d'un message Ã  propos des pages de manuel.
 
 Mon Sep 26 00:20:07 1994  Ollivier Robert  <roberto@keltia.frmug.fr.net>
 
         * release 2.6.2
 
         * conf.h,calife.c: Modification du switch NO_UGLY_QUIRK en
-        NOSETUID_SHELL (logique inverse) et enlèvement de ce switch pour
+        NOSETUID_SHELL (logique inverse) et enlÃ¨vement de ce switch pour
         Linux qui n'en a pas besoin.
 
         * release 2.6.1
 
         * calife.c: modification pour wait(2). Changement du #ifdef AIX3
-        en !defined(AIX3) && !defined(HAVE_INT_WAIT) pour les système sans
-        union. Changement dans les tests pour .calife.out (le bug était
+        en !defined(AIX3) && !defined(HAVE_INT_WAIT) pour les systÃ¨me sans
+        union. Changement dans les tests pour .calife.out (le bug Ã©tait
         qu'il protestait s'il ne trouvait pas de .calife.out).
 
         * conf.h: changement pour SunOS 4.*, plus de YP, demande
-        <sys/time.h> si pas de YP d'où le symbole WANT_SYS_TIME.
+        <sys/time.h> si pas de YP d'oÃ¹ le symbole WANT_SYS_TIME.
 
         * Makefile.SunOS: changement dans les options DEBUG.
 
@@ -475,13 +475,13 @@ Sun Sep 25 20:49:20 1994  Ollivier Robert  <roberto@keltia.frmug.fr.net>
         * release 2.6
 
         * Makefile.bsd: modification de DESTDIR en BINDIR et ajout d'une
-        règle beforeinstall.
+        rÃ¨gle beforeinstall.
 
-        * calife.c: ajout du support pour un fichier exécuté à la fin de
-        la session appelé .calife.out dans le catalogue de
-        l'utilisateur. Le fichier pourra éventuellement être général.
+        * calife.c: ajout du support pour un fichier exÃ©cutÃ© Ã  la fin de
+        la session appelÃ© .calife.out dans le catalogue de
+        l'utilisateur. Le fichier pourra Ã©ventuellement Ãªtre gÃ©nÃ©ral.
 
-        * conf.h: ajout du nom du fichier exécuté à la fin : .calife.out.
+        * conf.h: ajout du nom du fichier exÃ©cutÃ© Ã  la fin : .calife.out.
 
         * Makefile, Makefile.SunOS, Makefile.bsd: modification pour
         inclure les pages de manuel pour calife(1) et calife.auth(5).
@@ -489,16 +489,16 @@ Sun Sep 25 20:49:20 1994  Ollivier Robert  <roberto@keltia.frmug.fr.net>
         * calife.1, calife.auth.5: nouveaux fichiers.
 
         * conf.h: changement pour SunOS qui n'a pas besoin de
-        NO_UGLY_QUIRK et ajout du paramètre HAVE_INT_WAIT pour les
-        systèmes n'ayant pas ``union wait''.
+        NO_UGLY_QUIRK et ajout du paramÃ¨tre HAVE_INT_WAIT pour les
+        systÃ¨mes n'ayant pas ``union wait''.
 
         * calife.c: ajout des #ifdef pour HAVE_INT_WAIT.
 
         * version 2.5.2: la 2.5.1 incluait les changements pour SunOS mais
         pas les manuels.
 
-        * Passage à CVS au lieu de RCS ce qui fait que les numéros de
-        version n'ont plus rien à voir avec la "release" de calife.
+        * Passage Ã  CVS au lieu de RCS ce qui fait que les numÃ©ros de
+        version n'ont plus rien Ã  voir avec la "release" de calife.
 
 Mon Feb  7 23:00:11 1994  Ollivier Robert  (roberto@keltia.frmug.fr.net)
 
@@ -572,11 +572,11 @@ Sun Aug 15 22:27:22 1993  Ollivier Robert  (roberto@keltia.frmug.fr.net)
 
 Wed Jun 23 23:54:27 1993  Ollivier Robert  (roberto@keltia)
 
-		* conf.h (linux): ajout des modifs de René pour le portage Linux.
+		* conf.h (linux): ajout des modifs de RenÃ© pour le portage Linux.
 
 Mon Jun 21 23:26:44 1993  Ollivier Robert  (roberto@keltia)
 
-		* portage linux par René...
+		* portage linux par RenÃ©...
 
 Fri Jun 11 23:13:25 1993  Ollivier Robert  (roberto@keltia)
 
