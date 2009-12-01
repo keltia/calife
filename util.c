@@ -8,7 +8,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: util.c,v 88c4f70961ac 2008/08/19 15:34:11 roberto $";
+static const char * rcsid = "@(#) $Id: util.c,v 9c712aa88821 2009/12/01 16:29:26 roberto $";
 #endif
 
 #include "config.h" /* configure */
@@ -37,10 +37,10 @@ basename (char * filename)
 }
 #endif /* HAVE_BASENAME */
 
-/** Alloue de la mémoire par malloc, la met à zéro et renvoie le pointeur.
- ** Sort si plus de mémoire.
+/** Alloue de la mÃ©moire par malloc, la met Ã  zÃ©ro et renvoie le pointeur.
+ ** Sort si plus de mÃ©moire.
  **
- ** Parametres:     num         size_t  nombre de blocs à allouer
+ ** Parametres:     num         size_t  nombre de blocs Ã  allouer
  **                 size        size_t  taille d'un bloc
  **
  ** Retourne :      ptr         void *  un pointeur sur la zone
@@ -58,12 +58,12 @@ xalloc (size_t size)
     return ptr;
 }
 
-/** Sort du programme avec le message et le code de retour spécifiés.
+/** Sort du programme avec le message et le code de retour spÃ©cifiÃ©s.
  **
- ** Contribué par Nat Makarévitch <nat@nataa.frmug.fr.net>
- ** Modifiée pour se conformer à mes usages :-)
+ ** ContribuÃ© par Nat MakarÃ©vitch <nat@nataa.frmug.fr.net>
+ ** ModifiÃ©e pour se conformer Ã  mes usages :-)
  **
- ** Paramètres:     err         code d'erreur de exit(3)
+ ** ParamÃ¨tres:     err         code d'erreur de exit(3)
  **                 fmt         format du message
  **                 ...         les arguments
  **

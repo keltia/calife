@@ -124,7 +124,7 @@
  **                   rlimit et la gestion des uid/euid/ssuid. Nouvelle option
  **                   HAVE_RLIMIT.
  **                 * Modification de la gestion de wait(2) : ajout du #define
- **                   HAVE_INT_WAIT pour les systèmes ayant ``int status'' et
+ **                   HAVE_INT_WAIT pour les systÃ¨mes ayant ``int status'' et
  **                   non pas ``union wait status''.
  ** 2.6 25/09/94    * Ajout de l'execution d'un fichier .calife.out a la fin
  **                   de la session s'il existe. Cette modification s'inscrit
@@ -132,11 +132,11 @@
  **                 * Changement de NO_UGLY_QUIRK en NOSETUID_SHELL (inverse)
  **                 * Remplacement des seteuid(2) en setresuid(2) sur HP-UX.
  **                 * Fin du support YP.
- **                 * .calife.out devient global (plus intéressant). Le nom
- **                   est spécifié dans le Makefile, le symbole étant
- **                   CALIFE_OUT (par défaut /etc/calife.out)
+ **                 * .calife.out devient global (plus intÃ©ressant). Le nom
+ **                   est spÃ©cifiÃ© dans le Makefile, le symbole Ã©tant
+ **                   CALIFE_OUT (par dÃ©faut /etc/calife.out)
  ** 2.7 23/04/95    * Rajout des listes d'utilisateurs -- pour un client
- **                   mais peut être pratique.
+ **                   mais peut Ãªtre pratique.
  **                   Le format est le suivant :
  **                   login[:shell][:user1,user2,...,usern]
  **                 * Elimination d'allocation statiques -> xalloc
@@ -146,47 +146,47 @@
  **                 * Support de la version de crypt(3) utilisant MD5 sur
  **                   FreeBSD 2.x.
  **                 * Fixe un bug dans la recopie de user_to_be avec un '\0'
- **                   à la fin. Signalé par Marc Baudoin.
+ **                   Ã  la fin. SignalÃ© par Marc Baudoin.
  **                 * utilisation de l'ancienne valeur de RLIMIT_CORE juste
  **                   avant l'exec du shell.
  **                 * Ajout d'un hack pour contourner un bug de SSH sur SunOS.
  **                   Si getlogin(3) renvoie NULL, on regarde dans le fichier
  **                   utmp.
- **                 * Ajout des appels à die() aux points statégiques.
- **                 * Réorganisation des commentaires, déplacement de code.
- ** 2.8 15/10/95    * Passage à GNU autoconf avec changement de divers
+ **                 * Ajout des appels Ã  die() aux points statÃ©giques.
+ **                 * RÃ©organisation des commentaires, dÃ©placement de code.
+ ** 2.8 15/10/95    * Passage Ã  GNU autoconf avec changement de divers
  **                   symboles.
- **                 * Support de "-" comme premier paramètre pour faire relire
+ **                 * Support de "-" comme premier paramÃ¨tre pour faire relire
  **                   les fichiers d'init (.login,.profile)
- **                 * Meilleur contrôle sur le fichier out_rc.
+ **                 * Meilleur contrÃ´le sur le fichier out_rc.
  **                 * Correction bug si argv[1] == '-'.
- **                 * Correction bug d'allocation mémoire, trouvé par
+ **                 * Correction bug d'allocation mÃ©moire, trouvÃ© par
  **                   Thomas Quinot.
- **                 * Calife exige un tty associé à stdin, trouvé par
+ **                 * Calife exige un tty associÃ© Ã  stdin, trouvÃ© par
  **                   Laurent Wacrenier.
  **                 * Compilation sur Hurd + simplification des strcpy.
  **                   Thomas Quinot.
- **                 * Utilise utmp aussi sous Linux et amélioration du
+ **                 * Utilise utmp aussi sous Linux et amÃ©lioration du
  **                   traitement.
- **                 * Utilise un code analogue à su(8) pour pallier aux
- **                   déficiences de getlogin(3).
+ **                 * Utilise un code analogue Ã  su(8) pour pallier aux
+ **                   dÃ©ficiences de getlogin(3).
  **                 * Contourne un bug de getpass(3) sur Linux/glibc.
  **                 * /etc/calife.out devient optionnel.
- **                 * il est possible de spécifier un group dans calife.auth
+ **                 * il est possible de spÃ©cifier un group dans calife.auth
  **                   via @group:...
  **                 * syslog(3) est maintenant requis.
- ** 3.0 04/05/05    * PAMification de calife, PAM est désormais *obligatoire*
- **                   les gens ne l'ayant pas sont invités à rester à 2.8.
+ ** 3.0 04/05/05    * PAMification de calife, PAM est dÃ©sormais *obligatoire*
+ **                   les gens ne l'ayant pas sont invitÃ©s Ã  rester Ã  2.8.
  **                 * Le mode RELAXED sans mot de passe disparait.
  **/
 
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 4c4c675fe759 2009/12/01 15:37:29 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 9c712aa88821 2009/12/01 16:29:26 roberto $";
 #endif
 
-#include "config.h"     /* généré par configure */
+#include "config.h"     /* gÃ©nÃ©rÃ© par configure */
 
                         /* fichier de configuration */
 #include "conf.h"
