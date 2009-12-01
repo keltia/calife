@@ -1,7 +1,29 @@
+2009-12-01  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+        * 3.0.1
+
+        * All files: Re-encode as UTF-8.
+
+        * ChangeLog, README, README.en: updated.
+
+        * gcc 4.2.1 seems to prefer NULL instead of 0 for execl*(2).
+        Clang does not care either way apparently.
+
+        * MacOS X 10.6 has all the PAM .h stuff in security/ instead of pam/.
+        Remember to re-run configure.
+
+        * configure: regenerated with 10.6 autoconf.
+
+        * Update config.guess & config.sub to more modern versions.
+        Fixes Debian bug #558805.
+        Submitted by Christian Perrier <bubulle@kheops.frmug.org>
+
+        * mkvers.sh: removed.
+
 2009-04-08  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * calife.c,db.c,auth.c,conf.h: several changes related to the output
-        of the static analyzer from clang/llvm.
+        of the static analyzer from clang/llvm. Wraps around GET/RELEASE_ROOT.
 
 2008-11-22  Ollivier Robert  <roberto@keltia.freenix.fr>
 
@@ -42,15 +64,15 @@
 2007-10-22  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * acconfig.h,configure.in: PAM n'est pas obligatoire pour 
-        Solaris 2.10. Recherche de getpassphrase(3).
+        SolarisÂ 2.10. Recherche de getpassphrase(3).
 
 2007-10-22  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * 3.0pre8
 
         * db.c,configure.in: solaris 10 tronque les mots de pazsse via 
-        getpass(3), mise en place de l'utilisation de getpassphrase(3) à la 
-        place pour contourner le problème.
+        getpass(3), mise en place de l'utilisation de getpassphrase(3) Ã  la 
+        place pour contourner le problÃ¨me.
         Discussions avec Miguel Paiva (CS-SI)
 
 2007-06-26  Ollivier Robert  <roberto@keltia.freenix.fr>
@@ -74,21 +96,21 @@
 
         * 3.0preN
 
-        * Support PAM utilisable avec passage à la méthode d'authentification
-        traditionnelle si PAM ne passe pas. Inspiré par lukemftpd dans
+        * Support PAM utilisable avec passage Ã  la mÃ©thode d'authentification
+        traditionnelle si PAM ne passe pas. InspirÃ© par lukemftpd dans
         FreeBSD.
 
-        * db.c: initialise certaines variables pointant sur de la mémoire
-        allouée via malloc(3) pour éviter des segfaults sur Gentoo & Solaris
+        * db.c: initialise certaines variables pointant sur de la mÃ©moire
+        allouÃ©e via malloc(3) pour Ã©viter des segfaults sur Gentoo & Solaris
         (Denis Ducamp <Denis.Ducamp@hsc.fr>).
 
-        * calife.c: correction de la manière dont sont vérifiés les caractères
+        * calife.c: correction de la maniÃ¨re dont sont vÃ©rifiÃ©s les caractÃ¨res
         valides dans un nom d'utilisateur.
 
-        * db.c: got_pass a été définie deux fois par la copie de code, 
-        corrigé (problème signalé par Bertrand Petit).
+        * db.c: got_pass a Ã©tÃ© dÃ©finie deux fois par la copie de code, 
+        corrigÃ© (problÃ¨me signalÃ© par Bertrand Petit).
 
-        * Makefile: calife.auth-dist est maintenant installé même si le vrai
+        * Makefile: calife.auth-dist est maintenant installÃ© mÃªme si le vrai
         fichier existe.
 
 2005-05-30  Ollivier Robert  <roberto@keltia.freenix.fr>
