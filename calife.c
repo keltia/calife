@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 0b340bd3c882 2009/12/01 18:13:29 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v c67ec95b1aef 2009/12/02 00:21:50 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
@@ -240,7 +240,7 @@ main (int argc, char * argv [])
 #ifdef DEBUG
     fprintf (stderr, "Calife : How to become someone else legally\n"
                      "Distribute in respect of the GNU General Public Licence\n"
-                     "Copyright (c) 1991-2008 by Ollivier ROBERT\n");
+                     "Copyright (c) 1991-2010 by Ollivier ROBERT\n");
     fprintf (stderr, "Revision: %s", rcsid);
     fprintf (stderr, "Options: ");
     fprintf (stderr, "custom_shell, ");
