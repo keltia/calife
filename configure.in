@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 dnl
-dnl @(#) $Id: configure.in,v 5cef517b0f75 2009/12/01 15:38:17 roberto $
+dnl @(#) $Id: configure.in,v d58abe72e2af 2009/12/03 14:12:28 roberto $
 dnl
 
 AC_INIT(calife.c, [3.0], [roberto@keltia.freenix.fr])
@@ -50,6 +50,7 @@ case "$host" in
     with_pam=yes
     AC_DEFINE(WITH_PAM)
     CFLAGS="$CFLAGS -DOSX=106"
+    ;;
   *-apple-darwin*)
     os_darwin=yes
     WITH_PAM=yes
