@@ -3153,6 +3153,13 @@ fi
     $as_echo "#define WITH_PAM 1" >>confdefs.h
 
     ;;
+  *-apple-darwin10*)
+    os_darwin=yes
+    WITH_PAM=yes
+    with_pam=yes
+    $as_echo "#define WITH_PAM 1" >>confdefs.h
+
+    CFLAGS="$CFLAGS -DOSX=106"
   *-apple-darwin*)
     os_darwin=yes
     WITH_PAM=yes
