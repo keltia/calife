@@ -198,8 +198,9 @@ dans le répertoire pam/ de l'archive. Placer ce fichier dans /etc/pam.d (ou
 l'endroit demandé par votre implémentation de PAM) sous le nom « calife ».
 
 Il existe à l'heure actuelle deux fichiers :
-- macosx    pour les systèmes MacOS 10.3/Panther et 10.4/Tiger ;
-- freebsd5  pour les systèmes FreeBSD 5.x et 6.x.
+- macosx    pour les systèmes MacOS 10.3/Panther à 10.5/Leopard ;
+- macosx10  pour Mac OS X Snow Leopard 10.6 ;
+- freebsd5  pour les systèmes FreeBSD 5.x et supérieurs
 - solaris   pour Solaris 8, 9 et 10 (à insérer dans pam.conf)
 
 Pour utiliser LDAP/NIS et autres systèmes d'authentification, il faudra 
@@ -261,4 +262,4 @@ Denis Ducamp            <Denis.Ducamp@hsc.fr>
 
 et à tous ceux qui ont participé pour la mise au point et les tests.
 
-# $Id: README,v 2398eb5baa35 2009/12/01 16:33:51 roberto $
+# $Id: README,v 3c053a655692 2009/12/21 16:03:17 roberto $

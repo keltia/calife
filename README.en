@@ -175,7 +175,8 @@ In the pam/ subdirectory, you can find sample file for PAM configuration.
 Choose the one suited to your system and pace it either inside pam.conf
 (Solaris up to 9) or within the pam.d directory under the "calife" name.
 
-- macosx    For MacOS 10.3/Panther and up.
+- macosx    For MacOS X 10.3/Panther and up to 10.5/Leopard
+- macosx10  For MacOS X 10.6/Snow Leopard
 - freebsd5  For FreeBSD 5.x and up.
 - solaris   For Solaris 8, 9 et 10 (to be cut/pasted in pam.conf)
 - linux
@@ -232,4 +233,4 @@ Denis Ducamp            <Denis.Ducamp@hsc.fr>
 
 and all the unnamed ones that have participated to testing.
 
-# $Id: README.en,v 2398eb5baa35 2009/12/01 16:33:51 roberto $
+# $Id: README.en,v 3c053a655692 2009/12/21 16:03:17 roberto $
