@@ -4,7 +4,8 @@
 
         * All files: Re-encode as UTF-8.
 
-        * ChangeLog, README, README.en: updated.
+        * ChangeLog, README, README.en: updated.  Mention that Snow Leopard 
+        needs a different PAM file. pam/macosx10: new file.
 
         * calife.c,conf.h: gcc 4.2.1 seems to prefer NULL instead of 0 for
         execl*(2).  Clang does not care either way apparently.  Remove unused
