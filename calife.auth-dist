@@ -4,7 +4,8 @@
 #
 # name[:shell_to_be_run][:user1,user2,...,usern]
 #
-# $Id: //depot/security/calife/main/calife.auth-dist#3 $
+# $Id: calife.auth-dist,v c1cf7f18fe92 2012/01/03 12:35:08 roberto $
+archer
 fcb
 roberto:/bin/tcsh
 pb::guest,blaireau
