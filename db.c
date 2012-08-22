@@ -10,7 +10,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: db.c,v 5a1f3f02b317 2009/12/01 17:00:37 roberto $";
+static const char * rcsid = "@(#) $Id: db.c,v 29ff9dbb76a9 2012/08/22 08:49:25 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -214,7 +214,7 @@ verify_auth_info (char * name, char * user_to_be)
         /*
          * Analyze the shell candidate
          */
-        if ((*(line_shell) == '*'))   /* LOCKED ACCOUNT */
+        if (*(line_shell) == '*')   /* LOCKED ACCOUNT */
         {
             allowed = 0;
             goto end;
@@ -222,7 +222,7 @@ verify_auth_info (char * name, char * user_to_be)
         /*
          * look for pathname
          */
-        if ((*(line_shell) == '/'))
+        if (*(line_shell) == '/')
         {
             /*
              * Is this a real shell ?
