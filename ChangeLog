@@ -1,3 +1,8 @@
+2012-08-22  Ollivier Robert  <roberto@keltia.net>
+
+        * db.c: Silence a clang3 generated warning about ((...)) in if
+	statement.
+	
 2009-12-01  Ollivier Robert  <roberto@keltia.freenix.fr>
 
         * 3.0.1
