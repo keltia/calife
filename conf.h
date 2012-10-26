@@ -6,7 +6,7 @@
  **
  ** Copyright (c) 1991-2010 par O. ROBERT
  **
- ** @(#) $Id: conf.h,v 2db16132e2bd 2009/12/01 16:59:05 roberto $
+ ** @(#) $Id: conf.h,v 3b78f912d08d 2012/10/26 12:43:45 roberto $
  **/
 
 #ifndef CONF_H                  /* evite les includes multiples */
@@ -180,6 +180,9 @@ typedef struct cred_t cred_t;
   void authenticate_user (char *, char *, char *, char *);
   int verify_auth_info (char *, char *);
   void exec_shell (char *);
+#ifdef WITH_PAM
+  int auth_pam(struct passwd **, const char *);
+#endif
 # ifndef HAVE_BASENAME
   char * basename (char * file_name);
 # endif /* HAVE_BASENAME */
