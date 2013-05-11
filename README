@@ -240,8 +240,8 @@ satisfaisants.
 Tout commentaire, critique [constructive] et patches bienvenus à l'une des
 adresses suivantes :
 
-roberto@keltia.freenix.fr       (adresse privée maison)
-<http://dev.keltia.net/projects/calife>
+roberto@keltia.net       (adresse privée maison)
+Site: http://bitbucket.org/keltia/calife/
 
 _____________
 Remerciements
@@ -262,4 +262,4 @@ Denis Ducamp            <Denis.Ducamp@hsc.fr>
 
 et à tous ceux qui ont participé pour la mise au point et les tests.
 
-# $Id: README,v 3c053a655692 2009/12/21 16:03:17 roberto $
+# $Id: README,v f71e70cf2d35 2013/05/11 12:40:30 roberto $
