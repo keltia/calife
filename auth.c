@@ -9,7 +9,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: auth.c,v fa7c6a7fb291 2014/02/23 13:34:25 roberto $";
+static const char * rcsid = "@(#) $Id: auth.c,v 162282762a82 2014/02/23 14:05:29 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -131,7 +131,7 @@ int local_pwcheck (struct passwd * calife, char * user_to_be, \
     MESSAGE_1 ("Testing w/o PAM with got_pass = %d\n", got_pass);
 
     /* check arguments */
-    if (calife == NULL || calife ->pw_name)
+    if (calife == NULL || calife ->pw_name == NULL || calife->pw_name == "")
     {
         die(1, "Bad parameter for calife/calife->pw_name");
 	/*NOTREACHED*/	
