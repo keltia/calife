@@ -9,7 +9,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: auth.c,v 43b3e8e3085a 2014/02/23 13:33:41 roberto $";
+static const char * rcsid = "@(#) $Id: auth.c,v fa7c6a7fb291 2014/02/23 13:34:25 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -139,16 +139,10 @@ int local_pwcheck (struct passwd * calife, char * user_to_be, \
 
 #if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
     struct  spwd  * scalife;
-#endif
 
-    MESSAGE_1 ("Testing w/o PAM with got_pass = %d\n", got_pass);
-#if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
-
-    who = calife->pw_name;
     GET_ROOT;
-    scalife = getspnam (who);       /* null or locked password */
+    scalife = getspnam (calife->pw_name);       /* null or locked password */
     RELEASE_ROOT;
-
     /*
      * Goal is to manipulate only "calife", not both so if "scalife" is
      * valid, copy "scalife" interesting data into "calife"
