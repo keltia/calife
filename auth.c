@@ -9,7 +9,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: auth.c,v 0dcc27d2f900 2009/12/01 16:37:46 roberto $";
+static const char * rcsid = "@(#) $Id: auth.c,v b0e19aa3c07e 2014/02/23 13:16:29 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -48,14 +48,12 @@ static void get_user_passwd(char * user_pass, int l_size);
 void    
 authenticate_user (char * who, char * user_to_be, char * when, char * tty)
 {
-    int             i = 0, rval, md5_here = 0;
-    size_t          l_size = 0;
+    size_t  l_size = 0;
     
     struct  passwd  * calife;
 
     char    got_pass = AUTH_ERR;
-    char    * pt_pass, * pt_enc, 
-            * user_pass = NULL, * enc_pass = NULL, salt [10];
+    char    * user_pass = NULL;
 
     /*
      * returns long usually
@@ -67,7 +65,6 @@ authenticate_user (char * who, char * user_to_be, char * when, char * tty)
 #endif /* HAVE_WORKING_SYSCONF */    
 
     user_pass = (char *) xalloc (l_size);
-    enc_pass = (char *) xalloc (l_size);
 
      /*
       * become root again
@@ -111,7 +108,6 @@ authenticate_user (char * who, char * user_to_be, char * when, char * tty)
     }
 
     free (user_pass);
-    free (enc_pass);
 }
 
 /** local_pwcheck
