@@ -9,7 +9,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: auth.c,v b0e19aa3c07e 2014/02/23 13:16:29 roberto $";
+static const char * rcsid = "@(#) $Id: auth.c,v 43b3e8e3085a 2014/02/23 13:33:41 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -126,8 +126,16 @@ static
 int local_pwcheck (struct passwd * calife, char * user_to_be, \
                    char * user_pass, int l_size)
 {
-    char * pt_pass, * who;
-    int   i, rval, got_pass = AUTH_ERR, md5_here = 0;
+    int   i, got_pass = AUTH_ERR;
+
+    MESSAGE_1 ("Testing w/o PAM with got_pass = %d\n", got_pass);
+
+    /* check arguments */
+    if (calife == NULL || calife ->pw_name)
+    {
+        die(1, "Bad parameter for calife/calife->pw_name");
+	/*NOTREACHED*/	
+    }
 
 #if defined (HAVE_SHADOW_H) && defined (HAVE_GETSPNAM) && !defined(UNUSED_SHADOW)
     struct  spwd  * scalife;
@@ -160,7 +168,7 @@ int local_pwcheck (struct passwd * calife, char * user_to_be, \
 
     if (getuid () != 0)
     {
-        char    * pt_pass, * pt_enc, 
+        char    * pt_enc, 
                 * user_pass, * enc_pass, salt [10];
 
         user_pass = (char *) xalloc (l_size);
@@ -241,7 +249,7 @@ static
 int pam_pwcheck (struct passwd *calife, char * user_to_be, char * user_pass,\
                  int l_size)
 {
-    char * pt_pass, * who;
+    char  * who;
     int   i, rval, got_pass = AUTH_ERR;
 
 #ifdef WITH_PAM
