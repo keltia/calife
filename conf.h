@@ -6,7 +6,7 @@
  **
  ** Copyright (c) 1991-2010 par O. ROBERT
  **
- ** @(#) $Id: conf.h,v 2db16132e2bd 2009/12/01 16:59:05 roberto $
+ ** @(#) $Id: conf.h,v c7bd68780eea 2014/02/23 13:32:13 roberto $
  **/
 
 #ifndef CONF_H                  /* evite les includes multiples */
@@ -185,6 +185,9 @@ typedef struct cred_t cred_t;
 # endif /* HAVE_BASENAME */
   void * xalloc (size_t size);
   void die (int err, const char * fmt,...);
+#ifdef WITH_PAM
+  int  auth_pam(struct passwd **ppw, const char *pass);
+#endif
 
 #ifndef MAIN_MODULE
 extern  int     custom_shell;   /* modification du shell ? */
