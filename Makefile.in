@@ -1,6 +1,6 @@
 # Makefile pour calife(8)
 #
-# @(#) $Id: Makefile.in,v 8454656b738e 2014/02/23 13:39:23 roberto $
+# @(#) $Id: Makefile.in,v 62657218adf3 2014/05/22 22:01:50 roberto $
 #
 
 srcdir          = @srcdir@
@@ -28,7 +28,7 @@ INSTALL_DATA    = @INSTALL_DATA@
 GROFF           = @GROFF@
 MV              = @MV@
 RM              = @RM@
-BINGRP		    = @BINGRP@
+BINGRP		= @BINGRP@
 
 SHELL = /bin/sh
 
@@ -64,7 +64,6 @@ config.h: config.h.in config.status
 Makefile: Makefile.in
 
 $(PROGRAM):	$(OBJS) conf.h
-	@echo Compiling calife.
 	$(CC) $(LDFLAGS) $(OBJS) -o $(PROGRAM) $(LIBS) 
 
 clean:
@@ -75,12 +74,7 @@ distclean:  clean
 	$(RM) -f config.cache config.log config.status
 
 install:	$(PROGRAM)
-	@echo Saving old $(IPROGRAM)
-	@-(cd $(bindir) ; $(MV) $(IPROGRAM) $(IPROGRAM).old)
-	@echo Copying new $(PROGRAM) as $(IPROGRAM)
 	$(INSTALL) -o root -g $(BINGRP) -m 4755 $(PROGRAM) $(bindir)/$(IPROGRAM)
-	@/bin/ls -lF $(bindir)/$(IPROGRAM)
-	@echo Warning, man pages requires the BSD mandoc macro package
 	@$(INSTALL) -m 644 -o root -g $(BINGRP) calife.1 $(man1dir)
 	@$(INSTALL) -m 644 -o root -g $(BINGRP) calife.auth.5 $(man5dir)
 	echo Installing sample version of calife.auth in $(etcdir)
