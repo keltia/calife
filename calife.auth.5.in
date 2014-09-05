@@ -5,7 +5,7 @@
 .\" modification, are permitted under the GNU General Public Licence.
 .\" Look into the COPYING file.
 .\"
-.\" @(#) $Id: calife.auth.5.in,v 88c4f70961ac 2008/08/19 15:34:11 roberto $
+.\" @(#) $Id: calife.auth.5.in,v 25570e2f1dfc 2014/09/05 21:08:02 roberto $
 .\""
 .Dd September 25, 1994
 .Dt CALIFE.AUTH 5
@@ -23,7 +23,8 @@ follows:
 .Bl -tag -width shell -offset indent
 .It Ar name
 User's login name /
-.Ar @group .
+.Ar @group /
+.Ar %group .
 .It Ar shell
 User's shell
 .It Ar user1,user2,...,usern
@@ -46,7 +47,10 @@ to specify that any user in the given
 .Ar group
 is allowed to use
 .Nm calife
-to become root.
+to become root.  Alternative syntax using
+.Ar %group
+is also allowed just like
+.Nm sudo .
 .Pp
 The
 .Ar shell
@@ -82,6 +86,7 @@ is placed in
 fcb
 roberto:/bin/tcsh
 pb::guest,blaireau
+%wheel
 .Ed
 .Sh SEE ALSO
 .Xr calife 1 ,

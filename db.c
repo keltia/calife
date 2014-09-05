@@ -10,7 +10,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: db.c,v 29ff9dbb76a9 2012/08/22 08:49:25 roberto $";
+static const char * rcsid = "@(#) $Id: db.c,v 25570e2f1dfc 2014/09/05 21:08:02 roberto $";
 #endif
 
 #include "config.h"     /* GNU configure */
@@ -129,9 +129,9 @@ verify_auth_info (char * name, char * user_to_be)
         MESSAGE_1 ("Line read = |%s|\n", line);
         line_name = line;
         /*
-         * Look for a @ as first character (for groups)
+         * Look for a @ or % as first character (for groups)
          */
-        if (*line == '@')
+        if (*line == '@' || *line == '%')
         {
             group = strdup(line);
             group_name = strtok(group, ":");
