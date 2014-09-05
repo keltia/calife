@@ -8,7 +8,7 @@
  **/
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: util.c,v 0dcc27d2f900 2009/12/01 16:37:46 roberto $";
+static const char * rcsid = "@(#) $Id: util.c,v 0849dfe2ac8e 2014/09/05 19:06:54 roberto $";
 #endif
 
 #include "config.h" /* configure */
@@ -37,6 +37,24 @@ basename (char * filename)
 }
 #endif /* HAVE_BASENAME */
 
+/** Efface la mémoire de manière sécurisée
+ **
+ ** cf. http://www.daemonology.net/blog/2014-09-04-how-to-zero-a-buffer.html
+ **
+ ** Parametres:     buf		void *	pointeur vers la zone à effacer
+ **		    size	size_t	longueur à effacer
+ **
+ ** Retourne :	    rien
+ **/
+
+static void * (* const volatile memset_ptr)(void *, int, size_t) = memset;
+
+static void
+secure_memzero (void * buf, size_t size)
+{
+    (memset_ptr)(buf, '\0', size);
+}
+
 /** Alloue de la mémoire par malloc, la met à zéro et renvoie le pointeur.
  ** Sort si plus de mémoire.
  **
@@ -54,7 +72,7 @@ xalloc (size_t size)
     ptr = (void *) malloc (size);
     if (ptr == NULL)
         die (1, "No more memory.");
-    memset ((char *) ptr, '\0', size);
+    secure_memzero ((char *) ptr, size);
     return ptr;
 }
 
