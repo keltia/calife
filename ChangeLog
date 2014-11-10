@@ -1,8 +1,28 @@
+2014-11-10  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgtags:
+	Added tag 3.0.5 for changeset ee46e1fd4642
+	[2200d81bf270] [tip]
+
+	* config.guess, config.sub:
+	Update config.guess/sub to 2014/11/04 versions.
+	[ee46e1fd4642] [3.0.5]
+
+	* README-fr.md, README.md, pam/freebsd9:
+	Add a freebsd9 PAM configuration file for 9.x and up. Fix READMEs.
+
+	Submitted by: Dag-Erling Smørgrav <des@freebsd.org>
+	[f91e6350b459]
+
+	* ChangeLog:
+	Merge.
+	[3a061fcd5584]
+
 2014-09-05  Ollivier Robert  <roberto@keltia.net>
 
 	* .hgtags:
 	Added tag 3.0.4 for changeset 25570e2f1dfc
-	[0b9c5e950384] [tip]
+	[0b9c5e950384]
 
 	* calife.auth.5.in, db.c:
 	Add support for %group in calife.auth.
