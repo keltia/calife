@@ -1,130 +1,744 @@
+2014-03-20  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* conf.h:
+	Merge.
+	[b0fe97d87286] [tip]
+
+2014-02-23  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgtags:
+	Added tag 3.0.2 for changeset 162282762a82
+	[62a59249f305]
+
+	* auth.c:
+	Fix botched test.
+	[162282762a82] [3.0.2]
+
+	* .hgtags:
+	Added tag 3.0.2 for changeset 8454656b738e
+	[640962346f12]
+
+	* Makefile.in:
+	-Wall is default.
+	[8454656b738e]
+
+	* auth.c:
+	Remove one variable, merge two portions of code.
+	[fa7c6a7fb291]
+
+	* auth.c:
+	Remove unused variables (2nd pass). Add cheking on calife argument.
+	[43b3e8e3085a]
+
+	* conf.h:
+	Add prototype for auth_pam().
+	[c7bd68780eea]
+
+	* auth.c:
+	Remove unused variables (1st round).
+	[b0e19aa3c07e]
+
+2013-05-11  Ollivier Robert  <roberto@keltia.net>
+
+	* README, README-fr.md, README.en, README.md:
+	Move everything into Markdown.
+	[ab55a2307363]
+
+	* README, README.en:
+	Fix addresses/URL.
+	[f71e70cf2d35]
+
+2013-03-25  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgignore:
+	Add some directories from NetBeans.
+	[8ca4940b1cd0]
+
+2012-10-26  Ollivier Robert  <roberto@keltia.net>
+
+	* conf.h:
+	Add a prototype for auth_pam() (silence warning from clang).
+	[3b78f912d08d]
+
 2012-08-22  Ollivier Robert  <roberto@keltia.net>
 
-        * db.c: Silence a clang3 generated warning about ((...)) in if
-	statement.
-	
+	* ChangeLog:
+	Sync.
+	[0855d1578d53]
+
+	* Automated merge with
+	ssh://keltia.freenix.org//www/archives.keltia.net/htdocs/hg/calife-
+	pam
+	[2ad8a83a9e6f]
+
+	* db.c:
+	Remove warning about (( )) from clang.
+	[29ff9dbb76a9]
+
+2012-01-03  Ollivier Robert  <roberto@keltia.net>
+
+	* calife.auth-dist:
+	We do not want some people to be feeling left out :).
+	[c1cf7f18fe92]
+
+2009-12-21  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* .hgtags:
+	Added tag 3.0.1 for changeset f28c4191b823
+	[7df82707b063]
+
+	* ChangeLog:
+	Updated.
+	[f28c4191b823] [3.0.1]
+
+	* README, README.en, pam/macosx10:
+	OS X 10.6 has different PAM modules.
+	[3c053a655692]
+
+2009-12-11  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* configure:
+	Regenerate.
+	[933e238e8aa6]
+
+2009-12-03  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* configure.in:
+	Add a missing ;;.
+	[d58abe72e2af]
+
+	* configure:
+	Regenerate.
+	[5dc09f855c8c]
+
+2009-12-02  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* config.guess, config.sub:
+	Update these to 2009-11-19 versions.
+	[bc7001ab775f]
+
+	* config.guess, config.sub:
+	Update these to 2008 versions.
+	[5c531766b5c9]
+
+	* calife.c:
+	Fix copyright.
+	[c67ec95b1aef]
+
 2009-12-01  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * 3.0.1
+	* calife.c:
+	Remove space after \.
+	[0b340bd3c882]
 
-        * All files: Re-encode as UTF-8.
+	* calife.c:
+	Reorder and reformat.
+	[112c396b5525]
 
-        * ChangeLog, README, README.en: updated.  Mention that Snow Leopard 
-        needs a different PAM file. pam/macosx10: new file.
+	* calife.c:
+	Reorder.
+	[5c7f2d9fb968]
 
-        * calife.c,conf.h: gcc 4.2.1 seems to prefer NULL instead of 0 for
-        execl*(2).  Clang does not care either way apparently.  Remove unused
-        logfile global variable.
+	* calife.c:
+	Remove unnecessary #ifdef.
+	[a9a640c3c893]
 
-        * db.c,conf.h: Promote fp from global variable to global static in
-        db.c.  Rewrite open_databases to be cleaner and remove access(2).
+	* calife.c:
+	Untabify.
+	[b6725dd2e87f]
 
-        * MacOS X 10.6 has all the PAM .h stuff in security/ instead of pam/.
-        Remember to re-run configure.
+	* calife.c:
+	Remove potential NULL reference. Found by clang static analyzer.
+	[51b770f23683]
 
-        * configure: regenerated with 10.6 autoconf.
+	* calife.c:
+	fp is no more here.
+	[dceb74c03dbc]
 
-        * Update config.guess & config.sub to more modern versions.
-        Fixes Debian bug #558805.
-        Submitted by Christian Perrier <bubulle@kheops.frmug.org>
+	* ChangeLog:
+	Updated.
+	[b5e2803850c5]
 
-        * mkvers.sh: removed.
+	* db.c:
+	Clean up open_databases(), remove access(2).
+	[5a1f3f02b317]
+
+	* conf.h:
+	Tabs to spaces.
+	[2db16132e2bd]
+
+	* conf.h:
+	Complete move of fp into db.c.
+	[73677a6dc731]
+
+	* calife.c, conf.h, db.c:
+	Promote fp from global variable to static variable in db.c.
+	[cfe779015a7e]
+
+	* auth.c, calife.c, conf.h, db.c, util.c:
+	Update copyright.
+	[0dcc27d2f900]
+
+	* ChangeLog:
+	Updated. Re-encoded in UTF-8.
+	[470097df63d5]
+
+	* README, README.en:
+	Updated & synced together. Now UTF-8 as well.
+	[2398eb5baa35]
+
+	* ChangeLog-2.x:
+	Re-encode as UTF-8.
+	[5e5862be12dd]
+
+	* calife.c, util.c:
+	Re-encode as UTF-8.
+	[9c712aa88821]
+
+	* configure.in:
+	Add hook for 10.6 Snow Leopard.
+	[5cef517b0f75]
+
+	* calife.c:
+	gcc want NULL instead of 0, clang does not care, oh well.
+	[4c4c675fe759]
+
+	* mkvers.sh, version.c:
+	These two have been unused for quite some time now.
+	[d6f5008ba7fc]
+
+	* configure:
+	Regenerate.
+	[7b558be3b11a]
+
+2009-11-06  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* conf.h:
+	Wrap GET/RELEASE_ROOT and check return values. Found by clang static
+	analyzer.
+	[a592b8bf8381]
+
+	* calife.c:
+	Add hints to lint/static analyzer.
+	[6d40fad1bec6]
 
 2009-04-08  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * calife.c,db.c,auth.c,conf.h: several changes related to the output
-        of the static analyzer from clang/llvm. Wraps around GET/RELEASE_ROOT.
+	* ChangeLog:
+	Updated.
+	[95939950cc10]
+
+	* Makefile.in:
+	Fix check: target.
+	[5b64d7715346]
+
+	* db.c:
+	Remove dead assignments.
+
+	Found by: clang --analyze
+	[d3d648549829]
+
+	* db.c:
+	Use xalloc() from util.c to silence a clang warning.
+
+	Found by: clang --analyze
+	[be2e0ba53599]
+
+	* calife.c, conf.h:
+	Simplify the code by adding MESSAGE_5() and using it.
+	[924a74c46657]
+
+	* calife.c:
+	Remove trailing space.
+
+	Found by: clang --analyze
+	[3fe54840cf4a]
+
+	* auth.c:
+	"who" is only used inside the #if.
+
+	Found by: clang --analyze
+	[1ea0ffc931de]
+
+2009-04-06  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* auth.c, calife.c, db.c:
+	Remove unused variables.
+
+	Found by: clang --analyze (from llvm)
+	[377cdf445d8f]
+
+	* Makefile.in:
+	Add check target for clang static analyzer.
+	[4add4ffb8697]
 
 2008-11-22  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * 3.0
+	* .hgtags:
+	Version 3.0 is finally here.
+	[032f6557ba51]
 
-        * ChangeLog, README.en: updated.
+	* ChangeLog:
+	Update.
+	[ed71673b4b62] [3.0]
+
+	* README:
+	Add $Id$.
+	[e14096bc6458]
+
+	* README.en:
+	Complete the English translation.
+	[78d44579398c]
 
 2008-08-19  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * calife.c,conf.h,db.c,util.c,auth.c,auth_pam.c: resurrect rcsid 
-        variable as we are now using the keyword extension to Hg.
+	* ChangeLog, Makefile.in, auth.c, auth_pam.c, calife.1.in,
+	calife.auth.5.in, calife.c, conf.h, configure.in, db.c, util.c:
+	- Resurrect rcsid keyword, expanded through HG extension hgkeyword.
+	- README.en: new file
+	- version.c: removed as it is not needed anymore.
+	- ChangeLog: updated.
+	[88c4f70961ac]
 
-        * ChangeLog: updated
-
-        * README.en: new file
-
-        * version.c: removed
+	* README.en:
+	WIP English version of README.
+	[20664f956649]
 
 2008-04-07  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * auth.c: new file. Use several static methods for authentication. 
-        Defines authenticate_user as the main entry point.
+	* auth_pam.c:
+	Change all tabs into spaces. Removed Arch-specific comment.
+	[58e64308f050]
 
-        * Makefile.in: reference the new auth.{c,o} files.
+	* calife.c:
+	Reformatting of whitespace.
+	[a8eaa5b12651]
 
-        * db.c: remove verify_password.
+	* README:
+	Remove trailing / as RadiantCMS does not use it.
+	[4a948b3f0756]
 
-        * calife.c: use authenticate_user
+	* auth.c:
+	Retire verify_password.
+	[4402d7633a92]
 
-        * conf.h: new prototype & error codes for authenticate_user & friends.
+	* .hgtags:
+	Added tag 3.0pre9 for changeset 022851d2e07d
+	[e6570d1e6106]
 
-        * ChangeLog: updated.
+	* ChangeLog:
+	Updated.
+	[e847c4516f8e]
 
-2007-10-25  Ollivier Robert  <roberto@keltia.freenix.fr>
+	* Makefile.in, auth.c, calife.c, conf.h, db.c:
+	Re-implement authentication with respect to PAM usage.
 
-        * 3.0pre9: internal release for CS/BT only.
+	auth.c:
+	- move all authentication methods here
+	- rename verify_password as authenticate_user
+
+	calife.c:
+	- use authenticate_user
+
+	conf.h:
+	- Add error code for auth. process
+	- rename verify_password as authenticate_user
+
+	Makefile.in:
+	- add auth.{c,o} & dependencies
+
+	db.c:
+	- remove verify_password
+	[6e36098ae99b]
+
+	* calife.c:
+	Use the new MESSAGE_4 macro.
+	[bd19094d03fb]
+
+	* conf.h:
+	Add a MESSAGE_4() macro.
+	[08ec1d975469]
+
+	* db.c:
+	Change old-style message into MESSAGE*().
+	[54ad5ff14d08]
+
+	* .hgignore:
+	Add minimal .hgignore.
+	[f1d9ff5d59d8]
+
+2008-03-13  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* config.h.in:
+	Lookfor getpassphrase(3).
+	[022851d2e07d] [3.0pre9]
 
 2007-10-22  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * acconfig.h,configure.in: PAM n'est pas obligatoire pour 
-        Solaris 2.10. Recherche de getpassphrase(3).
+	* ChangeLog:
+	Update.
+	[762d7444bb5c]
 
-2007-10-22  Ollivier Robert  <roberto@keltia.freenix.fr>
+	* configure, configure.in:
+	Make PAM non mandatory for Solaris 2.10.
+	[56ddd0396931]
 
-        * 3.0pre8
+	* acconfig.h, configure, configure.in:
+	Lookfor getpassphrase(3).
+	[98598e4a4606]
 
-        * db.c,configure.in: solaris 10 tronque les mots de pazsse via 
-        getpass(3), mise en place de l'utilisation de getpassphrase(3) à la 
-        place pour contourner le problème.
-        Discussions avec Miguel Paiva (CS-SI)
+	* db.c:
+	Fix: use a different variable.
+	[e63632479a7c]
+
+	* Tag 3.0pre8 & update version.c. (bis)
+	[d4dd05b6658d]
+
+	* .hgtags:
+	Re-tag 3.0pre8.
+	[15a310d990d1]
+
+	* configure:
+	Regenerate.
+	[c77e1a411261] [3.0pre8]
+
+	* version.c:
+	Tag 3.0pre8 & update version.c.
+	[a0c0e0b4e1c8]
+
+	* .hgtags:
+	Added tag 3.0pre8 for changeset 4d27666642da
+	[26e8a2003304]
+
+	* mkvers.sh:
+	Use short hash.
+	[4d27666642da]
+
+	* ChangeLog, configure.in, db.c:
+	Hack for Solaris 10.
+
+	On Solaris 10, getpass(3) input is truncated to 8 chars (age-old
+	limit for passwords). Workaround that by using getpassphrase(3).
+	Found with Miguel Paiva (CS-SI).
+	[e32f315c16b9]
+
+	* ChangeLog:
+	Rectify whitespace.
+	[11e24b694487]
 
 2007-06-26  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * 3.0pre7
+	* ChangeLog, version.c:
+	Tag 3.0pre7 & update version.c.
+	[d234335d3866]
+
+	* .hgtags:
+	Added tag 3.0pre7 for changeset 75d31775a402
+	[7e4d3a57409a]
+
+2007-04-29  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* ChangeLog:
+	Update ChangeLog
+	[75d31775a402] [3.0pre7]
 
 2007-04-27  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * pam/linux: nouveau fichier (Christian Perrier).
+	* pam/linux:
+	Fix lines mangled by vim.
+	[23a97c41580f]
+
+	* pam/linux:
+	PAM file for Linux (tested on Debian)
+
+	Submitted by: Christian Perrier
+	[f015a677d0a4]
+
+2007-02-14  Ollivier Robert  <roberto@keltia.freenix.fr>
+
+	* version.c:
+	Add current version.c for 3.0pre6.
+	[e7edfd36ee57]
+
+	* .hgtags:
+	Slide the 3.0pre6 tag again.
+	[161aef80731e]
+
+	* .hgtags, mkvers.sh:
+	mkvers.sh: add newlines.
+	[4fd0ac95978a] [3.0pre6]
+
+	* mkvers.sh:
+	Override version.c, not append.
+	[8f7668bd23ee]
+
+	* Makefile.in, mkvers.sh:
+	Add infrastructure to embed hg hash as calife revision.
+	[5f1e7b522498]
+
+	* .hgtags:
+	Move 3.0pre6 tag for updated pam file.
+	[c6006f0d7865]
+
+	* pam/freebsd5:
+	Fix PAM file for FreeBSD.
+	[12c94d2eac85]
 
 2007-02-13  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * 3.0pre6
+	* .hgtags:
+	Added tag 3.0pre6 for changeset 59616216ffe0
+	[15356f00183a]
 
-        * configure.in,calife.c,acconfig.h,auth_pam.c,conf.h: support de 
-          Solaris 10. Discussions avec J. Monnet (CS-SI).
+	* ChangeLog, README:
+	Update README & ChangeLog for 3.0pre10.
+	[59616216ffe0]
 
-        * pam/solaris: nouveau fichier.
+2007-02-12  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-2005-06-10  Ollivier Robert  <roberto@keltia.freenix.fr>
+	* calife.c:
+	Don't segfault if auth was not doen through pam.
+	[bd988d85abc1]
 
-        * 3.0preN
+	* configure:
+	Regenerate configure.
+	[366ea23f8ba4]
 
-        * Support PAM utilisable avec passage à la méthode d'authentification
-        traditionnelle si PAM ne passe pas. Inspiré par lukemftpd dans
-        FreeBSD.
+	* acconfig.h, auth_pam.c, conf.h, configure.in, pam/solaris:
+	Solaris10 support with PAM.
+	[7b08c5f4240e]
 
-        * db.c: initialise certaines variables pointant sur de la mémoire
-        allouée via malloc(3) pour éviter des segfaults sur Gentoo & Solaris
-        (Denis Ducamp <Denis.Ducamp@hsc.fr>).
+2006-07-26  Ollivier Robert  <roberto@keltia.freenix.fr>
 
-        * calife.c: correction de la manière dont sont vérifiés les caractères
-        valides dans un nom d'utilisateur.
+	* README:
+	Change README to mention Mercurial instead of Arch.
+	[61de53ada739]
 
-        * db.c: got_pass a été définie deux fois par la copie de code, 
-        corrigé (problème signalé par Bertrand Petit).
+2006-07-26  Thomas Quinot  <thomas@quinot.org>
 
-        * Makefile: calife.auth-dist est maintenant installé même si le vrai
-        fichier existe.
+	* auth_pam.c:
+	Get root privileges before pam_authenticate() in order to be able to
+	read /etc/master.passwd.
+	[846255c01037]
 
-2005-05-30  Ollivier Robert  <roberto@keltia.freenix.fr>
+2005-07-06  Ollivier Robert  <roberto@keltia.net>
 
-        * Activation de la branche calife--pam--3.0, l'historique des 2.x est 
-        dans ChangeLog-2.x.
+	* auth_pam.c:
+	Make the code a bit more readable.
+	[57eeb7e40651]
+
+2005-06-27  Ollivier Robert  <roberto@keltia.net>
+
+	* config.guess, config.sub:
+	Update to more recent versions of config.{guess,sub}: 22/3/2005.
+	[1f04e81d3f5d]
+
+	* config.guess, config.sub:
+	Update to more recent versions - 2/7/2003.
+	[3b6918001756]
+
+2005-06-22  Ollivier Robert  <roberto@keltia.net>
+
+	* README:
+	README updates for PAM.
+	[aa464fc9cb18]
+
+	* pam/freebsd5, pam/macosx:
+	There is no universal PAM config file... Create PAM configuration
+	files in a separate directory.
+	- macosx
+	- freebsd5
+	[510e402fa260]
+
+2005-06-16  Ollivier Robert  <roberto@keltia.net>
+
+	* auth_pam.c:
+	Calling pam_end(3) two times is bad(tm).
+	[a93e821d0951]
+
+	* calife.c:
+	DEBUG mode may need core files.
+	[0878830336e1]
+
+	* calife.c:
+	Code move to avoid extra #ifdef..#endif.
+	[e59fb9d2f0fd]
+
+	* calife.c:
+	Even more logging.
+	[08451e9e08cb]
+
+	* calife.c:
+	Typo.
+	[a1f648f2e3b1]
+
+	* calife.c:
+	More logging.
+	[085243ce3f8f]
+
+	* calife.c:
+	It is a bad idea(tm) to use syslog(3) after closelog(3)...
+	[5827e7af4b83]
+
+	* auth_pam.c:
+	Add a debugging message if pam_authenticate(3) fails.
+	[0b55a7203e7c]
+
+2005-06-14  Ollivier Robert  <roberto@keltia.net>
+
+	* README:
+	Add Denis & Bertrand to credits.
+	[a79e7329fcbb]
+
+	* ChangeLog:
+	Update ChangeLog.
+	[51fca625311c]
+
+	* Makefile.in:
+	calife.auth-dist is always installed now.
+	[7239258152ce]
+
+	* ChangeLog:
+	Update ChangeLog.
+	[d27871aae97f]
+
+	* db.c:
+	Fix variable defined twice.
+	[7eb772cf1f2f]
+
+2005-06-13  Ollivier Robert  <roberto@keltia.net>
+
+	* ChangeLog:
+	Update ChangeLog.
+	[f03bf662ea93]
+
+	* calife.c, conf.h:
+	Fix check of characters used in usernames.
+	[c59637d4ed39]
+
+	* Makefile.in:
+	Fix dependencies for auth_pam.o.
+	[7ec150c60f2d]
+
+	* README, calife.c:
+	Comment reformatting.
+	[0c2043166187]
+
+2005-06-10  Ollivier Robert  <roberto@keltia.net>
+
+	* ChangeLog, ChangeLog-2.x:
+	Reorganisation of ChangeLog, add ChangeLog-2.x for older changes.
+	[6746410b3273]
+
+	* db.c:
+	Ensure that more variables are initialised. Previous patch
+	(patch-15) was submitted by Denis Ducamp <Denis.Ducamp@hsc.fr>
+	[ca10c372d380]
+
+	* db.c:
+	
+	[7b64b49931e0]
+
+2005-06-09  Ollivier Robert  <roberto@keltia.net>
+
+	* db.c:
+	Remove references to deleted variable rcsid.
+	[d3a7e418f8cd]
+
+2005-05-30  Ollivier Robert  <roberto@keltia.net>
+
+	* ChangeLog:
+	Entry for 3.0.
+	[dae8c45c7c41]
+
+2005-05-27  Ollivier Robert  <roberto@keltia.net>
+
+	* calife.c:
+	Add a FIXME: entry about username checking.
+	[9d1891eb5364]
+
+	* auth_pam.c, calife.1.in, calife.auth.5.in, calife.c, conf.h, db.c,
+	util.c:
+	General doc cleanup & unifdef STDC_HEADERS calife.c: db.c: util.c:
+	conf.h:
+	  - Unifdef STDC_HEADERS, all compilers are now ISO C/ANSI C compliants
+	  - Removed rcsid as they are not relevant anymore
+	  - Fix copyrights calife.1.in: calife.auth.5.in:
+
+	 - Don't mention the oooold non-US crypto dist.
+	  - Mention PAM
+	[fb9876b0ed6f]
+
+	* auth_pam.c, db.c:
+	More debug messages to track down a Solaris 9 issue.
+	[23826511395e]
+
+2005-05-26  Ollivier Robert  <roberto@keltia.net>
+
+	* configure:
+	Regenerate.
+	[a875e50bc1e7]
+
+	* db.c:
+	Narrow down GET_ROOT/RELEASE_ROOT usage around getspname(2).
+	[ca37ec32380a]
+
+	* db.c:
+	GET_ROOT/RELEASE_ROOT doesn't seem to be necessary around
+	auth_pam().
+	[d052e944949f]
+
+	* auth_pam.c, conf.h, db.c:
+	Hopefully implement PAM auth & fallback the correct way.
+	[c47ba219945c]
+
+2005-05-09  Ollivier Robert  <roberto@keltia.net>
+
+	* README, config.h.in, configure.in:
+	Complete the removal of RELAXED mode. Update README on 3.0.
+	[f54e6218e3ee]
+
+	* calife.c, db.c:
+	Unifdef -URELAXED.
+	[82b98b8aae73]
+
+	* calife.c:
+	Fix a bug in #ifdef..#endif. Use a different signature for
+	syslog(3).
+	[d7446d630f86]
+
+2005-05-04  Ollivier Robert  <roberto@keltia.net>
+
+	* Makefile.in, README, acconfig.h, auth_pam.c, calife.c, calife.pam,
+	conf.h, config.h.in, configure, configure.in, db.c:
+	calife PAMification The code now correctly configure/make/run on
+	FreeBSD 6 (w/ & w/o PAM) and on OSX 10.3.9 (w/ PAM).
+
+	Makefile.in:
+	  - reference auth_pam.{c,o} configure.in:
+	  - code to check --with-pam and location of pam_appl.h taken from sudo.
+	  - add "-lpam"
+	  - if using PAM, calife must be dynamically linked
+	  - PAM is mandatory for Darwin/OSX calife.c: db.c: conf.h: config.h.in:
+	  - use WITH_PAM to enclose PAM code
+	  - define variables & symbols needed
+	  - if PAM failed, fallback to checking password values configure:
+	  - regenerated with autoconf auth_pam.c:
+	  - code taken from pamify.h in lukemftpd from FreeBSD & rewritten to
+	fit in calife. calife.pam:
+	  - PAM file to be put in /etc/pam.d or whatever location is required by
+	a given PAM implementation.
+	[ec6c1cdccfb0]
+
+	* README:
+	Reformattage, mention de 3.0/PAM.
+	[057e1441b1b0]
+
+	* COPYING, ChangeLog, Makefile.in, README, acconfig.h, calife.1.in,
+	calife.auth-dist, calife.auth.5.in, calife.c, conf.h, config.guess,
+	config.h.in, config.sub, configure, configure.in, db.c, install-sh,
+	util.c:
+	tag of roberto@eu.org--2003b/calife--pam--3.0--patch-1
+	(automatically generated log message)
+	[ea3716614663]
 
