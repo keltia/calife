@@ -1,34 +1,54 @@
+2014-09-05  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgtags:
+	Added tag 3.0.4 for changeset 25570e2f1dfc
+	[0b9c5e950384] [tip]
+
+	* calife.auth.5.in, db.c:
+	Add support for %group in calife.auth.
+	[25570e2f1dfc] [3.0.4]
+
+	* calife.c:
+	Fix messages, add ssid to debug.
+	[57ac191d6c4c]
+
+	* util.c:
+	Clear out memory zones securely.
+	[0849dfe2ac8e]
+
 2014-05-23  Ollivier Robert  <roberto@keltia.net>
 
 	* .hgtags:
+	Added tag 3.0.3 for changeset 5d141ecaf6a2
+	[3d15d0eb220f]
+
+	* ChangeLog:
+	Sync.
+	[5d141ecaf6a2] [3.0.3]
+
+	* .hgtags:
 	Added tag 3.0.3 for changeset e47593d1cbda
-	[2ca74c88ca3a] [tip]
+	[2ca74c88ca3a]
 
 	* configure:
 	Regenerate for 3.0.3, should fix staged dir in FreeBSD ports.
-	[e47593d1cbda] [3.0.3]
+	[e47593d1cbda]
 
 	* Makefile.in:
 	Remove unneeded messages. Do not rename old binary.
 	[62657218adf3]
+
+2014-11-10  Ollivier Robert  <roberto@keltia.net>
+
+	* ChangeLog:
+	Re-sync ChangeLog.
+	[b03e3cef8195]
 
 2014-03-20  Ollivier Robert  <roberto@keltia.freenix.fr>
 
 	* conf.h:
 	Merge.
 	[b0fe97d87286]
-
-2013-03-25  Ollivier Robert  <roberto@keltia.net>
-
-	* .hgignore:
-	Add some directories from NetBeans.
-	[8ca4940b1cd0]
-
-2012-10-26  Ollivier Robert  <roberto@keltia.net>
-
-	* conf.h:
-	Add a prototype for auth_pam() (silence warning from clang).
-	[3b78f912d08d]
 
 2014-02-23  Ollivier Robert  <roberto@keltia.net>
 
@@ -73,6 +93,18 @@
 	* README, README.en:
 	Fix addresses/URL.
 	[f71e70cf2d35]
+
+2013-03-25  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgignore:
+	Add some directories from NetBeans.
+	[8ca4940b1cd0]
+
+2012-10-26  Ollivier Robert  <roberto@keltia.net>
+
+	* conf.h:
+	Add a prototype for auth_pam() (silence warning from clang).
+	[3b78f912d08d]
 
 2012-08-22  Ollivier Robert  <roberto@keltia.net>
 
@@ -228,8 +260,8 @@
 2009-11-06  Ollivier Robert  <roberto@keltia.freenix.fr>
 
 	* conf.h:
-	Wrap GET/RELEASE_ROOT and check return values. Found by clang
-	static analyzer.
+	Wrap GET/RELEASE_ROOT and check return values. Found by clang static
+	analyzer.
 	[a592b8bf8381]
 
 	* calife.c:
@@ -733,8 +765,7 @@
 	  - code to check --with-pam and location of pam_appl.h taken from sudo.
 	  - add "-lpam"
 	  - if using PAM, calife must be dynamically linked
-	  - PAM is mandatory for Darwin/OSX calife.c: db.c: conf.h:
-	config.h.in:
+	  - PAM is mandatory for Darwin/OSX calife.c: db.c: conf.h: config.h.in:
 	  - use WITH_PAM to enclose PAM code
 	  - define variables & symbols needed
 	  - if PAM failed, fallback to checking password values configure:
