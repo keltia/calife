@@ -1,0 +1,9 @@
+#
+# PAM configuration for the "calife" service
+# FreeBSD 9+
+
+auth        sufficient  pam_rootok
+auth        include     system
+account     include     system
+session     required    pam_permit
+password    required    pam_deny

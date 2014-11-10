@@ -107,7 +107,7 @@ Please consult the supplied manpages for more information.
 
 Calife has been developped and tested on the following UNIX systems (actual versions may differ but I can not guarantee full support all time as I may not have access to all of them).
 
-- FreeBSD 1 - 9.x   (main development platform)
+- FreeBSD 1 - 10.x   (main development platform)
 - MacOS X 10.2-10.8. (main development platform)
 - Linux 0.99+  1.* (1.2.* et 1.3.*), 2.*
 - Solaris 2.x (incl. most SVR4 systems)
@@ -130,11 +130,12 @@ The following systems are not officially supported any more but may work (they u
 - IRIX 5.x (probably 6.x too)
 - GNU Hurd
 
-In the pam/ subdirectory, you can find sample file for PAM configuration.  Choose the one suited to your system and pace it either inside `pam.conf` (Solaris up to 9) or within the `pam.d` directory under the `calife` name.
+In the pam/ subdirectory, you can find some sample files for PAM configuration.  Choose the one suited to your system and pace it either inside `pam.conf` (Solaris up to 9) or within the `pam.d` directory under the `calife` name.
 
 - `macosx`    For MacOS X 10.3/Panther and up to 10.5/Leopard
 - `macosx10`  For MacOS X 10.6/Snow Leopard
-- `freebsd5`  For FreeBSD 5.x and up.
+- `freebsd5`  For FreeBSD 5.x up to 8.x.
+- `freebsd9`  For FreeBSD 9.x and up.
 - `solaris`   For Solaris 8, 9 et 10 (to be cut/pasted in pam.conf)
 - `linux`
 
@@ -177,4 +178,4 @@ Denis Ducamp            <Denis.Ducamp@hsc.fr><br/>
 
 and all the unnamed ones that have participated to testing.
 
-# $Id$
+# $Id: README.md,v f91e6350b459 2014/11/10 10:49:34 roberto $

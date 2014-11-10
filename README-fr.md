@@ -111,7 +111,7 @@ Le programme essaie de lancer le fichier `calife.out` (par défaut dans `/usr/lo
 
 Calife a été testé et développé sur les systèmes UNIX suivants (les versions testées peuvent être anciennes et devraient être retestées mais je n'ai plus accès à pas mal de ces machines...) :
 
-- FreeBSD 1 - 9.x   (mach. de développement de l'auteur)
+- FreeBSD 1 - 10.x   (mach. de développement de l'auteur)
 - MacOS X 10.2 - 10.8.
 - Linux 0.99+ et 1.* (1.2.* et 1.3.*), 2.*
 - Solaris 2.x (et la plupart des SVR4)
@@ -140,7 +140,8 @@ Il existe à l'heure actuelle deux fichiers :
 
 - `macosx`    pour les systèmes MacOS 10.3/Panther à 10.5/Leopard ;
 - `macosx10`  pour Mac OS X Snow Leopard 10.6 ;
-- `freebsd5`  pour les systèmes FreeBSD 5.x et supérieurs
+- `freebsd5`  pour les systèmes FreeBSD 5.x à 8.x
+- `freebsd9`  pour les systèmes FreeBSD 9.x et supérieurs
 - `solaris`   pour Solaris 8, 9 et 10 (à insérer dans pam.conf)
 - `linux`
 
@@ -187,4 +188,4 @@ Denis Ducamp            <Denis.Ducamp@hsc.fr><br/>
 
 et à tous ceux qui ont participé pour la mise au point et les tests.
 
-# $Id$
+# $Id: README-fr.md,v f91e6350b459 2014/11/10 10:49:34 roberto $
