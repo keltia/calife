@@ -533,7 +533,7 @@ main (int argc, char * argv [])
                 /* 
                  * fork error... 
                  */
-                die (5, "\nFork failure ... exiting ...");
+                die (5, "\nCalife: Fork failure: %s", strerror(errno));
                 /* NOT REACHED */
             case 0:                
                 /*
