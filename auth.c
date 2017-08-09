@@ -247,7 +247,11 @@ int pam_pwcheck (struct passwd *calife, char * user_to_be, char * user_pass,\
     int   i, rval, got_pass = AUTH_ERR;
 
 #ifdef WITH_PAM
+    if (calife == NULL)
+        die(6, "calife must not be null");
     who = calife->pw_name;
+    if (who[0] == '\0')
+        die(6, "calife->pw_name must not be null");
     if (getuid () != 0)
     {
         MESSAGE ("Trying PAM\n");
