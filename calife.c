@@ -456,6 +456,8 @@ main (int argc, char * argv [])
                 else
                     memcpy (calife, p_calife, sizeof (struct passwd));
 
+
+#ifdef DEBUG
                 {
                     unsigned int e1, e2;
 
@@ -467,10 +469,17 @@ main (int argc, char * argv [])
                     e2 = setgid (wanted_user->pw_gid);
                     e1 = setuid (wanted_user->pw_uid);
                     MESSAGE_5(" user=%s uid=%d gid=%d e1=%u e2=%u\n", \
-                    user_to_be, wanted_user->pw_uid, wanted_user->pw_gid, \
-                    e1, e2);
+                      user_to_be, wanted_user->pw_uid, wanted_user->pw_gid, \
+                      e1, e2);
                 }
-
+#else
+                GET_ROOT;
+#ifdef HAVE_INITGROUPS                  /* XXX don't know about linux */
+                    initgroups (user_to_be, wanted_user->pw_gid);
+#endif /* HAVE_INITGROUPS */
+                (void) setgid (wanted_user->pw_gid);
+                (void) setuid (wanted_user->pw_uid);
+#endif
                 if (!custom_shell)
                 {
                     exec_shell (calife->pw_shell);
