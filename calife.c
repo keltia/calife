@@ -753,7 +753,7 @@ exec_shell (char * shell_name)
             
             pt = basename (shell_name);
             shell_arg0 = (char *) xalloc (strlen (pt) + sizeof (char));
-            strncpy (shell_arg0, pt, strlen (pt) + sizeof (char));            
+            strncpy (shell_arg0, pt, strlen (pt) + sizeof (char));
             *shell_arg0 = '-';
         }
         else
