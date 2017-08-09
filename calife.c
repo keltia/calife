@@ -210,14 +210,13 @@ main (int argc, char * argv [])
 {
     int             allowed = 0;        /* l'utilisateur est-il valide ? */
     char            * name, * user_to_be, * tty, this_time [30];
-    char            * login;
 #ifdef WANT_GLOBAL_RC
     char            * out_rc;
 #endif
     char            * uargv;
     uid_t           uid;
     time_t          t;
-    struct passwd * test_user, *pwd;
+    struct passwd * test_user;
 #ifdef HAVE_POSIX_SIGNALS
     sigset_t        old_set, sig_set;
 #endif
@@ -372,107 +371,9 @@ main (int argc, char * argv [])
         strcpy (tty, p + 5);        /* strip /dev/ */
     }
 
-    /*
-     * Get login name the standard way
-     *
-     * Code extracted from usr.bin/su/su.c
-     * heavily modified.
-     */
     uid = getuid();
-    MESSAGE_2("Real uid = %ld ssid = %ld\n", uid, ssid);
-    login = getlogin();
-    if (login == NULL)
-    {
-        pwd = getpwuid(uid);
-        MESSAGE_2 ("getpwuid uid = %ld login = %s\n", uid, pwd->pw_name);
-    }
-    else
-    {
-        pwd = getpwnam(login);
-        MESSAGE_1 ("getlogin = %s\n", login);
-    }
-    if (pwd == NULL)
-    {
-        die (1, "who are you?");
-        /*NOTREACHED*/
-    }
-    else
-        login = strdup (pwd->pw_name);
+    name = whoami();
 
-    MESSAGE_2 ("uid = %ld name = %s\n", uid, login);
-
-    if (login == NULL || *login == '\0')
-    {
-    /*
-     * Under SunOS, ssh sometimes makes getlogin(3) think the utmp
-     * entry is invalid thus getlogin(3) returns NULL.
-     * We'll look in utmp ourselves.
-     */
-#if defined(SUNOS4) || defined(__linux__)
-        int         utmp_fd, get_out = 0, err = 0;
-        struct utmp utmp;
-
-#ifdef DEBUG
-        fprintf (stderr, "getlogin failed, reading utmp\n");
-        fflush (stderr);
-#endif /* DEBUG */        
-        utmp_fd = open (_PATH_UTMP, O_RDONLY);
-        if (utmp_fd == -1)
-            get_out = 1;
-        else
-        {
-            /*
-             * read each entry
-             */
-            do
-            {                
-                err = read (utmp_fd, &utmp, sizeof utmp);
-                if (err == -1 || err == 0)
-                {
-                    get_out = 1;
-                    break;
-                }
-            } while (strcmp (tty, utmp.ut_line));
-        }
-        close (utmp_fd);    
-        /*
-         * XXX
-         * assuming 8 chars is unwise but there is no other way under SunOS
-         * XXX
-         */        
-        {
-#ifdef UT_NAMESIZE
-            int max_size = UT_NAMESIZE;
-#else /* !UT_NAMESIZE */
-            int max_size = 8;
-#endif /* UT_NAMESIZE */
-            int l_name = 0;
-            
-            name = (char *) xalloc ((max_size + 1) * sizeof (char)); 
-            strncpy (name, utmp.ut_name, sizeof utmp.ut_name);
-            while (name [l_name] && l_name != max_size)
-                l_name++;
-            name [l_name] = '\0';
-        }        
-        if (get_out)
-        {
-#endif /* !SUNOS4  && !__linux__ */
-            die (1, "You don't exist, get out.");
-#if defined (SUNOS4) || defined (__linux__)
-        }    
-#endif /* SUNOS4 && __linux__ */
-    }
-    else
-    {   
-        /*
-         * don't assume length 
-         */
-        int l_len = strlen (login);
-        
-        name = (char *) xalloc (l_len + 1);
-        strncpy (name, login, l_len);
-        name [l_len] = '\0';
-    }    
     /*
      * open syslod log file
      */
@@ -864,4 +765,122 @@ exec_shell (char * shell_name)
     }
 #endif /* DEBUG */
 }
+
+/** Renvoie le nom de l'utilisateur courant
+ **
+ ** Parameters :    aucun
+ **
+ ** Retourne :      name char *    login
+ **
+ ** Privileges :    aucun
+ **/
 
+char *
+whoami (void)
+{
+    char   * login, * name;
+    struct passwd *pwd;
+    uid_t  uid;
+
+   /*
+    * Get login name the standard way
+    *
+    * Code extracted from usr.bin/su/su.c
+    * heavily modified.
+    */
+    uid = getuid();
+    login = getlogin();
+    if (login == NULL)
+    {
+        pwd = getpwuid(uid);
+        MESSAGE_2 ("getpwuid uid = %ld login = %s\n", uid, pwd->pw_name);
+    }
+    else
+    {
+        pwd = getpwnam(login);
+        MESSAGE_1 ("getlogin = %s\n", login);
+    }
+    if (pwd == NULL)
+    {
+        die (1, "who are you?");
+        /*NOTREACHED*/
+    }
+    else
+        login = pwd->pw_name;
+
+    MESSAGE_2 ("uid = %ld name = %s\n", uid, login);
+
+    if (login == NULL || *login == '\0')
+    {
+    /*
+     * Under SunOS, ssh sometimes makes getlogin(3) think the utmp
+     * entry is invalid thus getlogin(3) returns NULL.
+     * We'll look in utmp ourselves.
+     */
+#if defined(SUNOS4) || defined(__linux__)
+    int         utmp_fd, get_out = 0, err = 0;
+    struct utmp utmp;
+
+#ifdef DEBUG
+    fprintf (stderr, "getlogin failed, reading utmp\n");
+    fflush (stderr);
+#endif /* DEBUG */
+    utmp_fd = open (_PATH_UTMP, O_RDONLY);
+    if (utmp_fd == -1)
+        get_out = 1;
+    else
+    {
+        /*
+         * read each entry
+         */
+        do
+        {
+            err = read (utmp_fd, &utmp, sizeof utmp);
+            if (err == -1 || err == 0)
+            {
+                get_out = 1;
+                break;
+            }
+        } while (strcmp (tty, utmp.ut_line));
+    }
+    close (utmp_fd);
+    /*
+     * XXX
+     * assuming 8 chars is unwise but there is no other way under SunOS
+     * XXX
+     */
+    {
+#ifdef UT_NAMESIZE
+            int max_size = UT_NAMESIZE;
+#else /* !UT_NAMESIZE */
+            int max_size = 8;
+#endif /* UT_NAMESIZE */
+            int l_name = 0;
+
+        name = (char *) xalloc ((max_size + 1) * sizeof (char)); 
+        strncpy (name, utmp.ut_name, sizeof utmp.ut_name);
+        while (name [l_name] && l_name != max_size)
+            l_name++;
+        name [l_name] = '\0';
+    }
+    if (get_out)
+    {
+#endif /* !SUNOS4  && !__linux__ */
+            die (1, "You don't exist, get out.");
+#if defined (SUNOS4) || defined (__linux__)
+        }
+#endif /* SUNOS4 && __linux__ */
+    }
+    else
+    {
+        /*
+         * don't assume length
+         */
+        int l_len = strlen (login);
+
+        name = (char *) xalloc ((l_len + 1) * sizeof (char));
+        strncpy (name, login, l_len);
+        name [l_len] = '\0';
+    }
+    return(name);
+}
