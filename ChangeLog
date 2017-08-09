@@ -1,12 +1,82 @@
+2017-08-09  Ollivier Robert  <roberto@keltia.net>
+
+	* README-fr.md, README.md:
+	Sync with current state.
+	[d5d1403715ea] [tip]
+
+	* ChangeLog:
+	Sync ChangeLog.
+	[55c2817c0c2c]
+
+	* calife.c:
+	Wrap fd declaration with #ifdef WANT_GLOBAL_RC.
+	[2b171253cc39]
+
+	* calife.c:
+	Remove trailing spaces.
+	[9190b44575db]
+
+	* calife.c:
+	Separate the two cases to avoid unused variables..
+	[ec92424830ea]
+
+	* calife.c:
+	Refactor: create whoami() to simplify main().
+	[907189024d8f]
+
+	* conf.h:
+	Hook up compiler.h and use it.
+	[f9fd34e270bf]
+
+	* compiler.h:
+	Include compiler.h by Bertrand Petit. Add keyword for declarations.
+	[dbb4a7f658f1]
+
+	* auth.c:
+	Add assertions.
+	[e5ce664a97ca]
+
+	* auth.c:
+	Test 1st char instead.
+	[d6119254e1af]
+
+	* calife.c:
+	This is not necessary, exec() is coming.
+	[225a2044ea10]
+
+	* calife.c:
+	Be more explicite.
+	[e21871d017e0]
+
+2017-08-08  Ollivier Robert  <roberto@keltia.net>
+
+	* calife.c:
+	Displays the strerror(3) output when fork(2) fails.
+
+	Proposed by: Elrond <elrond@phoe.frmug.org>
+	[7b2576d3600f]
+
 2014-11-10  Ollivier Robert  <roberto@keltia.net>
 
 	* .hgtags:
+	Added tag 3.0.5 for changeset 12b49af8a87b
+	[c9e854d492e5]
+
+	* ChangeLog:
+	Update.
+	[12b49af8a87b] [3.0.5]
+
+	* .hgtags:
+	Added tag 3.0.5 for changeset 2200d81bf270
+	[2bcc3cffc133]
+
+	* .hgtags:
 	Added tag 3.0.5 for changeset ee46e1fd4642
-	[2200d81bf270] [tip]
+	[2200d81bf270]
 
 	* config.guess, config.sub:
 	Update config.guess/sub to 2014/11/04 versions.
-	[ee46e1fd4642] [3.0.5]
+	[ee46e1fd4642]
 
 	* README-fr.md, README.md, pam/freebsd9:
 	Add a freebsd9 PAM configuration file for 9.x and up. Fix READMEs.
@@ -17,6 +87,10 @@
 	* ChangeLog:
 	Merge.
 	[3a061fcd5584]
+
+	* ChangeLog:
+	Re-sync ChangeLog.
+	[b03e3cef8195]
 
 2014-09-05  Ollivier Robert  <roberto@keltia.net>
 
@@ -58,17 +132,23 @@
 	Remove unneeded messages. Do not rename old binary.
 	[62657218adf3]
 
-2014-11-10  Ollivier Robert  <roberto@keltia.net>
-
-	* ChangeLog:
-	Re-sync ChangeLog.
-	[b03e3cef8195]
-
 2014-03-20  Ollivier Robert  <roberto@keltia.freenix.fr>
 
 	* conf.h:
 	Merge.
 	[b0fe97d87286]
+
+2013-03-25  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgignore:
+	Add some directories from NetBeans.
+	[8ca4940b1cd0]
+
+2012-10-26  Ollivier Robert  <roberto@keltia.net>
+
+	* conf.h:
+	Add a prototype for auth_pam() (silence warning from clang).
+	[3b78f912d08d]
 
 2014-02-23  Ollivier Robert  <roberto@keltia.net>
 
@@ -113,18 +193,6 @@
 	* README, README.en:
 	Fix addresses/URL.
 	[f71e70cf2d35]
-
-2013-03-25  Ollivier Robert  <roberto@keltia.net>
-
-	* .hgignore:
-	Add some directories from NetBeans.
-	[8ca4940b1cd0]
-
-2012-10-26  Ollivier Robert  <roberto@keltia.net>
-
-	* conf.h:
-	Add a prototype for auth_pam() (silence warning from clang).
-	[3b78f912d08d]
 
 2012-08-22  Ollivier Robert  <roberto@keltia.net>
 
