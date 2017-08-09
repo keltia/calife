@@ -495,7 +495,9 @@ main (int argc, char * argv [])
                      errno);
             default:                    
             {
+#ifdef WANT_GLOBAL_RC
                 int fd;
+#endif /* WANT_GLOBAL_RC */
 
                 /*
                  * father, will wait for the child
