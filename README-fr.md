@@ -16,24 +16,13 @@ Calife est distribué sous la GNU General Public Licence qui vous permet de diff
 
 Vous trouverez la licence GNU dans le fichier `COPYING` fourni avec l'archive.
 
-Pour ce qui est du *disclaimer* standard associé à ce type de programme et à ce type de diffusion, le paragraphe suivant, tiré de la licence BSD, s'applique :
-
-    THIS SOFTWARE IS PROVIDED BY ME ``AS IS'' AND ANY EXPRESS OR IMPLIED
-    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-    MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
-    EVENT SHALL I BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-    EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-    PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-    OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-    WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-    OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-    ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Le fichier `compiler.h` est sous une forme modifée de la licence BSD à 3 clauses & (c) Bertrand Petit. 
 
 Ceci dit, si vous l'utilisez et le trouvez utile, je ne refuserais pas une Guinness :-)
 
 Le site primaire pour Calife est [ici](http://www.keltia.net/programs/calife/) et en [FTP](ftp://mutt.frmug.org/pub/calife/). Un miroir existe [ici](ftp://postfix.EU.org/pub/calife/).
 
-Calife utilise maintenant [Bitbucket](http://bitbucket.org/) comme frontal de gestion des tickets, flux RSS, release, forums, etc. Le site est accessible [ici](https://bitbucket.org/keltia/calife/).
+Calife utilise maintenant [Bitbucket](http://bitbucket.org/) comme frontal de gestion des tickets, flux RSS, release, forums, etc. Le site est accessible [ici](https://bitbucket.org/keltia/calife/). Il y a aussi un [dépôt Git](https://github.com/keltia/calife/)
 
 # Installation
 
@@ -41,8 +30,8 @@ Calife utilise maintenant [Bitbucket](http://bitbucket.org/) comme frontal de ge
 
 Calife utilise dorénavant le programme GNU `autoconf` pour la configuration. GNU cc n'est pas obligatoire pour compiler Calife mais ne sont testés régulièrement que les compilateurs suivants :
 
-- GNU cc 3.x et 4.3.2
-- Clang
+- GNU cc 4.x et suivantes
+- Clang 3.x et suivantes
 - SUN cc sur plateforme Sparc
 
 Tapez la commande :
@@ -111,8 +100,8 @@ Le programme essaie de lancer le fichier `calife.out` (par défaut dans `/usr/lo
 
 Calife a été testé et développé sur les systèmes UNIX suivants (les versions testées peuvent être anciennes et devraient être retestées mais je n'ai plus accès à pas mal de ces machines...) :
 
-- FreeBSD 1 - 10.x   (mach. de développement de l'auteur)
-- MacOS X 10.2 - 10.8.
+- FreeBSD 1 - 12.x   (mach. de développement de l'auteur)
+- MacOS X 10.2 - 10.12.
 - Linux 0.99+ et 1.* (1.2.* et 1.3.*), 2.*
 - Solaris 2.x (et la plupart des SVR4)
 - HP-UX 8.*, 9.*, 10.* et 11.*

@@ -19,21 +19,21 @@ For historical reasons, Calife is under the GNU General Public License which lis
 
 See the `COPYING` file in the distribution.
 
+The file `compiler.h` is under a modified 3-clause BSD license & (c) Bertrand Petit.
+
 There is no other conditions but if you use it, please tell me about it and I would never refuse a Guinness if we meet one day :-)
 
-Primary web/distribution site for Calife is [here](http://www.keltia.net/programs/calife/).
+Primary web/distribution site for Calife is [here](https://www.keltia.net/programs/calife/).
 
 FTP access is also provided by the following sites:
 
 [main FTP](ftp://mutt.frmug.org/pub/calife/)
 [mirror](ftp://postfix.EU.org/pub/calife/)
 
-All of these will probably move to [my Chiliproject site](http://dev.keltia.net/projects/calife/) soon, using Chiliproject to manage everything including a Bug Tracking System (BTS), News through RSS, Wiki, fora and more.
-
-Calife is also available as a [Mercurial](http://selenic.com/mercurial/) repository to make following the development an easy
-task. The repository is currently there but will move to Redmine too.
+Calife is also available both as [Mercurial](http://selenic.com/mercurial/) and [Git](http://git-scm.org/) repositories to make following the development an easy task.
 
 [Bitbucket repository](https://bitbucket.org/keltia/calife/)
+[Github repository](https://github.com/keltia/calife/)
 
 # Installation
 
@@ -41,8 +41,8 @@ task. The repository is currently there but will move to Redmine too.
 
 Calife uses the well-known GNU `autoconf` system for configuration. GNU cc is not mandatory for compiling but Calife has only been tested with the following compilers:
 
-- GNU cc 3.x and 4.3
-- Clang 1.0, 1.1 and trunk from svn
+- GNU cc 4.x and later
+- Clang 3.x and later
 - SUN cc on Sparc systems 
 
 Use the following command to analyse your system and tailor the build process.
@@ -107,8 +107,8 @@ Please consult the supplied manpages for more information.
 
 Calife has been developped and tested on the following UNIX systems (actual versions may differ but I can not guarantee full support all time as I may not have access to all of them).
 
-- FreeBSD 1 - 10.x   (main development platform)
-- MacOS X 10.2-10.8. (main development platform)
+- FreeBSD 1 - 12.x   (main development platform)
+- MacOS X 10.2-10.12. (main development platform)
 - Linux 0.99+  1.* (1.2.* et 1.3.*), 2.*
 - Solaris 2.x (incl. most SVR4 systems)
 - HP-UX 8.*, 9.*, 10.* et 11.*
