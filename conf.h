@@ -155,6 +155,9 @@ typedef struct cred_t cred_t;
                        }
 #endif /* HPUX */
 
+/* compiler-related keywords */
+#include "compiler.h"
+
 #define MAX_STRING  1024        /* "safe" value */
 
 #ifndef MAXLOGNAME
@@ -184,7 +187,8 @@ typedef struct cred_t cred_t;
   char * basename (char * file_name);
 # endif /* HAVE_BASENAME */
   void * xalloc (size_t size);
-  void die (int err, const char * fmt,...);
+  _Noreturn void die (int err, const char * fmt,...) _NORETURN;
+  char * whoami(void);
 #ifdef WITH_PAM
   int  auth_pam(struct passwd **ppw, const char *pass);
 #endif
