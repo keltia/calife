@@ -569,11 +569,7 @@ main (int argc, char * argv [])
                     user_to_be, wanted_user->pw_uid, wanted_user->pw_gid, \
                     e1, e2);
                 }
-                /*
-                 * cleanup
-                 */
-                free (wanted_user);
-                
+
                 if (!custom_shell)
                 {
                     exec_shell (calife->pw_shell);
