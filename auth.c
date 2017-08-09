@@ -131,7 +131,7 @@ int local_pwcheck (struct passwd * calife, char * user_to_be, \
     MESSAGE_1 ("Testing w/o PAM with got_pass = %d\n", got_pass);
 
     /* check arguments */
-    if (calife == NULL || calife ->pw_name == NULL || calife->pw_name == "")
+    if (calife == NULL || calife ->pw_name == NULL || calife->pw_name[0] == '\0')
     {
         die(1, "Bad parameter for calife/calife->pw_name");
 	/*NOTREACHED*/	
