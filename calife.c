@@ -183,7 +183,7 @@
 #define MAIN_MODULE
 
 #ifndef lint
-static const char * rcsid = "@(#) $Id: calife.c,v 57ac191d6c4c 2014/09/05 19:07:14 roberto $";
+static const char * rcsid = "@(#) $Id: calife.c,v 7b2576d3600f 2017/08/08 11:00:39 roberto $";
 #endif
 
 #include "config.h"     /* généré par configure */
