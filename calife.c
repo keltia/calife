@@ -552,7 +552,8 @@ main (int argc, char * argv [])
                 p_calife = getpwnam (name); /* return ptr is static */
                 if (p_calife == NULL)
                     die (1, "Bad pw data errno = %d", errno);
-                memcpy (calife, p_calife, sizeof (struct passwd));
+                else
+                    memcpy (calife, p_calife, sizeof (struct passwd));
 
                 {
                     unsigned int e1, e2;
